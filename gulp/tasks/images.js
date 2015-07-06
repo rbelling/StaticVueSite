@@ -1,3 +1,4 @@
+//images moves images copies images from a source folder, performs optimizations, the outputs them into the build folder
 var changed    = require('gulp-changed');
 var gulp       = require('gulp');
 var imagemin   = require('gulp-imagemin');
