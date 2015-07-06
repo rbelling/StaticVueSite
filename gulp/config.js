@@ -1,6 +1,7 @@
 var dest = "./build";
 var src = './src';
 
+
 module.exports = {
   browserSync: {
     server: {
@@ -24,6 +25,30 @@ module.exports = {
     src: src + "/htdocs/**",
     dest: dest
   },
+  templates: {
+    baseFolder: src + "/templates/**/*",
+    src: src + "/templates/base/",
+    dest: src + "/htdocs/",
+    templateExtension: '.handlebars',
+    myPage: 'index',
+    templateData: {
+        //this variable contains globally shared config parmaeters
+        title: 'PAGE TITLE HERE'
+    },
+    templateOptions : {
+        //https://www.npmjs.com/package/gulp-compile-handlebars
+        ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false 
+        partials : {
+            footer : '<footer>the end</footer>'
+        },
+        batch : [src + '/templates/partials/'],
+        helpers : {
+            capitals : function(str){
+                return str.toUpperCase();
+            }
+        }
+    }
+  },  
   iconFonts: {
     name: 'Gulp Starter Icons',
     src: src + '/icons/*.svg',
