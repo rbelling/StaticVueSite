@@ -16,8 +16,6 @@ var minifyOptions = {
       loose: false         // KEEP one whitespace
 }
 
-console.log(browserSync.reload({stream:true}));
-
 gulp.task('markup', ['templates'], function() {
   return gulp.src(config.src)
     .pipe(minifyHTML(minifyOptions))
