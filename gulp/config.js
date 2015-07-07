@@ -1,7 +1,6 @@
 var dest = "./build";
 var src = './src';
-
-
+var templateData = require('./data/template');
 module.exports = {
   browserSync: {
     server: {
@@ -30,11 +29,8 @@ module.exports = {
     src: src + "/templates/base/",
     dest: src + "/htdocs/",
     templateExtension: '.handlebars',
-    myPage: 'index',
-    templateData: {
-        //this variable contains globally shared config parmaeters
-        title: 'PAGE TITLE HERE'
-    },
+    myPage: 'index', //the entry point page: this file includes other templates
+    templateData: templateData,
     templateOptions : {
         //https://www.npmjs.com/package/gulp-compile-handlebars
         ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false 

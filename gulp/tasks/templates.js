@@ -17,3 +17,17 @@ gulp.task('templates', function () {
         .pipe(rename(config.myPage+'.html'))
         .pipe(gulp.dest(config.dest));
 });
+
+//DEFINE YOUR HELPERS HERE
+handlebars.Handlebars.registerHelper("for",function(arr,options) {
+	// http://stackoverflow.com/questions/11479094/conditional-on-last-item-in-array-using-handlebars-js-template
+    if(options.inverse && !arr.length)
+        return options.inverse(this);
+
+    return arr.map(function(item,index) {
+        item.$index = index;
+        item.$first = index === 0;
+        item.$last  = index === arr.length-1;
+        return options.fn(item);
+    }).join('');
+});
