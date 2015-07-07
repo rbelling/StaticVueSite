@@ -24,6 +24,13 @@ module.exports = {
     src: src + "/htdocs/**",
     dest: dest
   },
+  app: {
+    breakpoints: {
+      small: 767,
+      medium: 1024,
+      large: 1280 
+    }
+  },
   templates: {
     baseFolder: src + "/templates/**/*",
     src: src + "/templates/base/",
@@ -45,6 +52,17 @@ module.exports = {
         }
     }
   },  
+  modernizr: { 
+    //complete list of options available at: https://github.com/Modernizr/Modernizr/blob/master/lib/config-all.json
+    "options": [
+      "html5shiv",
+      "html5printshiv",
+      "mq"
+    ],
+    "feature-detects": [
+      "touchevents",
+    ]
+  },
   iconFonts: {
     name: 'Gulp Starter Icons',
     src: src + '/icons/*.svg',
@@ -63,22 +81,15 @@ module.exports = {
   browserify: {
     // A separate bundle will be generated for each
     // bundle config in the list below
-    bundleConfigs: [{
-      entries: src + '/javascript/global.coffee',
-      dest: dest,
-      outputName: 'global.js',
-      // Additional file extentions to make optional
-      extensions: ['.coffee', '.hbs'],
-      // list of modules to make require-able externally
-      require: ['jquery', 'backbone/node_modules/underscore']
-      // See https://github.com/greypants/gulp-starter/issues/87 for note about
-      // why this is 'backbone/node_modules/underscore' and not 'underscore'
-    }, {
+    bundleConfigs: [
+    {
       entries: src + '/javascript/page.js',
       dest: dest,
       outputName: 'page.js',
+      // list of modules to make require-able externally
+      require: ['jquery'],
       // list of externally available modules to exclude from the bundle
-      external: ['jquery', 'underscore']
+      // external: ['underscore']
     }]
   },
   production: {
