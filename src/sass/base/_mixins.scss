@@ -1,0 +1,54 @@
+/* MEDIA QUERIES
+   ========================================================================== */
+@mixin small() {
+	@media only screen and (max-width: $mobile-max+px) {
+		@content;
+	}
+}
+@mixin small-and-medium(){
+	@media only screen and (max-width: $tablet-max+px) {
+		@content;
+	}	
+}
+@mixin medium() {
+	@media only screen and (min-width: $tablet-min+px) {
+		@content;
+	}
+}
+
+@mixin large() {
+	@media only screen and (min-width: $desktop-min+px) {
+		@content;
+	}
+}
+@mixin large-lower() {
+	@media only screen and (min-width: $desktop-min+px) and (max-width: $desktop-intermediate+px) {
+		@content;
+	}
+}
+@mixin large-upper() {
+	@media only screen and (min-width: $desktop-intermediate+1 + px) {
+		@content;
+	}	
+}
+@mixin medium-lower() {
+	@media only screen
+	  and (min-width: $tablet-min+px)
+	  and (max-width: ($tablet-min+150)+px) {
+		@content;
+	}
+}
+@mixin max-width() {
+	@media only screen and (min-width: $desktop-max+1px) {
+		@content;
+	}
+}
+
+/* MISC MIXINS
+   ========================================================================== */
+@mixin touch() {
+	/*This mixin is intended to be used in a nested block ! It uses & */
+	.no-touch &:hover, .touch &:active {
+		@content;
+	}
+}

@@ -4,12 +4,12 @@ module.exports = {
         carousel_items : [
         {
           theme: 'light',
-          image: 'a.jpg'
+          image: 'http://www.tods.com/content/dam/tods/home/slideshow/20150306-tods-carousel-woman-collection-ss15.jpg'
         },{
           theme: 'light',
-          image: 'b.jpg'
+          image: 'http://www.tods.com/content/dam/tods/home/slideshow/20150306-tods-carousel-man-collection-ss15.jpg'
         },{
           theme: 'dark',
-          image: 'c.jpg'
+          image: 'http://placehold.it/1280x640'
         }]        
     };
