@@ -1,15 +1,39 @@
         //this object contains globally shared config parmaeters 
 module.exports = {
         title: 'FB DEV CHALLENGE',
-        carousel_items : [
+        carousel_woman : [
         {
-          theme: 'light',
-          image: 'http://www.tods.com/content/dam/tods/home/slideshow/20150306-tods-carousel-woman-collection-ss15.jpg'
-        },{
-          theme: 'light',
-          image: 'http://www.tods.com/content/dam/tods/home/slideshow/20150306-tods-carousel-man-collection-ss15.jpg'
+          theme: 'dark',
+          image: './images/woman-1.jpg'
         },{
           theme: 'dark',
-          image: 'http://placehold.it/1280x640'
-        }]        
+          image: './images/woman-2.jpg'
+        },{
+          theme: 'dark',
+          image: './images/woman-3.jpg'
+        },{
+          theme: 'dark',
+          image: './images/woman-4.jpg'
+        },{
+          theme: 'dark',
+          image: './images/woman-5.jpg'
+        }],
+        carousel_man : [
+        {
+          theme: 'dark',
+          image: './images/man-1.jpg'
+        },{
+          theme: 'dark',
+          image: './images/man-2.jpg'
+        },{
+          theme: 'dark',
+          image: './images/man-3.jpg'
+        },{
+          theme: 'dark',
+          image: './images/man-4.jpg'
+        },{
+          theme: 'dark',
+          image: './images/man-5.jpg'
+        }]    
+
     };

@@ -60,7 +60,7 @@ gulp iconFont
 After that, just run the `default` gulp task with:
 ```
 gulp
-```
+``` 
 
 This will run the `default` gulp task defined in `gulp/tasks/default.js`, which has the following task dependencies: `['sass', 'images', 'markup', 'watch']`
 - The `sass` task compiles your css files.
