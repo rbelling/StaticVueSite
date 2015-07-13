@@ -1,0 +1,19 @@
+/* SASS FUNCTIONS
+   ========================================================================== */
+@function get-vw-from-px($px, $targetviewport) {
+    @return ($px * 100) / $targetviewport + vw;
+}
+@function get-vh-from-px($px, $targetviewport) {
+    @return ($px * 100) / $targetviewport + vh;
+}
+@function span-cols($cols, $maxWidth : false) {
+	$width : 100;
+	@if $maxWidth {
+	 	$width: $desktop-max;
+	}	
+	$retVal : (($width / $grid-col-count) * $cols);
+	@if $maxWidth {
+		@return $retVal + px;
+	}
+	@return $retVal + vw;
+}

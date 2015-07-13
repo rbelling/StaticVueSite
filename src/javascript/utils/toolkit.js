@@ -2,8 +2,8 @@ var $ = require("jquery"),
     _ = require('lodash'),
 	config = require('../../../gulp/config.js').app;
 
-window.app = window.app || {};
-module.exports = window.app.toolkit = {
+var Modernizr = Modernizr || window.Modernizr;
+module.exports = {
     flip: function(obj) {
         // Swap object keys and values in Javascript
         // http://nelsonwells.net/2011/10/swap-object-key-and-values-in-javascript/     
@@ -25,12 +25,17 @@ module.exports = window.app.toolkit = {
         return Modernizr.mq(mobile_mq);
     },
     isLarge: function() {
-        var mobile_mq = 'only screen and (min-width: '+config.breakpoints.large+'px)';
+        var mobile_mq = 'only screen and (min-width: '+config.breakpoints.medium+'px)';
         return Modernizr.mq(mobile_mq);
     },
-    getMaxWidth: function() {
-        //max desktop width
-        return 1440;
+    toggleViewportClassname: function() {
+        $('body').removeClass('is-large is-medium is-small');
+
+        if (window.app.toolkit.isLarge()) { console.log('large');$('body').addClass("is-large"); } else
+        if (window.app.toolkit.isMedium()) { console.log('medium');$('body').addClass("is-medium"); } else
+        if (window.app.toolkit.isSmall()) { console.log('small');$('body').addClass("is-small"); } else {
+            console.warn('unhandled scenario');
+        }
     },
     disableEventsOnScroll: function() {
         //https://github.com/ryanseddon/60fps-scroll/blob/master/dist/60fps-scroll.js
@@ -40,7 +45,6 @@ module.exports = window.app.toolkit = {
         if (typeof document.addEventListener !== 'function') {
             return;
         }
-
         window.addEventListener('scroll', _.throttle(listen, 500, false));
 
         function listen() {

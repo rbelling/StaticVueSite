@@ -5,36 +5,13 @@
 		@content;
 	}
 }
-@mixin small-and-medium(){
-	@media only screen and (max-width: $tablet-max+px) {
-		@content;
-	}	
-}
 @mixin medium() {
 	@media only screen and (min-width: $tablet-min+px) {
 		@content;
 	}
 }
-
 @mixin large() {
 	@media only screen and (min-width: $desktop-min+px) {
-		@content;
-	}
-}
-@mixin large-lower() {
-	@media only screen and (min-width: $desktop-min+px) and (max-width: $desktop-intermediate+px) {
-		@content;
-	}
-}
-@mixin large-upper() {
-	@media only screen and (min-width: $desktop-intermediate+1 + px) {
-		@content;
-	}	
-}
-@mixin medium-lower() {
-	@media only screen
-	  and (min-width: $tablet-min+px)
-	  and (max-width: ($tablet-min+150)+px) {
 		@content;
 	}
 }
@@ -43,7 +20,6 @@
 		@content;
 	}
 }
-
 /* MISC MIXINS
    ========================================================================== */
 @mixin touch() {

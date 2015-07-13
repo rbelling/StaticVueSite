@@ -7,7 +7,7 @@ $btn-width-big: 104;
 
 $psd-width--mobile: 414;
 $psd-width--tablet: 1024;
-$psd-width--desktop: 1440;
+$psd-width--desktop: 1280;
 $psd-width--retina: 4000;
 
 $psd-height--mobile: 736;
@@ -22,9 +22,9 @@ $mobile-max: 767;
 $tablet-min: 768;
 $tablet-max: 1024;
 $desktop-min: 1025;
-$desktop-max: 1440;
-$desktop-intermediate: 1280;
+$desktop-max: 1280;
 
+$grid-col-count : 16;
 $column-width--tablet: 64;
 $column-width--desktop: 90;
 $column-width--mobile: 414/16;
