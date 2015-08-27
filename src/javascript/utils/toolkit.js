@@ -1,6 +1,6 @@
 var $ = require("jquery"),
     _ = require('lodash'),
-	config = require('../../../gulp/config.js').app;
+    config = require('../../../gulp/config.js').app;
 
 var Modernizr = Modernizr || window.Modernizr;
 module.exports = {
@@ -17,23 +17,32 @@ module.exports = {
         return new_obj;
     },
     isSmall: function() {
-        var mobile_mq = 'only screen and (max-width: '+config.breakpoints.small+'px)';
+        var mobile_mq = 'only screen and (max-width: ' + config.breakpoints.small + 'px)';
         return Modernizr.mq(mobile_mq);
     },
     isMedium: function() {
-        var mobile_mq = 'only screen and (max-width: '+config.breakpoints.medium+'px) and (min-width: '+config.breakpoints.small+'px)';
+        var mobile_mq = 'only screen and (max-width: ' + config.breakpoints.medium + 'px) and (min-width: ' + config.breakpoints.small + 'px)';
         return Modernizr.mq(mobile_mq);
     },
     isLarge: function() {
-        var mobile_mq = 'only screen and (min-width: '+config.breakpoints.medium+'px)';
+        var mobile_mq = 'only screen and (min-width: ' + config.breakpoints.medium + 'px)';
         return Modernizr.mq(mobile_mq);
     },
     toggleViewportClassname: function() {
         $('body').removeClass('is-large is-medium is-small');
 
-        if (window.app.toolkit.isLarge()) { console.log('large');$('body').addClass("is-large"); } else
-        if (window.app.toolkit.isMedium()) { console.log('medium');$('body').addClass("is-medium"); } else
-        if (window.app.toolkit.isSmall()) { console.log('small');$('body').addClass("is-small"); } else {
+        if (window.app.toolkit.isLarge()) {
+            console.log('large');
+            $('body').addClass("is-large");
+        } else
+        if (window.app.toolkit.isMedium()) {
+            console.log('medium');
+            $('body').addClass("is-medium");
+        } else
+        if (window.app.toolkit.isSmall()) {
+            console.log('small');
+            $('body').addClass("is-small");
+        } else {
             console.warn('unhandled scenario');
         }
     },

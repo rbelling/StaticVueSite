@@ -1,14 +1,22 @@
-ul {
-	padding: inherit;
+ul
+{
+    padding: inherit;
 }
-a, select {
-	outline: none;
+a,
+select
+{
+    outline: none;
 }
-.container {
-	display: block;
-	position: relative;
-	margin: 0 auto;
-	@include max-width() {
-		width: $desktop-max+px;
-	}
+.container
+{
+    position: relative;
+
+    display: block;
+
+    margin: 0 auto;
+
+    @include max-width()
+    {
+        width: $desktop-max+px;
+    }
 }

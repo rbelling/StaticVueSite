@@ -9,7 +9,8 @@ module.exports = {
     }
   },
   sass: {
-    src: src + "/sass/**/*.{sass,scss}",
+    src: src + "/sass/",
+    sassFiles: src + "/sass/**/*.{sass,scss}",
     dest: dest,
     settings: {
       indentedSyntax: true, // Enable .sass syntax!
@@ -35,7 +36,7 @@ module.exports = {
     baseFolder: src + "/templates/**/*",
     src: src + "/templates/base/",
     dest: src + "/htdocs/",
-    templateExtension: '.handlebars',
+     templateExtension: '.handlebars',
     myPage: 'index', //the entry point page: this file includes other templates
     templateData: templateData,
     templateOptions : {
@@ -49,7 +50,7 @@ module.exports = {
             capitals : function(str){
                 return str.toUpperCase();
             }
-        }
+          }
     }
   },  
   modernizr: { 
@@ -83,6 +84,7 @@ module.exports = {
     // bundle config in the list below
     bundleConfigs: [
     {
+      delay: 0,
       entries: src + '/javascript/page.js',
       dest: dest,
       outputName: 'page.js',
@@ -95,6 +97,11 @@ module.exports = {
   production: {
     cssSrc: dest + '/*.css',
     jsSrc: dest + '/*.js',
+    dest: dest
+  },
+  jsprettify: {
+    jsFiles: src + '/**/*.{js,json}',
+    src: src,
     dest: dest
   }
 };
