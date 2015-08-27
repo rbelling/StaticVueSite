@@ -1,171 +1,121 @@
-.wpCarousel
-{
-    position: relative;
+.wpCarousel {
+	@include medium {
+		margin: 0 span-cols(1) span-cols(1)  span-cols(1);
+		width: span-cols(14);
+		height: span-cols(7);
+	}
+	@include max-width {
+		margin: 0 span-cols(1, true) span-cols(1, true) span-cols(1, true);
+		width: span-cols(14, true);
+		height: span-cols(7, true);
+	}
 
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
+	width: span-cols(16);
+	height: span-cols(8);
+	.carousel {
+		position: relative;
+		white-space: nowrap;
+		font-size: 0;
+		.item {
+			position: relative;
+			display: inline-block;
+			vertical-align: top;
+			white-space: normal;
+			font-size: 16px;
+			&.dark {
+				> a {
+					.title,
+					.subTitle {
+						color: $black;
+					}
+				}
+			}
+			&.light {
+				> a {
+					.title,
+					.subTitle {
+						color: $white;
+					}
+				}
+			}
+			> a {
+				display: block;
+				width: 100%;
+				background: #000;
+				> img {
+					display: block;
+					width: 100%;
+					height: auto;
+					opacity: 1;
+					transition: all .3s ease-out;
+				}
+				&:hover {
+					> img {
+						opacity: .8;
+					}
+				}
+				.wrapText {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					opacity: 0;
+					-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+					transition: all .3s ease-out;
+					//text-rendering: optimizeLegibility;
 
-    width: span-cols(16);
-    height: span-cols(8);
+					-webkit-backface-visibility: hidden;
+					.device-mobile & {
+						opacity: 1;
+					}
+					&:before {
+						display: block;
+						padding-top: 48.787%;
+						//overflow:hidden;
+						content: '';
+					}
+					.text {
+						.title {
+							@extend %title-canvas;
 
-    @include medium
-    {
-        width: span-cols(14);
-        height: span-cols(7);
-        margin: 0 span-cols(1) span-cols(1)  span-cols(1);
-    }
-    @include max-width
-    {
-        width: span-cols(14, true);
-        height: span-cols(7, true);
-        margin: 0 span-cols(1, true) span-cols(1, true) span-cols(1, true);
-    }
-    .carousel
-    {
-        font-size: 0;
-
-        position: relative;
-
-        white-space: nowrap;
-        .item
-        {
-            font-size: 16px;
-
-            position: relative;
-
-            display: inline-block;
-
-            vertical-align: top;
-            white-space: normal;
-            &.dark
-            {
-                > a
-                {
-                    .title,
-                    .subTitle
-                    {
-                        color: $black;
-                    }
-                }
-            }
-            &.light
-            {
-                > a
-                {
-                    .title,
-                    .subTitle
-                    {
-                        color: $white;
-                    }
-                }
-            }
-            > a
-            {
-                display: block;
-
-                width: 100%;
-
-                background: #000;
-                > img
-                {
-                    display: block;
-
-                    width: 100%;
-                    height: auto;
-
-                    transition: all .3s ease-out;
-
-                    opacity: 1;
-                }
-                &:hover
-                {
-                    > img
-                    {
-                        opacity: .8;
-                    }
-                }
-                .wrapText
-                {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-
-                    width: 100%;
-                    height: 100%;
-
-                    transition: all .3s ease-out;
-
-                    opacity: 0;
-
-                    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
-                    //text-rendering: optimizeLegibility;
-                    -webkit-backface-visibility: hidden;
-                    .device-mobile &
-                    {
-                        opacity: 1;
-                    }
-                    &:before
-                    {
-                        display: block;
-
-                        padding-top: 48.787%;
-                        //overflow:hidden;
-
-                        content: '';
-                    }
-                    .text
-                    {
-                        .title
-                        {
-                            margin-bottom: 10px;
-
-                            @extend %title-canvas;
-                        }
-                        .subTitle
-                        {
-                            @extend %sub-title;
-                        }
-                    }
-                }
-            }
-            &.canvas-hover
-            {
-                > a
-                {
-                    .wrapText
-                    {
-                        opacity: 1;
-                    }
-                }
-            }
-        }
-    }
-    .counter
-    {
-        position: absolute;
-        top: 0;
-
-        width: 100%;
-
-        text-align: center;
-        > li
-        {
-            display: inline-block;
-            > a
-            {
-                display: block;
-
-                width: 40px;
-                height: 40px;
-
-                text-indent: -5000px;
-
-                background: url(../images/modules/paginator/paginator.png) center center no-repeat;
-                &:hover,
-                &.active
-                {
-                    background: url(../images/modules/paginator/paginator-current.png) center center no-repeat;
-                }
-            }
-        }
-    }
+							margin-bottom: 10px;
+						}
+						.subTitle {
+							@extend %sub-title;
+						}
+					}
+				}
+			}
+			&.canvas-hover {
+				> a {
+					.wrapText {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	.counter {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		text-align: center;
+		> li {
+			display: inline-block;
+			> a {
+				display: block;
+				width: 40px;
+				height: 40px;
+				background: url(../images/modules/paginator/paginator.png) center center no-repeat;
+				text-indent: -5000px;
+				&:hover,
+				&.active {
+					background: url(../images/modules/paginator/paginator-current.png) center center no-repeat;
+				}
+			}
+		}
+	}
 }
