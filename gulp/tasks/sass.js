@@ -8,7 +8,7 @@ var config       = require('../config').sass;
 var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', ['csscomb'], function () {
-  return gulp.src(config.src)
+  return gulp.src(config.sassFiles)
     .pipe(sourcemaps.init())
     .pipe(sass(config.settings))
     .on('error', handleErrors)
