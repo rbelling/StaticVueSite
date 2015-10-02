@@ -103,5 +103,8 @@ module.exports = {
     jsFiles: src + '/**/*.{js,json}',
     src: src,
     dest: dest
-  }
+  },
+  tests: {
+    src: src+'/test',
+  }  
 };

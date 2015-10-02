@@ -1,0 +1,24 @@
+$grid-col-count: 16;
+// Responsive breakpoints
+$small_px: 600;
+$medium_px: 980;
+$large_px: 1160;
+$xlarge_px: 1300;
+$xxlarge_px: 1440;
+$col_desktop: $xxlarge_px / $grid-col-count; // desktop column - width in pixels in the PSD
+
+// Responsive utilities
+@function vw($px, $targetviewport) {
+	@return ($px * 100) / $targetviewport + vw;
+}
+@function span-cols($cols, $maxWidth: false) {
+	$width: 100;
+	$retVal: (($width / $grid-col-count) * $cols);
+	@if $maxWidth {
+		$width: $desktop-max;
+	}
+	@if $maxWidth {
+		@return $retVal + px;
+	}
+	@return $retVal + vw;
+}

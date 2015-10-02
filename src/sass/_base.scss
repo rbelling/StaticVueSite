@@ -1,7 +1,9 @@
-@import './base/variables';
-@import './base/colors';
-@import './base/mixins';
-@import './base/functions';
 @import './base/normalize';
-@import  './base/utility';
-@import   './base/general';
+@import './base/variables';
+@import './base/breakpoints';
+@import './base/mediaqueries';
+@import './base/functions';
+@import './base/colors';
+
+@import './base/utility';
+@import './base/shame';
