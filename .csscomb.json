@@ -28,7 +28,6 @@
   "sort-order": [
     ["$import"],
     ["$variable"],
-    ["$include"],
     [
       "position",
       "top",
@@ -405,6 +404,7 @@
       "min-zoom",
       "user-zoom",
       "orientation"
-    ]
+    ],
+    ["$include"]    
   ]
 }
