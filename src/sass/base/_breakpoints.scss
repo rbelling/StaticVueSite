@@ -1,10 +1,11 @@
 $grid-col-count: 16;
 // Responsive breakpoints
-$small_px: 600;
+$small_px: 414;
 $medium_px: 980;
 $large_px: 1160;
 $xlarge_px: 1300;
-$xxlarge_px: 1440;
+$xxlarge_px: 1600;
+$dotcom: 640;
 $col_desktop: $xxlarge_px / $grid-col-count; // desktop column - width in pixels in the PSD
 
 // Responsive utilities
@@ -15,9 +16,8 @@ $col_desktop: $xxlarge_px / $grid-col-count; // desktop column - width in pixels
 	$width: 100;
 	$retVal: (($width / $grid-col-count) * $cols);
 	@if $maxWidth {
-		$width: $desktop-max;
-	}
-	@if $maxWidth {
+		$width: $xxlarge_px;
+		$retVal: (($width / $grid-col-count) * $cols);
 		@return $retVal + px;
 	}
 	@return $retVal + vw;
