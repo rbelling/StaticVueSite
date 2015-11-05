@@ -1,0 +1,42 @@
+/* FONTS */
+
+@mixin tungstenMedium($color: $white) {
+	color: #{$color};
+	font-weight: 500;
+	font-style: normal;
+	font-family: 'Tungsten A', 'Tungsten B';
+}
+
+@mixin tungstenSemibold($color: $white) {
+	color: #{$color};
+	font-weight: 600;
+	font-style: normal;
+	font-family: 'Tungsten A', 'Tungsten B';
+}
+
+@mixin tungstenBook($color: $white) {
+	color: #{$color};
+	font-weight: 400;
+	font-style: normal;
+	font-family: 'Tungsten A', 'Tungsten B';
+}
+
+@mixin acropolis($color: $white) {
+	color: #{$color};
+	font-weight: 800;
+	font-style: normal;
+	font-family: 'Acropolis A', 'Acropolis B';
+}
+
+@mixin helvetica($color: $white) {
+	color: #{$color};
+	font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
+}
+@mixin vitesse($color: $white) {
+	color: #{$color};
+	font-weight: 800;
+	font-style: normal;
+	font-family: 'Vitesse SSm A', 'Vitesse SSm B', Georgia, serif;
+
+	-webkit-font-smoothing: antialiased;
+}
