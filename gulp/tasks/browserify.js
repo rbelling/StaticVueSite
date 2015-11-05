@@ -56,7 +56,7 @@ var browserifyTask = function(devMode) {
 
     if(devMode) {
       // Wrap with watchify and rebundle on changes
-      b = watchify(b).transform(babel);
+      b = watchify(b);//.transform("babelify", {presets: ["es2015", "react"]});
       // Rebundle on update
       b.on('update', bundle);
       bundleLogger.watch(bundleConfig.outputName);

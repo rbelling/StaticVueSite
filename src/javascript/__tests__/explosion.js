@@ -44,9 +44,9 @@ describe('#angle', function() {
             return value;
         };
         var a = {
-            x: 2,
-            y: 2
-        },
+                x: 2,
+                y: 2
+            },
             b = {
                 x: 3,
                 y: 1

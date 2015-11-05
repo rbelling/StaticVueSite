@@ -46,10 +46,15 @@ var style = (function() {
         }
     });
     var publicInterface = {
-        M: M,
-        DURATION: DURATION,
-        DEFAULT_EASE: DEFAULT_EASE,
-        rotateIn: rotateIn,
+        {
+            M
+        }, {
+            DURATION
+        }, {
+            DEFAULT_EASE
+        }, {
+            rotateIn
+        }
     };
 
     return publicInterface;

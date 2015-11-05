@@ -13,12 +13,15 @@
                 })) : (!a._pfLastSize || a.offsetWidth > a._pfLastSize) && (a._pfLastSize = a.offsetWidth, d = a.sizes, a.sizes += ",100vw", setTimeout(function() {
                     a.sizes = d
                 }))
-            }, e = function() {
+            },
+            e = function() {
                 var a, b = document.querySelectorAll("picture > img, img[srcset][sizes]");
                 for (a = 0; a < b.length; a++) d(b[a])
-            }, f = function() {
+            },
+            f = function() {
                 clearTimeout(b), b = setTimeout(e, 99)
-            }, g = a.matchMedia && matchMedia("(orientation: landscape)"),
+            },
+            g = a.matchMedia && matchMedia("(orientation: landscape)"),
             h = function() {
                 f(), g && g.addListener && g.addListener(f)
             };
@@ -188,14 +191,18 @@ function(a, b, c) {
         return "100vw"
     }
     b.createElement("picture");
-    var o, p, q, r, s = {}, t = function() {}, u = b.createElement("img"),
+    var o, p, q, r, s = {},
+        t = function() {},
+        u = b.createElement("img"),
         v = u.getAttribute,
         w = u.setAttribute,
         x = u.removeAttribute,
         y = b.documentElement,
-        z = {}, A = {
+        z = {},
+        A = {
             algorithm: ""
-        }, B = "data-pfsrc",
+        },
+        B = "data-pfsrc",
         C = B + "set",
         D = navigator.userAgent,
         E = /rident/.test(D) || /ecko/.test(D) && D.match(/rv\:(\d+)/) && RegExp.$1 > 35,
@@ -206,11 +213,14 @@ function(a, b, c) {
         J = "position:absolute;left:0;visibility:hidden;display:block;padding:0;border:none;font-size:1em;width:1em;overflow:hidden;clip:rect(0px, 0px, 0px, 0px)",
         K = "font-size:100%!important;",
         L = !0,
-        M = {}, N = {}, O = a.devicePixelRatio,
+        M = {},
+        N = {},
+        O = a.devicePixelRatio,
         P = {
             px: 1,
             "in": 96
-        }, Q = b.createElement("a"),
+        },
+        Q = b.createElement("a"),
         R = !1,
         S = /^[ \t\n\r\u000c]+/,
         T = /^[, \t\n\r\u000c]+/,
@@ -220,17 +230,20 @@ function(a, b, c) {
         X = /^-?(?:[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)?$/,
         Y = function(a, b, c, d) {
             a.addEventListener ? a.addEventListener(b, c, d || !1) : a.attachEvent && a.attachEvent("on" + b, c)
-        }, Z = function(a) {
+        },
+        Z = function(a) {
             var b = {};
             return function(c) {
                 return c in b || (b[c] = a(c)), b[c]
             }
-        }, $ = function() {
+        },
+        $ = function() {
             var a = /^([\d\.]+)(em|vw|px)$/,
                 b = function() {
                     for (var a = arguments, b = 0, c = a[0]; ++b in a;) c = c.replace(a[b], a[++b]);
                     return c
-                }, c = Z(function(a) {
+                },
+                c = Z(function(a) {
                     return "return " + b((a || "").toLowerCase(), /\band\b/g, "&&", /,/g, "||", /min-([a-z-\s]+):/g, "e.$1>=", /max-([a-z-\s]+):/g, "e.$1<=", /calc([^)]+)/g, "($1)", /(\d+[\.]*[\d]*)([a-z]+)/g, "($1 * e.$2)", /^(?!(e.[a-z]|[0-9\.&=|><\+\-\*\(\)\/])).*/gi, "") + ";"
                 });
             return function(b, d) {
@@ -245,7 +258,8 @@ function(a, b, c) {
         }(),
         _ = function(a, b) {
             return a.w ? (a.cWidth = s.calcListLength(b || "100vw"), a.res = a.w / a.cWidth) : a.res = a.d, a
-        }, aa = function(a) {
+        },
+        aa = function(a) {
             var c, d, e, f = a || {};
             if (f.elements && 1 === f.elements.nodeType && ("IMG" === f.elements.nodeName.toUpperCase() ? f.elements = [f.elements] : (f.context = f.elements, f.elements = null)), c = f.elements || s.qsa(f.context || b, f.reevaluate || f.reselect ? s.sel : s.selShort), e = c.length) {
                 for (s.setupRun(f), R = !0, d = 0; e > d; d++) s.fillImg(c[d], f);
@@ -254,7 +268,7 @@ function(a, b, c) {
         };
     o = a.console && console.warn ? function(a) {
         console.warn(a)
-    } : t, F in u || (F = "src"), z["image/jpeg"] = !0, z["image/gif"] = !0, z["image/png"] = !0, z["image/svg+xml"] = b.implementation.hasFeature("http://wwwindow.w3.org/TR/SVG11/feature#Image", "1.1"), s.ns = ("pf" + (new Date).getTime()).substr(0, 9), s.supSrcset = "srcset" in u, s.supSizes = "sizes" in u, s.supPicture = !! a.HTMLPictureElement, s.supSrcset && s.supPicture && !s.supSizes && ! function(a) {
+    } : t, F in u || (F = "src"), z["image/jpeg"] = !0, z["image/gif"] = !0, z["image/png"] = !0, z["image/svg+xml"] = b.implementation.hasFeature("http://wwwindow.w3.org/TR/SVG11/feature#Image", "1.1"), s.ns = ("pf" + (new Date).getTime()).substr(0, 9), s.supSrcset = "srcset" in u, s.supSizes = "sizes" in u, s.supPicture = !!a.HTMLPictureElement, s.supSrcset && s.supPicture && !s.supSizes && ! function(a) {
         u.srcset = "data:,a", a.src = "data:,a", s.supSrcset = u.complete === a.complete, s.supPicture = s.supSrcset && s.supPicture
     }(b.createElement("img")), s.selShort = "picture>img,img[srcset]", s.sel = s.selShort, s.cfg = A, s.supSrcset && (s.sel += ",img[" + C + "]"), s.DPR = O || 1, s.u = P, s.types = z, q = s.supSrcset && !s.supSizes, s.setSize = t, s.makeUrl = Z(function(a) {
         return Q.href = a, Q.href
@@ -329,16 +343,16 @@ function(a, b, c) {
         var e, f, g, h, i = b && "PICTURE" === b.nodeName.toUpperCase(),
             j = a[s.ns];
         (j.src === c || d.src) && (j.src = v.call(a, "src"), j.src ? w.call(a, B, j.src) : x.call(a, B)), (j.srcset === c || d.srcset || !s.supSrcset || a.srcset) && (e = v.call(a, "srcset"), j.srcset = e, h = !0), j.sets = [], i && (j.pic = !0, l(b, j.sets)), j.srcset ? (f = {
-                srcset: j.srcset,
-                sizes: v.call(a, "sizes")
-            }, j.sets.push(f), g = (q || j.src) && G.test(j.srcset || ""), g || !j.src || k(j.src, f) || f.has1x || (f.srcset += ", " + j.src, f.cands.push({
-                url: j.src,
-                d: 1,
-                set: f
-            }))) : j.src && j.sets.push({
-                srcset: j.src,
-                sizes: null
-            }), j.curCan = null, j.curSrc = c, j.supported = !(i || f && !s.supSrcset || g), h && s.supSrcset && !j.supported && (e ? (w.call(a, C, e), a.srcset = "") : x.call(a, C)), j.supported && !j.srcset && (!j.src && a.src || a.src !== s.makeUrl(j.src)) && (null === j.src ? a.removeAttribute("src") : a.src = j.src), j.parsed = !0
+            srcset: j.srcset,
+            sizes: v.call(a, "sizes")
+        }, j.sets.push(f), g = (q || j.src) && G.test(j.srcset || ""), g || !j.src || k(j.src, f) || f.has1x || (f.srcset += ", " + j.src, f.cands.push({
+            url: j.src,
+            d: 1,
+            set: f
+        }))) : j.src && j.sets.push({
+            srcset: j.src,
+            sizes: null
+        }), j.curCan = null, j.curSrc = c, j.supported = !(i || f && !s.supSrcset || g), h && s.supSrcset && !j.supported && (e ? (w.call(a, C, e), a.srcset = "") : x.call(a, C)), j.supported && !j.srcset && (!j.src && a.src || a.src !== s.makeUrl(j.src)) && (null === j.src ? a.removeAttribute("src") : a.src = j.src), j.parsed = !0
     }, s.fillImg = function(a, b) {
         var c, d = b.reselect || b.reevaluate;
         a[s.ns] || (a[s.ns] = {}), c = a[s.ns], (d || c.evaled !== r) && ((!c.parsed || b.reevaluate) && s.parseSets(a, a.parentNode, b), c.supported ? c.evaled = r : h(a))
@@ -349,16 +363,18 @@ function(a, b, c) {
             e = function() {
                 var a = b.readyState || "";
                 f = setTimeout(e, "loading" === a ? 200 : 999), b.body && (s.fillImgs(), c = c || d.test(a), c && clearTimeout(f))
-            }, f = setTimeout(e, b.body ? 9 : 99),
+            },
+            f = setTimeout(e, b.body ? 9 : 99),
             g = function(a, b) {
                 var c, d, e = function() {
-                        var f = new Date - d;
-                        b > f ? c = setTimeout(e, b - f) : (c = null, a())
-                    };
+                    var f = new Date - d;
+                    b > f ? c = setTimeout(e, b - f) : (c = null, a())
+                };
                 return function() {
                     d = new Date, c || (c = setTimeout(e, b))
                 }
-            }, h = y.clientHeight,
+            },
+            h = y.clientHeight,
             i = function() {
                 L = Math.max(a.innerWidth || 0, y.clientWidth) !== P.width || y.clientHeight !== h, h = y.clientHeight, L && s.fillImgs()
             };
