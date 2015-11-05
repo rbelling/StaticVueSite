@@ -1,0 +1,51 @@
+$black_can000: -0 -0 210px 520px;
+$black_can001: -210px -0 210px 520px;
+$black_can002: -420px -0 210px 520px;
+$black_can003: -630px -0 210px 520px;
+$black_can004: -840px -0 210px 520px;
+$black_can005: -1050px -0 210px 520px;
+$black_can006: -1260px -0 210px 520px;
+$black_can007: -1470px -0 210px 520px;
+$black_can008: -1680px -0 210px 520px;
+$black_can009: -1890px -0 210px 520px;
+$black_can010: -2100px -0 210px 520px;
+$black_can011: -2310px -0 210px 520px;
+$black_can012: -2520px -0 210px 520px;
+$black_can013: -2730px -0 210px 520px;
+$black_can014: -2940px -0 210px 520px;
+$black_can015: -3150px -0 210px 520px;
+$black_can016: -3360px -0 210px 520px;
+$black_can017: -3570px -0 210px 520px;
+$black_can018: -3780px -0 210px 520px;
+$black_can019: -3990px -0 210px 520px;
+$black_can020: -4200px -0 210px 520px;
+@mixin sprite-width($sprite) {
+	width: nth($sprite, 3);
+}
+@mixin sprite-height($sprite) {
+	height: nth($sprite, 4);
+}
+@function sprite-width($sprite) {
+	@return nth($sprite, 3);
+}
+@function sprite-height($sprite) {
+	@return nth($sprite, 4);
+}
+@mixin sprite-position($sprite) {
+	$sprite-offset-x: nth($sprite, 1);
+	$sprite-offset-y: nth($sprite, 2);
+
+	background-position: $sprite-offset-x $sprite-offset-y;
+}
+@mixin sprite($sprite, $display: block) {
+	display: $display;
+	overflow: hidden;
+	background-repeat: no-repeat;
+
+	@include sprite-position($sprite);
+	@include sprite-width($sprite);
+	@include sprite-height($sprite);
+}
+.icon {
+	background-image: url('../images/sprite.png');
+}

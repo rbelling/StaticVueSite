@@ -3,6 +3,7 @@
 
 @mixin touch() {
 	/*This mixin is intended to be used in a nested block ! It uses & */
+	&:hover,
 	.no-touch &:hover,
 	.touch &:active {
 		@content;

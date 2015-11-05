@@ -17,6 +17,7 @@ var gulp         = require('gulp');
 var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
 var config       = require('../config').browserify;
+var babel        = require('babelify');
 var _            = require('lodash');
 
 var browserifyTask = function(devMode) {
@@ -55,7 +56,7 @@ var browserifyTask = function(devMode) {
 
     if(devMode) {
       // Wrap with watchify and rebundle on changes
-      b = watchify(b);
+      b = watchify(b);//.transform("babelify", {presets: ["es2015", "react"]});
       // Rebundle on update
       b.on('update', bundle);
       bundleLogger.watch(bundleConfig.outputName);

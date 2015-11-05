@@ -1,6 +1,6 @@
 var gulp         = require('gulp');
 var config__jsprettify = require('../config').jsprettify;
-var jsprettify = require('gulp-js-prettify');
+var jsprettify = require('gulp-jsbeautify');
 
 
 //run jsprettify

@@ -31,3 +31,4 @@ handlebars.Handlebars.registerHelper("for",function(arr,options) {
         return options.fn(item);
     }).join('');
 });
+
