@@ -1,5 +1,3 @@
-require("babel-core/register");
-
 var config = require('../config').tests;
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');

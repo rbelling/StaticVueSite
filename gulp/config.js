@@ -61,32 +61,6 @@ module.exports = {
       }
     }
   },
-  modernizr: {
-    //complete list of options available at: https://github.com/Modernizr/Modernizr/blob/master/lib/config-all.json
-    "options": [
-      "html5shiv",
-      "html5printshiv",
-      "mq"
-    ],
-    "feature-detects": [
-      "touchevents",
-    ]
-  },
-  iconFonts: {
-    name: 'Gulp Starter Icons',
-    src: src + '/icons/*.svg',
-    dest: dest + '/fonts',
-    sassDest: src + '/sass',
-    template: './gulp/tasks/iconFont/template.sass.swig',
-    sassOutputName: '_icons.sass',
-    fontPath: 'fonts',
-    className: 'icon',
-    options: {
-      fontName: 'Post-Creator-Icons',
-      appendCodepoints: true,
-      normalize: false
-    }
-  },
   browserify: {
     // A separate bundle will be generated for each
     // bundle config in the list below
@@ -96,9 +70,16 @@ module.exports = {
       dest: dest,
       outputName: 'page.js',
       // list of modules to make require-able externally
-      require: ['npm-zepto'],
+      // require: ['npm-zepto', 'lodash'],
       // list of externally available modules to exclude from the bundle
       // external: ['underscore']
+    },{
+      delay: 0,
+      entries: src + '/javascript/critical.js',
+      dest: dest,
+      outputName: 'critical.js',
+      // list of modules to make require-able externally
+      // require: ['jquery'],
     }]
   },
   production: {
@@ -114,4 +95,12 @@ module.exports = {
   tests: {
     src: src + '/javascript/__tests__',
   },
+  aws: {
+    url: {
+      staging: 'clash-achievery-staging.s3-website-us-east-1.amazonaws.com'
+    },
+    src: src,
+    dest: dest,
+  },
+
 };

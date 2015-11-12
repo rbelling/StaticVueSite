@@ -32,7 +32,7 @@ function(a, b, c) {
     "use strict";
 
     function d(a) {
-        return " " === a || "	" === a || "\n" === a || "\f" === a || "\r" === a
+        return " " === a || "    " === a || "\n" === a || "\f" === a || "\r" === a
     }
 
     function e(b, c) {

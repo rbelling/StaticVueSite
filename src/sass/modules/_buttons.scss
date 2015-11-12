@@ -42,7 +42,7 @@
 		padding: span-cols($p-t*$mult) span-cols($p-l*$mult) span-cols($p-t*$mult);
 		border: 3px solid rgba($nevada,.4);
 	}
-	@include maxwidth {
+	@include max-width {
 		padding: span-cols($p-t, true) span-cols($p-l, true) span-cols($p-t, true);
 		letter-spacing: span-cols($l-s, true);
 		font-size: span-cols($f-s, true);

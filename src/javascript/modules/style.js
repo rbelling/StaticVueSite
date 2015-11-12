@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var buttons = require('./style/buttons');
 var style = (function() {
     /*================================
