@@ -1,6 +1,4 @@
-var $ = require("npm-zepto"),
-    _ = require('lodash'),
-    config = require('../../../gulp/config.js').app;
+var config = require('../../../gulp/config.js').app;
 
 var Modernizr = Modernizr || window.Modernizr;
 var Toolkit = (function() {
@@ -114,18 +112,21 @@ var Toolkit = (function() {
             }
         });
     };
+    var stripHtmlTags = function(str) {
+        return str.replace(/<(?:.|\n)*?>/gm, '');
+    };
     var publicInterface = {
-        isSmall: isSmall,
-        isMedium: isMedium,
-        isLarge: isLarge,
-        toggleViewportClassname: toggleViewportClassname,
-        disableEventsOnScroll: disableEventsOnScroll,
-        getDistance: getDistance,
-        getAngle: getAngle,
-        radians: radians,
-        degrees: degrees,
-        attachResizeCallback: attachResizeCallback,
-        runResizeCallbacks: runResizeCallbacks
+        isSmall,
+        isMedium,
+        isLarge,
+        toggleViewportClassname,
+        disableEventsOnScroll,
+        getDistance,
+        getAngle,
+        radians,
+        degrees,
+        attachResizeCallback,
+        runResizeCallbacks
     };
 
     return publicInterface;

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="critical.js"></script>
   </head>
 
-  <body class='nba--preload' id='js-app'>  
+  <body class='is-loading' id='js-app'>  
     <svg style="display:none">
         <defs>
             <symbol  x="0px" y="0px" id="secondary-element-green-c" viewBox="0 0 39 17.6" enable-background="new 0 0 39 17.6">
@@ -13,12 +14,7 @@
             </symbol>
         </defs>
     </svg>    hi there
-        <script src="page.js" async></script>
-        <script>
-    /*! modernizr 3.1.0 (Custom Build) | MIT *
-     * http://modernizr.com/download/?-touchevents-mq !*/
-    !function(e,n,t){function o(e,n){return typeof e===n}function s(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):d?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function a(){var e=n.body;return e||(e=s(d?"svg":"body"),e.fake=!0),e}function i(){var e,n,t,s,a,i,r;for(var l in c)if(c.hasOwnProperty(l)){if(e=[],n=c[l],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(s=o(n.fn,"function")?n.fn():n.fn,a=0;a<e.length;a++)i=e[a],r=i.split("."),1===r.length?Modernizr[r[0]]=s:(!Modernizr[r[0]]||Modernizr[r[0]]instanceof Boolean||(Modernizr[r[0]]=new Boolean(Modernizr[r[0]])),Modernizr[r[0]][r[1]]=s),f.push((s?"":"no-")+r.join("-"))}}function r(e){var n=u.className,t=Modernizr._config.classPrefix||"";if(d&&(n=n.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(o,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),d?u.className.baseVal=n:u.className=n)}function l(e,t,o,i){var r,l,f,c,d="modernizr",p=s("div"),m=a();if(parseInt(o,10))for(;o--;)f=s("div"),f.id=i?i[o]:d+(o+1),p.appendChild(f);return r=s("style"),r.type="text/css",r.id="s"+d,(m.fake?m:p).appendChild(r),m.appendChild(p),r.styleSheet?r.styleSheet.cssText=e:r.appendChild(n.createTextNode(e)),p.id=d,m.fake&&(m.style.background="",m.style.overflow="hidden",c=u.style.overflow,u.style.overflow="hidden",u.appendChild(m)),l=t(p,e),m.fake?(m.parentNode.removeChild(m),u.style.overflow=c,u.offsetHeight):p.parentNode.removeChild(p),!!l}var f=[],c=[],u=n.documentElement,d="svg"===u.nodeName.toLowerCase(),p={_version:"3.1.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){c.push({name:e,fn:n,options:t})},addAsyncTest:function(e){c.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=p,Modernizr=new Modernizr;var m=function(){var n=e.matchMedia||e.msMatchMedia;return n?function(e){var t=n(e);return t&&t.matches||!1}:function(n){var t=!1;return l("@media "+n+" { #modernizr { position: absolute; } }",function(n){t="absolute"==(e.getComputedStyle?e.getComputedStyle(n,null):n.currentStyle).position}),t}}();p.mq=m;var h=p._config.usePrefixes?" -webkit- -moz- -o- -ms- ".split(" "):[];p._prefixes=h;var v=p.testStyles=l;Modernizr.addTest("touchevents",function(){var t;if("ontouchstart"in e||e.DocumentTouch&&n instanceof DocumentTouch)t=!0;else{var o=["@media (",h.join("touch-enabled),("),"heartz",")","{#modernizr{top:9px;position:absolute}}"].join("");v(o,function(e){t=9===e.offsetTop})}return t}),i(),r(f),delete p.addTest,delete p.addAsyncTest;for(var g=0;g<Modernizr._q.length;g++)Modernizr._q[g]();e.Modernizr=Modernizr}(window,document);
-    </script>        <script type='text/javascript'>
+    <script src="page.js" async></script>        <script type='text/javascript'>
       function onloadCSS(n,o){n.onload=function(){n.onload=null,o&&o.call(n)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in n&&n.onloadcssdefined(o)}
         function loadCSS(e,n,o,t){"use strict";var d=window.document.createElement("link"),i=n||window.document.getElementsByTagName("script")[0],s=window.document.styleSheets;return d.rel="stylesheet",d.href=e,d.media="only x",t&&(d.onload=t),i.parentNode.insertBefore(d,i),d.onloadcssdefined=function(n){for(var o,t=0;t<s.length;t++)s[t].href&&s[t].href.indexOf(e)>-1&&(o=!0);o?n():setTimeout(function(){d.onloadcssdefined(n)})},d.onloadcssdefined(function(){d.media=o||"all"}),d}
         //load fonts css and delete temporary style after
@@ -26,7 +22,7 @@
         onloadCSS(fontsCss, function(){
             try {
                 //SHOW TEXT CONTENT
-                document.querySelector('body').className+=' nba--fonts-loaded';   
+                document.querySelector('body').className+=' fonts-loaded';   
             }
             catch(e) {}
         });

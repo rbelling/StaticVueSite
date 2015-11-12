@@ -17,7 +17,7 @@ var gulp         = require('gulp');
 var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
 var config       = require('../config').browserify;
-var babel        = require('babelify');
+var babelify    = require('babelify');
 var _            = require('lodash');
 
 var browserifyTask = function(devMode) {
@@ -33,7 +33,7 @@ var browserifyTask = function(devMode) {
       bundleConfig = _.omit(bundleConfig, ['external', 'require']);
     }
 
-    var b = browserify(bundleConfig);
+    var b = browserify(bundleConfig).transform("babelify", {presets: ["es2015", "react"]});
 
     var bundle = function() {
       // Log when bundling starts

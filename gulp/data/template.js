@@ -15,5 +15,6 @@ module.exports = {
         encodedPageUrl: encodedPageUrl,
         slug: 'URL SLUG',
         hashtag: '#'+hashtag,
-        imagePath: 'images/'//css path for images      
+        imagePath: 'images/',//css path for images      
+        aws: 'http://s3.amazonaws.com/clash-achievery-staging',
     };

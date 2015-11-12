@@ -6,6 +6,7 @@
 
 var gulp     = require('gulp');
 var config   = require('../config');
+var gulpsync = require('gulp-sync')(gulp); 
 
 gulp.task('watch', ['jsprettify', 'watchify','browserSync'], function() {
   gulp.watch(config.sass.sassFiles,   ['sass']);

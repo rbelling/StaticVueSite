@@ -1,5 +1,3 @@
-var _ = require('lodash');
-
 var buttons = (function() {
     var s = {};
     var rotateIn = {
