@@ -33,3 +33,22 @@ $col_desktop: $xxlarge_px / $grid-col-count; // desktop column - width in pixels
 @function v-pc($px) {
 	@return 100*1%*($px / $viewport-height);
 }
+
+/*----------  Rick's responsive calc function - watch out: http://caniuse.com/#feat=calc.   ----------*/
+/**
+ * Takes in a minimum and a maximum size in pixels, and interpolates between two viewports.
+ * Takes in a property (e.g. font-size), min/max sizes, and optional lower range and upper range
+ * by default it ranges from tablet to max width
+ */
+@mixin calc-value($property, $min-size, $max-size, $lower-range: $medium-px, $upper-range: $xxlarge-px) {
+	$diff-size: strip-unit($max-size - $min-size); //e.g. 13
+	$diff-range: $upper-range - $lower-range;
+	#{$property}: calc(#{$min-size} + #{$diff-size} * ((100vw - #{$lower-range}px) / #{$diff-range}));
+	@include width-under($lower-range) {
+		#{$property}: $min-size;
+	}
+	@include width-under($upper-range) {
+		$property: $max-size;
+	}
+}
+
