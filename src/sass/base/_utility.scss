@@ -51,3 +51,33 @@
 	background-position: center;
 	background-size: cover;
 }
+.u-no-interaction {
+	pointer-events: none;
+}
+.u-medium-down {
+	display: none;
+	visibility: hidden;
+
+	@include medium-down {
+		display: block;
+		visibility: visible;
+	}
+}
+.u-large-up {
+	display: none;
+	visibility: hidden;
+
+	@include large-up {
+		display: block;
+		visibility: visible;
+	}
+}
+.u-xlarge-up {
+	display: none;
+	visibility: hidden;
+
+	@include xlarge-up {
+		display: block;
+		visibility: visible;
+	}
+}
