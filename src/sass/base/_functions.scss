@@ -32,7 +32,7 @@
 
 @mixin line-height($fontsize, $lineheight) {
 	//takes in a fontsize and outputs the corresponding unitless line height
-	line-height: $fontsize / $lineheight;
+	line-height: $lineheight / $fontsize;
 }
 
 @function strip-unit($number) {
