@@ -18,10 +18,10 @@ var main = (function() {
         eventBus
     };
     var init = function($ref) {
-        console.log('init');
         s.$ref = $ref;
         _initModules();
         _handleEvents();
+        _setupWorkers();
     };
     var _initModules = function() {
         FastClick(document.body, {});
@@ -33,6 +33,14 @@ var main = (function() {
 
         $(window).on('resize', _.debounce(_.bind(s.toolkit.runResizeCallbacks, this), 500));
     };
+    var _setupWorkers = function() {
+        var worker = new Worker('backgroundTask.js');
+        worker.addEventListener('message', function(e) {
+            console.log('Worker said: ', e.data);
+        }, false);
+        worker.postMessage('Please start computing the value');
+        console.log('moving on with the flow of execution in the main thread ... ');
+    }
 
     return init;
 })();

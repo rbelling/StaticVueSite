@@ -124,6 +124,13 @@ module.exports = {
       outputName: 'critical.js',
       // list of modules to make require-able externally
       // require: ['jquery'],
+    },{
+      delay: 0,
+      entries: src + '/javascript/modules/backgroundTask.js',
+      dest: dest,
+      outputName: 'backgroundTask.js',
+      // list of modules to make require-able externally
+      // require: ['jquery'],
     }]
   },
   production: {
