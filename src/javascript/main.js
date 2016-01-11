@@ -18,11 +18,36 @@ var main = (function() {
         eventBus
     };
     var init = function($ref) {
-        console.log('init');
+        promises();
         s.$ref = $ref;
         _initModules();
         _handleEvents();
     };
+
+    let promises = function() {
+        window.promiseA = new Promise(function(resolve, reject) {
+            //here we have some code, maybe async
+            setTimeout(function() {
+                window.executed = true;
+                if (window.executed) {
+                    resolve('All good baby baby!')
+                } else {
+                    reject('Something went wrong');
+                }                
+            }, 3500);
+        });
+
+        window.promiseA.then(function(result) {
+          console.log('Ci siamo: ', result);
+        }, function(err) {
+          console.log('Ziok: ', err);  
+        });
+        window.promiseA.then(function(result) {
+          console.log('di nuovo ', result);
+        }, function(err) {
+          console.log('Ziok: ', err);  
+        });        
+    }
     var _initModules = function() {
         FastClick(document.body, {});
     };
