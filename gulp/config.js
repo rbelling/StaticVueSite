@@ -41,6 +41,49 @@ module.exports = {
       large: 1600
     }
   },
+  criticalPath: {
+      // Inline the generated critical-path CSS
+      // - true generates HTML
+      // - false generates CSS
+      inline: true,
+
+      // Your base directory
+      base: dest,
+
+      // HTML source
+      html: '<html>...</html>',
+
+      // HTML source file
+      src: 'index.html',
+
+      // Your CSS Files (optional)
+      css: [dest+'/app.css'],
+
+      // Viewport width
+      width: 1600,
+
+      // Viewport height
+      height: 1024,
+
+      // Target for final HTML output.
+      // use some css file when the inline option is not set
+      dest: 'index-critical.html',
+
+      // Minify critical-path CSS when inlining
+      minify: true,
+
+      // Extract inlined styles from referenced stylesheets
+      // extract: true,
+
+      // Prefix for asset directory
+      // pathPrefix: '/MySubfolderDocrot',
+
+      // ignore css rules
+      // ignore: ['font-face',/some-regexp/],
+
+      // overwrite default options
+      ignoreOptions: {}
+  },
   templates: {
     baseFolder: src + "/templates/**/*",
     src: src + "/templates/base/",

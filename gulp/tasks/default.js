@@ -6,7 +6,9 @@ gulp.task('default',
 	    // sync
 	    [
 	        // async
-	        ['sass', 'images', 'watch', 'markup'],
+	        ['sass', 'images', 'watch'],
+	        'markup',
+	        'criticalPath'
 	    ]
 	)
 );

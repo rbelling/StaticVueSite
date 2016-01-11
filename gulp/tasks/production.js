@@ -6,7 +6,9 @@ gulp.task('production', gulpsync.sync(
     // sync
     [
         // async
-        ['markup', 'images', 'minifyCss', 'uglifyJs'],
+        ['images', 'minifyCss', 'uglifyJs'],
+        'markup',
+	    'criticalPath',
     ]
 ));
 
