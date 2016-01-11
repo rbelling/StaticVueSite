@@ -38,15 +38,19 @@ var main = (function() {
         });
 
         window.promiseA.then(function(result) {
-          console.log('Ci siamo: ', result);
+            console.log('Ci siamo: ', result, ' ora aspetto un po');  
+            return new Promise(function(resolve, reject) {
+                setTimeout(function(){
+                    resolve();
+                }, 2000);
+            });
+            
+          
         }, function(err) {
           console.log('Ziok: ', err);  
-        });
-        window.promiseA.then(function(result) {
-          console.log('di nuovo ', result);
-        }, function(err) {
-          console.log('Ziok: ', err);  
-        });        
+        }).then(function(result) {
+            console.log('seconda finita');
+        });       
     }
     var _initModules = function() {
         FastClick(document.body, {});
