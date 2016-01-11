@@ -6,7 +6,8 @@ module.exports = {
     server: {
       // Serve up our build folder
       baseDir: dest
-    }
+    },
+    ghostMode: false
   },
   sprite: {
     src: src,

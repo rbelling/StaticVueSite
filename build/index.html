@@ -1,15 +1,6 @@
-<!DOCTYPE html><html><head><script src="critical.js"></script></head><body class="is-loading" id="js-app"><svg style="display:none"><defs><symbol x="0px" y="0px" id="secondary-element-green-c" viewbox="0 0 39 17.6" enable-background="new 0 0 39 17.6"><g><polygon fill="#E93337" points="39,0 0,15.7 29.9,17.6"></polygon></g></symbol></defs></svg>hi there<script src="page.js" async></script><script type="text/javascript">
+<!DOCTYPE html><html><head><script src="critical.js"></script></head><body class="is-loading" id="js-app"><svg style="display:none"><defs><symbol x="0px" y="0px" id="secondary-element-green-c" viewbox="0 0 39 17.6" enable-background="new 0 0 39 17.6"><g><polygon fill="#E93337" points="39,0 0,15.7 29.9,17.6"></polygon></g></symbol></defs></svg>hi there<picture class="MY_CLASS"><source media="(-webkit-min-device-pixel-ratio: 3) and (max-width: 767px)" srcset="http://placehold.it/300x200"><source media="(-webkit-min-device-pixel-ratio: 2) and (max-width: 767px)" srcset="http://placehold.it/200x200"><source media="(max-width: 767px)" srcset="http://placehold.it/100x200"><source media="(-webkit-min-device-pixel-ratio: 2)" srcset="http://placehold.it/200x500"><img class="aog-image-brick__image-element" srcset="http://placehold.it/100x500" alt="ALT"></picture><script src="./page.js" async></script><script type="text/javascript">
       function onloadCSS(n,o){n.onload=function(){n.onload=null,o&&o.call(n)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in n&&n.onloadcssdefined(o)}
         function loadCSS(e,n,o,t){"use strict";var d=window.document.createElement("link"),i=n||window.document.getElementsByTagName("script")[0],s=window.document.styleSheets;return d.rel="stylesheet",d.href=e,d.media="only x",t&&(d.onload=t),i.parentNode.insertBefore(d,i),d.onloadcssdefined=function(n){for(var o,t=0;t<s.length;t++)s[t].href&&s[t].href.indexOf(e)>-1&&(o=!0);o?n():setTimeout(function(){d.onloadcssdefined(n)})},d.onloadcssdefined(function(){d.media=o||"all"}),d}
-        //load fonts css and delete temporary style after
-        var fontsCss = loadCSS("https://cloud.typography.com/796780/638588/css/fonts.css")
-        onloadCSS(fontsCss, function(){
-            try {
-                //SHOW TEXT CONTENT
-                document.querySelector('body').className+=' fonts-loaded';   
-            }
-            catch(e) {}
-        });
         //load main css and delete temporary style after
-        var mainCss = loadCSS("app.css");
+        var mainCss = loadCSS(".app.css");
         </script></body></html>

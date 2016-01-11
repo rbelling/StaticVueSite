@@ -44,7 +44,7 @@ $col_desktop: $xxlarge_px / $grid-col-count; // desktop column - width in pixels
 	$diff-size: strip-unit($max-size - $min-size); //e.g. 13
 	$diff-range: $upper-range - $lower-range;
 	#{$property}: calc(#{$min-size} + #{$diff-size} * ((100vw - #{$lower-range}px) / #{$diff-range}));
-	
+
 	@include width-under($lower-range) {
 		#{$property}: $min-size;
 	}

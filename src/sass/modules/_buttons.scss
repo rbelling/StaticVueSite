@@ -23,9 +23,9 @@
 	letter-spacing: $l-s * 100 + px;
 	font-size: $f-s * 100 + px;
 	line-height: $l-h * 100 + px;
-	cursor: pointer;
-	transition: all .4s $ease-out-expo;
 
+	transition: all .4s $ease-out-expo;
+	cursor: pointer;
 	@include tungstenMedium($silver-sand);
 	@include touch {
 		border-color: $brand-green;

@@ -1,12 +1,10 @@
 // Browserify entry point for the page.js bundle (yay JavaScript!)
-// require('./vendor/picturefill.js');
+require('./vendor/picturefill.js');
 require('./vendor/Modernizr');
 /*============================
 =            GSAP            =
 ============================*/
 require('./vendor/gsap/TweenLite.js');
-require('./vendor/gsap/plugins/Draggable.js');
-require('./vendor/gsap/plugins/TP.js');
 /*=====  End of GSAP  ======*/
 var FastClick = require('fastclick');
 var toolkit = require('./utils/toolkit.js');

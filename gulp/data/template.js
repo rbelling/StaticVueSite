@@ -16,5 +16,5 @@ module.exports = {
         slug: 'URL SLUG',
         hashtag: '#'+hashtag,
         imagePath: 'images/',//css path for images      
-        aws: 'http://s3.amazonaws.com/clash-achievery-staging',
+        assetFolder: '.',
     };

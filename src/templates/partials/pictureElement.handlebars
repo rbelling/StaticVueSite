@@ -1,0 +1,12 @@
+			<picture class='MY_CLASS'>
+			    <!-- iphone 6+ and samsung!-->
+			    <source media="(-webkit-min-device-pixel-ratio: 3) and (max-width: 767px)" srcset="{{assetFolder}}/images/IMG-3x">
+			    <!-- iphone 6 and below !-->
+			    <source media="(-webkit-min-device-pixel-ratio: 2) and (max-width: 767px)" srcset="{{assetFolder}}/images/IMG-2x">
+			    <!-- android !-->
+			    <source media="(max-width: 767px)" srcset="{{assetFolder}}/images/IMG-2x">
+			    <!-- retina !-->
+			    <source media="(-webkit-min-device-pixel-ratio: 2)" srcset="{{assetFolder}}/images/IMG-1x">
+			    <!-- everything else !-->
+			    <img class='aog-image-brick__image-element'  srcset="{{assetFolder}}/images/IMG-1x" alt='ALT'>
+			</picture>
