@@ -139,12 +139,5 @@ module.exports = {
   tests: {
     src: src + '/javascript/__tests__',
   },
-  aws: {
-    url: {
-      staging: 'clash-achievery-staging.s3-website-us-east-1.amazonaws.com'
-    },
-    src: src,
-    dest: dest,
-  },
 
 };
