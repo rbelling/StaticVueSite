@@ -37,19 +37,20 @@ var main = (function() {
             }, 3500);
         });
 
-        window.promiseA.then(function(result) {
-            console.log('Ci siamo: ', result, ' ora aspetto un po');  
+        window.promiseA.then(function(res) {
+            console.log('Ci siamo: ', res, ' ora aspetto un po');  
             return new Promise(function(resolve, reject) {
                 setTimeout(function(){
-                    resolve();
+                    reject('some error at the second round of promises');
                 }, 2000);
             });
             
           
-        }, function(err) {
-          console.log('Ziok: ', err);  
-        }).then(function(result) {
+        }).then(function(res) {
             console.log('seconda finita');
+        })
+        .catch(function(res){
+            console.log('Error: ', res);
         });       
     }
     var _initModules = function() {
