@@ -25,33 +25,50 @@ var main = (function() {
     };
 
     let promises = function() {
-        window.promiseA = new Promise(function(resolve, reject) {
+        window.count = 0;
+
+        window.cssLoaded = new Promise(function(resolve, reject){
+            setTimeout(function() {
+                resolve('fonts loaded!');
+            }, 10000);
+        });        
+        window.fontsLoaded = new Promise(function(resolve, reject) {
             //here we have some code, maybe async
             setTimeout(function() {
-                window.executed = true;
-                if (window.executed) {
-                    resolve('All good baby baby!')
-                } else {
-                    reject('Something went wrong');
-                }                
+                resolve('css Loaded!');                
             }, 3500);
         });
+        window.jsLoaded = new Promise(function(resolve, reject) {
+            //here we have some code, maybe async
+            setTimeout(function() {
+                resolve('JS Loaded!');                
+            }, 12500);
+        });
 
-        window.promiseA.then(function(res) {
-            console.log('Ci siamo: ', res, ' ora aspetto un po');  
-            return new Promise(function(resolve, reject) {
-                setTimeout(function(){
-                    reject('some error at the second round of promises');
-                }, 2000);
-            });
-            
-          
-        }).then(function(res) {
-            console.log('seconda finita');
-        })
-        .catch(function(res){
-            console.log('Error: ', res);
-        });       
+        window.cssLoaded.then(function(res) {
+            console.log(res);
+            window.count++;
+            return window.fontsLoaded;
+        }).then(function(res){
+            console.log(res);
+            window.count++;
+        }).catch(function(res) {
+            console.log(res);
+        });  
+
+        window.jsLoaded.then(function(res) {
+            console.log(res);
+            window.count++;
+        }); 
+
+
+        let assetsPromises = [window.cssLoaded, window.jsLoaded, window.fontsLoaded]
+        Promise.all(assetsPromises).then(function(res) {
+            console.log('all done: ', window.count, res);
+        }).catch(function(msg) {
+            console.log('ABORT: catching all of them: ', msg);
+        });
+
     }
     var _initModules = function() {
         FastClick(document.body, {});
