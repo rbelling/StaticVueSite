@@ -1,16 +1,13 @@
 var gulp = require('gulp');
-var gulpsync = require('gulp-sync')(gulp);
+var runSequence = require('run-sequence').use(gulp);
 
-gulp.task('default', 
-	gulpsync.sync(
-	    // sync
-	    [
-	        // async
-	        ['sass', 'images', 'watch'],
-	        'markup',
-	        'criticalPath'
-	    ]
-	)
-);
+gulp.task('default', function(){
+	runSequence(
+	    // async
+	    ['sass', 'images', 'watch'],
+	    'markup'
+	    // 'criticalPath'
+	)	
+});
 
 
