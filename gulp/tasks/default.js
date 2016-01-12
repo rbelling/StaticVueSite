@@ -5,8 +5,8 @@ gulp.task('default', function(){
 	runSequence(
 	    // async
 	    ['sass', 'images', 'watch'],
-	    'markup'
-	    // 'criticalPath'
+	    'markup',
+	    'criticalPath'
 	)	
 });
 
