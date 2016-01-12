@@ -8,12 +8,12 @@ var config       = require('../config').sass;
 var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', function () {
-  return gulp.src(config.sassFiles)
+  return gulp.src(config.sassFiles)  
     .pipe(sourcemaps.init())
     .pipe(sass(config.settings))
     .on('error', handleErrors)
+    .pipe(autoprefixer({ browsers: ['> 1%'] }))    
     .pipe(sourcemaps.write())
-    .pipe(autoprefixer({ browsers: ['> 1%'] }))
     .pipe(gulp.dest(config.dest))
     .pipe(browserSync.reload({stream:true}));
 });
