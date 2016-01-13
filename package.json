@@ -86,7 +86,7 @@
     "jsdom": "^7.2.2",
     "karma": "^0.12.37",
     "karma-browserify": "^4.4.2",
-    "karma-chrome-launcher": "^0.1.12",
+    "karma-chrome-launcher": "^0.2.2",
     "karma-coffee-preprocessor": "^0.2.1",
     "karma-jasmine": "^0.3.6",
     "karma-mocha": "^0.1.10",

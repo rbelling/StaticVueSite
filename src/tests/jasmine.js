@@ -5,6 +5,6 @@ let toolkit = require(`../javascript/utils/toolkit.js`);
 
 describe("A suite", function() {
   it("contains spec with an expectation", function() {
-    expect(1).toBe(1); 
+    expect(toolkit.testBodyTag()).toBe(3); 
   });
 });

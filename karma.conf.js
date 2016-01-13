@@ -11,13 +11,13 @@ module.exports = function(config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['browserify', 'jasmine'],
-    // frameworks: ['jasmine'],
-
 
     // list of files / patterns to load in the browser
     files: [
-      __dirname+'/src/tests/jasmine.js'
+        'src/javascript/**/*.js',
+        'src/tests/**/*.js'
     ],
+
 
 
     // list of files to exclude
@@ -29,7 +29,8 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 
     preprocessors: {
-        '/Users/riccardo.bellingeri/CleanStart/src/tests/jasmine.js': ['browserify']
+        'src/javascript/**/*.js': ['browserify'],
+        'src/tests/**/*.js': ['browserify']
     },
 
 
@@ -68,6 +69,7 @@ module.exports = function(config) {
     // browserify configuration
     browserify: {
         debug: true,
-    }
+        transform: [ 'babelify' ]
+    },
   })
 }

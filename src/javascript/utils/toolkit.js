@@ -113,7 +113,8 @@ var Toolkit = (function() {
         });
     };
     var testBodyTag = function() {
-        return $('body').length;
+        var len = $('body').length;
+        return len * 3;
     };
     var stripHtmlTags = function(str) {
         return str.replace(/<(?:.|\n)*?>/gm, '');
