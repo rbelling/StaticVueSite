@@ -137,7 +137,7 @@ module.exports = {
     dest: dest
   },
   tests: {
-    src: src + '/javascript/__tests__',
+    src: src + '/tests',
   },
 
 };
