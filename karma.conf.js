@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Wed Jan 13 2016 12:55:45 GMT-0500 (EST)
-
+// http://busypeoples.github.io/post/testing-workflow-with-es6/
 module.exports = function(config) {
   config.set({
 
@@ -10,7 +10,8 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['browserify', 'jasmine'],
+    // frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
@@ -26,7 +27,9 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+
     preprocessors: {
+        '/Users/riccardo.bellingeri/CleanStart/src/tests/jasmine.js': ['browserify']
     },
 
 
@@ -60,6 +63,11 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+
+    // browserify configuration
+    browserify: {
+        debug: true,
+    }
   })
 }

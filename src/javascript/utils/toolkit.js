@@ -112,10 +112,14 @@ var Toolkit = (function() {
             }
         });
     };
+    var testBodyTag = function() {
+        return $('body').length;
+    };
     var stripHtmlTags = function(str) {
         return str.replace(/<(?:.|\n)*?>/gm, '');
     };
     var publicInterface = {
+        testBodyTag,
         isSmall,
         isMedium,
         isLarge,
