@@ -7,7 +7,7 @@
 var gulp     = require('gulp');
 var config   = require('../config');
 
-gulp.task('watch', ['jsprettify', 'watchify', 'browserSync'], function() {
+gulp.task('watch', ['watchify', 'browserSync'], function() {
   gulp.watch(config.sass.sassFiles,   ['sass']);
   gulp.watch(config.images.src, ['images']);
   gulp.watch(config.templates.baseFolder, ['markup']);
