@@ -1,67 +1,135 @@
 /*----------  Javascript responsible for the canvas  ----------*/
+
+// Pollyfill for RequestAnimationFrame
+(function() {
+  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+  window.requestAnimationFrame = requestAnimationFrame;
+})();
+
 let canvas = (function() {
-    let ele = document.querySelector("#animation"); 
-    let ctx = ele.getContext('2d');
-    ele.width = window.innerWidth;
-    ele.height = window.innerHeight;
-    let width = 50;
-    let height = 50;
-    let heading_x = Math.random() * 360;        
-    let heading_y = Math.random() * 360;
-    let x = 10;
-    let y = 10;        
-    let duration = 0;
-    let [distance_x, distance_y] = [0, 0];    
+    let canvas = document.querySelector("#animation"); 
+    let ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let width = 25;
+    let height = 25;
+    let flock = [];
+    let flockRadius = 250;
+    let flockSize = 25;
+
+    let Boid = function(x,y,heading,size) {
+        this.x = x;
+        this.y = y;
+        this.heading = heading
+        this.size = size;
+    };  
     let init = function(ref) {
-        // requestAnimationFrame(draw);
-        setInterval(logic, 1000/60);
-        // ele.addEventListener('mousemove', function(event){
-        //     x = event.clientX;
-        //     y = event.clientY;
-        //     logic();
-        // });
-        // setInterval(logic, 1000/ 60);
+        setup();
     };
-    let lerp = function (start, end, speed) {
-        return start + (end-start) * speed;
-    }
-    let degreesToRadians = function ( degrees) {
-        return degrees * (Math.PI / 180); 
-    } 
-    let dir_x = function (length, angle) { 
-        return length * Math.cos(degreesToRadians(angle)); 
-    } 
-    let dir_y = function (length, angle) { 
-        return length * Math.sin(degreesToRadians(angle)); 
-    }
+    let setup = () => {
+        for(let i = 0; i<flockSize; i++) {
+            flock.push(new Boid(
+                rand(canvas.width), rand(canvas.height), rand(360), 15)
+            );
+        }
+        setInterval(logic, 1000/60);
+    };
     let logic = function () { 
-        if (heading_x > 360 || heading_x < -360) 
-            heading_x = 0; 
-        if (heading_y > 360 || heading_y < -360) 
-            heading_y = 0;
-        if (x <= 0 || x >= ele.width - width) { 
-            heading_x = heading_x + 180; 
-        } 
-        if (y <= 0 || y >= ele.height - height) {
-            heading_y = -heading_y; 
-        } 
-        distance_x = dir_x(2.5, heading_x); 
-        distance_y = dir_y(2.5, heading_y); 
-        if (duration < 10) {
-            duration += 0.05;
-        } 
-        x = lerp(x, x + distance_x, duration); 
-        y = lerp(y, y + distance_y, duration); 
+        for(let i = 0; i<flockSize; i++) {
+            var centerx = 0;
+            var centery = 0;
+            var count = 0;            
+            let b = flock[i];
+            //find the neighbors of each boid - a neighbor is any boid found within flockRadius
+            for (var j = 0; j < flock.length; j++)
+            {
+                var distance = distanceBetween(b, flock[j]);
+                if (distance < flockRadius)
+                {
+                    //center is the position where each boid is headed
+                    centerx += flock[j].x;
+                    centery += flock[j].y;
+                    count++;
+                }
+            }
+            if (count > 1) {
+                centerx = centerx / count;
+                centery = centery / count;
+            }
+            else  {
+                centerx = Math.random() * canvas.width;
+                centery = Math.random() * canvas.height;
+            }
+            var angleToCenter = angleBetween(b.x,b.y,centerx,centery);
+            var lerpangle = angleDifference(b.heading, angleToCenter);   
+            b.heading += lerpangle * 0.02;
+            let headingx = dir_x(2,b.heading);
+            let headingy = dir_y(2,b.heading);   
+
+            b.x += headingx;
+            b.y += headingy;
+
+            if (b.x < 0) b.x = canvas.width;
+            if (b.y < 0) b.y = canvas.height;
+
+            if (b.x > canvas.width) b.x = 0;
+            if (b.y > canvas.height) b.y = 0;                              
+
+        }
         requestAnimationFrame(draw);
     }
     let draw = function () { 
-        ctx.clearRect( 0, 0, ele.width, ele.height); 
+        ctx.clearRect( 0, 0, canvas.width, canvas.height); 
         // This sets the fill colour to red 
-        ctx.fillStyle = "#ff0000"; 
-        ctx.fillRect(x, y, 50, 50); 
-    }    
+        ctx.fillStyle = "blue"; 
+        for (let i = 0; i<flockSize; i++) {
+            // draw each boid
+            let b = flock[i];
+            ctx.fillRect(b.x,b.y, b.size, b.size);
+            ctx.beginPath();
+            ctx.moveTo(b.x + (b.size / 2),b.y + (b.size / 2));
+            //draw a line 20px in the direction each boid is heading to
+            ctx.lineTo((b.x + (b.size / 2)) + dir_x(20,flock[i].heading),(b.y + (b.size / 2)) + dir_y(20,flock[i].heading));
+            ctx.strokeStyle = "red"
+            ctx.stroke();            
+        }        
+    }
+    let rand = (max) => {
+        return Math.random() * max;
+    }     
+    let lerp = function (start, end, speed) {
+        return start + (end-start) * speed;
+    }
+    function distanceBetween(a, b)  {
+        var dx = a.x - b.x;
+        var dy = a.y - b.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    function angleBetween(x1, y1, x2, y2)
+    {
+        return Math.atan2(y1 - y2, x1 - x2) * (180.0 / Math.PI);
+    }
+
+    function angleDifference(a1, a2)
+    {
+        return ((((a1 - a2) % 360) + 540) % 360) - 180;
+    }
+
+    function degreesToRadians(degrees){
+        return degrees * (Math.PI / 180);
+    }
+
+    function dir_x(length, angle){
+        return length * Math.cos(degreesToRadians(angle));
+    }
+
+    function dir_y(length, angle){
+        return length * Math.sin(degreesToRadians(angle));
+    }
     let publicInterface = {
-        init, degreesToRadians
+        init
     }
     return publicInterface;
 })();
