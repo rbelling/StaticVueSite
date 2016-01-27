@@ -1,20 +1,20 @@
 /* FONTS */
 
-@mixin tungstenMedium($color: $white) {
+@mixin tungsten-medium($color: $white) {
 	color: #{$color};
 	font-weight: 500;
 	font-style: normal;
 	font-family: 'Tungsten A', 'Tungsten B';
 }
 
-@mixin tungstenSemibold($color: $white) {
+@mixin tungsten-semibold($color: $white) {
 	color: #{$color};
 	font-weight: 600;
 	font-style: normal;
 	font-family: 'Tungsten A', 'Tungsten B';
 }
 
-@mixin tungstenBook($color: $white) {
+@mixin tungsten-book($color: $white) {
 	color: #{$color};
 	font-weight: 400;
 	font-style: normal;
