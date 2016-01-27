@@ -1,6 +1,7 @@
 // Browserify entry point for the page.js bundle (yay JavaScript!)
 require('./vendor/picturefill.js');
 require('./vendor/Modernizr');
+const _ = require('lodash');
 /* ============================
  =            GSAP            =
  ============================ */
@@ -15,18 +16,12 @@ const main = () => {
     // settings - these values are cached and can be used by all components of this module
     resizeCallbacks: [],
     toolkit,
-    eventBus,
+    eventBus: window.eventBus,
   };
-  const init = ($ref) => {
-    console.log('init');
-    s.$ref = $ref;
-    _initModules();
-    _handleEvents();
-  };
-  const _initModules = function () {
+  const _initModules = () => {
     fastClick(document.body, {});
   };
-  const _handleEvents = function () {
+  const _handleEvents = () => {
     s.eventBus.emit(EVTS.LOADED);
     s.toolkit.disableEventsOnScroll();
     s.toolkit.attachResizeCallback(s.toolkit.toggleViewportClassname);
@@ -34,7 +29,11 @@ const main = () => {
     $(window).on('resize', _.debounce(_.bind(s.toolkit.runResizeCallbacks, this), 500));
   };
 
-  return init;
+  return ($ref) => {
+    s.$ref = $ref;
+    _initModules();
+    _handleEvents();
+  };
 };
 
 module.exports = main;
