@@ -1,0 +1,13 @@
+{
+  "extends": "airbnb",
+//  "parser": "babel-eslint",
+  "env": {
+    "jquery": true
+  }
+//  "rules": {
+//    "quotes": [2, "single"],
+//    "eol-last": [0],
+//    "no-mixed-requires": [0],
+//    "no-underscore-dangle": [0]
+//  }
+}

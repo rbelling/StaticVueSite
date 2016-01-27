@@ -1,4 +1,4 @@
-var dest = "./build";
+var dest = './build';
 var src = './src';
 var templateData = require('./data/template');
 module.exports = {
@@ -13,13 +13,13 @@ module.exports = {
     src: src,
     dest: dest,
     path: '/sprite/dew_green_can',
-    cssPath: src + "/sass/modules/sprite/",
+    cssPath: src + '/sass/modules/sprite/',
     cssName: './_green.scss',
-    destPath: src + "/images/modules/sprite-green"
+    destPath: src + '/images/modules/sprite-green'
   },
   sass: {
-    src: src + "/sass/",
-    sassFiles: src + "/sass/**/*.{sass,scss}",
+    src: src + '/sass/',
+    sassFiles: src + '/sass/**/*.{sass,scss}',
     dest: dest,
     settings: {
       indentedSyntax: true, // Enable .sass syntax!
@@ -27,11 +27,11 @@ module.exports = {
     }
   },
   images: {
-    src: src + "/images/**/*.{gif,jpg,png,svg,jpeg}",
-    dest: dest + "/images"
+    src: src + '/images/**/*.{gif,jpg,png,svg,jpeg}',
+    dest: dest + '/images'
   },
   markup: {
-    src: src + "/htdocs/**",
+    src: src + '/htdocs/**',
     dest: dest
   },
   app: {
@@ -45,32 +45,32 @@ module.exports = {
       // Inline the generated critical-path CSS
       // - true generates HTML
       // - false generates CSS
-      inline: true,
+    inline: true,
 
       // Your base directory
-      base: dest,
+    base: dest,
 
       // HTML source
-      html: '<html>...</html>',
+    html: '<html>...</html>',
 
       // HTML source file
-      src: 'index.html',
+    src: 'index.html',
 
       // Your CSS Files (optional)
-      css: [dest+'/app.css'],
+    css: [dest + '/app.css'],
 
       // Viewport width
-      width: 1600,
+    width: 1600,
 
       // Viewport height
-      height: 1024,
+    height: 1024,
 
       // Target for final HTML output.
       // use some css file when the inline option is not set
-      dest: 'index-critical.html',
+    dest: 'index-critical.html',
 
       // Minify critical-path CSS when inlining
-      minify: true,
+    minify: true,
 
       // Extract inlined styles from referenced stylesheets
       // extract: true,
@@ -82,24 +82,24 @@ module.exports = {
       // ignore: ['font-face',/some-regexp/],
 
       // overwrite default options
-      ignoreOptions: {}
+    ignoreOptions: {}
   },
   templates: {
-    baseFolder: src + "/templates/**/*",
-    src: src + "/templates/base/",
-    dest: src + "/htdocs/",
+    baseFolder: src + '/templates/**/*',
+    src: src + '/templates/base/',
+    dest: src + '/htdocs/',
     templateExtension: '.handlebars',
     myPage: 'index', //'styleguide' //the entry point page: this file includes other templates
     templateData: templateData,
     templateOptions: {
       //https://www.npmjs.com/package/gulp-compile-handlebars
-      ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false 
+      ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false
       partials: {
         footer: '<footer>the end</footer>'
       },
       batch: [src + '/templates/partials/'],
       helpers: {
-        capitals: function(str) {
+        capitals: function (str) {
           return str.toUpperCase();
         }
       }
@@ -117,7 +117,7 @@ module.exports = {
       // require: ['npm-zepto', 'lodash'],
       // list of externally available modules to exclude from the bundle
       // external: ['underscore']
-    },{
+    }, {
       delay: 0,
       entries: src + '/javascript/critical.js',
       dest: dest,

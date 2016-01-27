@@ -1,40 +1,40 @@
 // Browserify entry point for the page.js bundle (yay JavaScript!)
 require('./vendor/picturefill.js');
 require('./vendor/Modernizr');
-/*============================
-=            GSAP            =
-============================*/
+/* ============================
+ =            GSAP            =
+ ============================ */
 require('./vendor/gsap/TweenLite.js');
-/*=====  End of GSAP  ======*/
-var FastClick = require('fastclick');
-var toolkit = require('./utils/toolkit.js');
-var EVTS = require('../../gulp/data/events');
+/* =====  End of GSAP  ======*/
+const fastClick = require('fastclick');
+const toolkit = require('./utils/toolkit.js');
+const EVTS = require('../../gulp/data/events');
 
-var main = (function() {
-    var s = {
-        //settings - these values are cached and can be used by all components of this module
-        resizeCallbacks: [],
-        toolkit,
-        eventBus
-    };
-    var init = function($ref) {
-        console.log('init');
-        s.$ref = $ref;
-        _initModules();
-        _handleEvents();
-    };
-    var _initModules = function() {
-        FastClick(document.body, {});
-    };
-    var _handleEvents = function() {
-        s.eventBus.emit(EVTS.LOADED);
-        s.toolkit.disableEventsOnScroll();
-        s.toolkit.attachResizeCallback(s.toolkit.toggleViewportClassname); //push a resize callback to the array
+const main = () => {
+  const s = {
+    // settings - these values are cached and can be used by all components of this module
+    resizeCallbacks: [],
+    toolkit,
+    eventBus,
+  };
+  const init = ($ref) => {
+    console.log('init');
+    s.$ref = $ref;
+    _initModules();
+    _handleEvents();
+  };
+  const _initModules = function () {
+    fastClick(document.body, {});
+  };
+  const _handleEvents = function () {
+    s.eventBus.emit(EVTS.LOADED);
+    s.toolkit.disableEventsOnScroll();
+    s.toolkit.attachResizeCallback(s.toolkit.toggleViewportClassname);
 
-        $(window).on('resize', _.debounce(_.bind(s.toolkit.runResizeCallbacks, this), 500));
-    };
+    $(window).on('resize', _.debounce(_.bind(s.toolkit.runResizeCallbacks, this), 500));
+  };
 
-    return init;
-})();
+  return init;
+};
 
 module.exports = main;
