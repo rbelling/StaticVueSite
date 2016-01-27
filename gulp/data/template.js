@@ -1,4 +1,4 @@
-        //this object contains globally shared config parmaeters 
+        //this object contains globally shared config parmaeters
 
 var platform = 'YOUR URL HERE';
 var encodedPageUrl = encodeURIComponent(platform);
@@ -15,6 +15,6 @@ module.exports = {
         encodedPageUrl: encodedPageUrl,
         slug: 'URL SLUG',
         hashtag: '#'+hashtag,
-        imagePath: 'images/',//css path for images      
+        imagePath: 'images/',//css path for images
         assetFolder: '.',
     };

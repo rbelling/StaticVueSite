@@ -1,14 +1,6 @@
-var loader = require('./modules/loader');
-var critical = window.critical = (function() {
-    var s = {
-        loader: loader,
-    };
-    var init = function() {
-        s.loader.init('#js-app');
-        s.loader.show();
-    };
-    var publicInterface = {
-        init: init
-    };
-    return publicInterface;
-})().init();
+import loader from './modules/loader';
+
+window.critical = (() => {
+  loader.init('#js-app');
+  loader.show();
+})();

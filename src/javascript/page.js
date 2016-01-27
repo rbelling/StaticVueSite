@@ -1,4 +1,9 @@
-global.eventBus = require('./utils/eventBus');
-global.$ = require('npm-zepto');
+import eventBus from './utils/eventBus';
+import $ from 'npm-zepto';
+import _ from 'lodash';
+import app from './main.js';
 
-window.app = require('./main.js')($('#js-app'));
+global.$ = $;
+global.eventBus = eventBus;
+global._ = _;
+app.init($('#js-app'));

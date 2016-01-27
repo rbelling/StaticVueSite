@@ -63,10 +63,10 @@ template {
  */
 
 html {
-	font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 1 */
 
-	-webkit-text-size-adjust: 100%; /* 2 */
-	    -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  font-family: sans-serif; /* 2 */
 }
 
 /**
@@ -86,10 +86,10 @@ body {
  */
 
 a {
-	outline: none;
-	background: transparent;
-	color: inherit;
-	text-decoration: none;
+  background: transparent;
+  color: inherit;
+  outline: none;
+  text-decoration: none;
 }
 
 /**
@@ -119,8 +119,8 @@ a:hover {
  */
 
 h1 {
-	margin: .67em 0;
-	font-size: 2em;
+  font-size: 2em;
+  margin: .67em 0;
 }
 
 /**
@@ -175,8 +175,8 @@ code,
 kbd,
 pre,
 samp {
-	font-size: 1em;
-	font-family: monospace, serif;
+  font-family: monospace, serif;
+  font-size: 1em;
 }
 
 /**
@@ -209,10 +209,10 @@ small {
 
 sub,
 sup {
-	position: relative;
-	vertical-align: baseline;
-	font-size: 75%;
-	line-height: 0;
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
 sup {
@@ -264,9 +264,9 @@ figure {
  */
 
 fieldset {
-	margin: 0 2px;
-	padding: .35em .625em .75em;
-	border: 1px solid #c0c0c0;
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: .35em .625em .75em;
 }
 
 /**
@@ -275,8 +275,8 @@ fieldset {
  */
 
 legend {
-	padding: 0; /* 2 */
-	border: 0; /* 1 */
+  border: 0; /* 2 */
+  padding: 0; /* 1 */
 }
 
 /**
@@ -289,9 +289,9 @@ button,
 input,
 select,
 textarea {
-	margin: 0; /* 3 */
-	font-size: 100%; /* 2 */
-	font-family: inherit; /* 1 */
+  font-family: inherit; /* 3 */
+  font-size: 100%; /* 2 */
+  margin: 0; /* 1 */
 }
 
 /**
@@ -329,9 +329,9 @@ html input[type='button'],
 /* 1 */
 input[type='reset'],
 input[type='submit'] {
-	cursor: pointer; /* 3 */
+  -webkit-appearance: button; /* 3 */
 
-	-webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 2 */
 }
 
 /**
@@ -361,11 +361,11 @@ input[type='radio'] {
  */
 
 input[type='search'] {
-	-webkit-box-sizing: content-box; /* 2 */
-	   -moz-box-sizing: content-box;
-	        box-sizing: content-box;
+  -moz-box-sizing: content-box; /* 2 */
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
 
-	-webkit-appearance: textfield; /* 1 */
+  box-sizing: content-box; /* 1 */
 }
 
 /**
@@ -384,8 +384,8 @@ input[type='search']::-webkit-search-decoration {
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-	padding: 0;
-	border: 0;
+  border: 0;
+  padding: 0;
 }
 
 /**
@@ -407,14 +407,14 @@ textarea {
  */
 
 table {
-	border-spacing: 0;
-	border-collapse: collapse;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 
 
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -500,12 +500,12 @@ time,
 mark,
 audio,
 video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	vertical-align: baseline;
-	font: inherit;
-	font-size: 100%;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -536,17 +536,16 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-	content: '';
 	content: none;
 }
 table {
-	border-spacing: 0;
-	border-collapse: collapse;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 sup {
-	display: inline-block;
-	vertical-align: sub;
-	font-size: 85%;
+  display: inline-block;
+  font-size: 85%;
+  vertical-align: sub;
 }
 body {
 	position: relative;

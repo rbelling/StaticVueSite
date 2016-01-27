@@ -1,17 +1,17 @@
 // Browserify entry point for the page.js bundle (yay JavaScript!)
-require('./vendor/picturefill.js');
-require('./vendor/Modernizr');
-const _ = require('lodash');
+import './vendor/picturefill.js';
+import './vendor/Modernizr';
+
 /* ============================
  =            GSAP            =
  ============================ */
-require('./vendor/gsap/TweenLite.js');
+import './vendor/gsap/TweenLite.js';
 /* =====  End of GSAP  ======*/
-const fastClick = require('fastclick');
-const toolkit = require('./utils/toolkit.js');
-const EVTS = require('../../gulp/data/events');
+import fastClick from 'fastclick';
+import toolkit from './utils/toolkit.js';
+import EVTS from '../../gulp/data/events';
 
-const main = () => {
+export default (() => {
   const s = {
     // settings - these values are cached and can be used by all components of this module
     resizeCallbacks: [],
@@ -28,12 +28,13 @@ const main = () => {
 
     $(window).on('resize', _.debounce(_.bind(s.toolkit.runResizeCallbacks, this), 500));
   };
-
-  return ($ref) => {
+  const init = ($ref) => {
     s.$ref = $ref;
     _initModules();
     _handleEvents();
+    console.log(`app - ready`);
   };
-};
-
-module.exports = main;
+  return {
+    init,
+  };
+})();

@@ -27,6 +27,6 @@ gulp.task('sprite', function () {
     sort: false,
     margin: 0
   })
-  .pipe(gulpif('*.'+fileExtension, gulp.dest(config.destPath), gulp.dest(config.cssPath)))
+  .pipe(gulpif('*.'+fileExtension, gulp.dest(config.destPath), gulp.dest(config.cssPath)));
   // .pipe(gulpif('*.png', gulp.dest('./dist/img/'), gulp.dest('./dist/css/')))
 });

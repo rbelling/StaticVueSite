@@ -7,7 +7,7 @@ module.exports = {
       // Serve up our build folder
       baseDir: dest
     },
-    ghostMode: false
+    ghostMode: false,
   },
   sprite: {
     src: src,
@@ -15,7 +15,7 @@ module.exports = {
     path: '/sprite/dew_green_can',
     cssPath: src + '/sass/modules/sprite/',
     cssName: './_green.scss',
-    destPath: src + '/images/modules/sprite-green'
+    destPath: src + '/images/modules/sprite-green',
   },
   sass: {
     src: src + '/sass/',
@@ -23,22 +23,22 @@ module.exports = {
     dest: dest,
     settings: {
       indentedSyntax: true, // Enable .sass syntax!
-      imagePath: 'images' // Used by the image-url helper
-    }
+      imagePath: 'images', // Used by the image-url helper
+    },
   },
   images: {
     src: src + '/images/**/*.{gif,jpg,png,svg,jpeg}',
-    dest: dest + '/images'
+    dest: dest + '/images',
   },
   markup: {
     src: src + '/htdocs/**',
-    dest: dest
+    dest: dest,
   },
   app: {
     breakpoints: {
       small: 414,
       medium: 1024,
-      large: 1600
+      large: 1600,
     }
   },
   criticalPath: {
@@ -82,7 +82,7 @@ module.exports = {
       // ignore: ['font-face',/some-regexp/],
 
       // overwrite default options
-    ignoreOptions: {}
+    ignoreOptions: {},
   },
   templates: {
     baseFolder: src + '/templates/**/*',
@@ -101,9 +101,9 @@ module.exports = {
       helpers: {
         capitals: function (str) {
           return str.toUpperCase();
-        }
-      }
-    }
+        },
+      },
+    },
   },
   browserify: {
     // A separate bundle will be generated for each
@@ -124,17 +124,17 @@ module.exports = {
       outputName: 'critical.js',
       // list of modules to make require-able externally
       // require: ['jquery'],
-    }]
+    }],
   },
   production: {
     cssSrc: dest + '/*.css',
     jsSrc: dest + '/*.js',
-    dest: dest
+    dest: dest,
   },
   jsprettify: {
     jsFiles: src + '/**/*.{js,json}',
     src: src,
-    dest: dest
+    dest: dest,
   },
   tests: {
     src: src + '/tests',
