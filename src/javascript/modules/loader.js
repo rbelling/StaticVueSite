@@ -1,22 +1,18 @@
 /*----------  Javascript responsible for the loader  ----------*/
-const EVTS = require('../../../gulp/data/events');
+import EVTS from '../../../gulp/data/events';
+import eventBus from '../utils/eventBus';
 
 export default (() => {
-  const s = {
-    loadingClass: 'is-loading',
-    label: 'js--loader-label',
-    eventBus: window.eventBus || require('../utils/eventBus'),
-  };
+  const label = 'js--loader-label';
   const show = () => {
-    console.time(s.label);
+    console.time(label);
   };
   const hide = () => {
-    console.timeEnd(s.label);
+    console.timeEnd(label);
   };
-  const init = (ref) => {
-    s.ref = ref;
-    s.eventBus.on(EVTS.LOADING, show);
-    s.eventBus.on(EVTS.LOADED, hide);
+  const init = () => {
+    eventBus.on(EVTS.LOADING, show);
+    eventBus.on(EVTS.LOADED, hide);
   };
   return {
     init, show, hide,

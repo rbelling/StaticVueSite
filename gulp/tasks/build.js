@@ -1,13 +1,11 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence').use(gulp);
 
-gulp.task('default', function () {
+// Run this to compress all the things!
+gulp.task('build', function () {
   runSequence(
     'env',
-    // async
-    ['sass', 'images', 'watch', 'markup'],
+    ['images', 'minifyCss', 'uglifyJs', 'markup'],
     'criticalPath'
   );
 });
-
-
