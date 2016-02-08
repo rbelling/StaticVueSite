@@ -7,13 +7,13 @@ var handleErrors = require('../util/handleErrors');
 var config       = require('../config').sass;
 var autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('sass', ['csscomb'], function () {
+gulp.task('sass', function () {
   return gulp.src(config.sassFiles)
     .pipe(sourcemaps.init())
     .pipe(sass(config.settings))
     .on('error', handleErrors)
-    .pipe(sourcemaps.write())
     .pipe(autoprefixer({ browsers: ['> 1%'] }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.dest))
     .pipe(browserSync.reload({stream:true}));
 });

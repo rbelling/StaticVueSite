@@ -9,7 +9,7 @@
  * 
  * @author: Jack Doyle, jack@greensock.com
  */
-! function(t, e) {
+(function(t, e) {
     "use strict";
     var i = t.GreenSockGlobals = t.GreenSockGlobals || t;
     if (!i.TweenLite) {
@@ -92,7 +92,7 @@
             var i, s = this._listeners[t];
             if (s)
                 for (i = s.length; --i > -1;)
-                    if (s[i].c === e) return void s.splice(i, 1)
+                    if (s[i].c === e) return s.splice(i, 1), void 0
         }, n.dispatchEvent = function(t) {
             var e, i, s, r = this._listeners[t];
             if (r)
@@ -130,9 +130,9 @@
                     return setTimeout(t, 0 | 1e3 * (l - h.time) + 1)
                 }, h === a && (o = !0), v(2)
             }, h.fps = function(t) {
-                return arguments.length ? (i = t, n = 1 / (i || 60), l = this.time + n, void h.wake()) : i
+                return arguments.length ? (i = t, n = 1 / (i || 60), l = this.time + n, h.wake(), void 0) : i
             }, h.useRAF = function(t) {
-                return arguments.length ? (h.sleep(), c = t, void h.fps(i)) : c
+                return arguments.length ? (h.sleep(), c = t, h.fps(i), void 0) : c
             }, h.fps(t), setTimeout(function() {
                 c && 5 > h.frame && h.useRAF(!1)
             }, 1500)
@@ -499,7 +499,7 @@
             if (this._time !== o || i) {
                 if (!this._initted) {
                     if (this._init(), !this._initted || this._gc) return;
-                    if (!i && this._firstPT && (this.vars.lazy !== !1 && this._duration || this.vars.lazy && !this._duration)) return this._time = this._totalTime = o, this._rawPrevTime = h, z.push(this), void(this._lazy = [t, e]);
+                    if (!i && this._firstPT && (this.vars.lazy !== !1 && this._duration || this.vars.lazy && !this._duration)) return this._time = this._totalTime = o, this._rawPrevTime = h, z.push(this), this._lazy = [t, e], void 0;
                     this._time && !s ? this.ratio = this._ease.getRatio(this._time / l) : s && this._ease._calcEnd && (this.ratio = this._ease.getRatio(0 === this._time ? 0 : 1))
                 }
                 for (this._lazy !== !1 && (this._lazy = !1), this._active || !this._paused && this._time !== o && t >= 0 && (this._active = !0), 0 === o && (this._startAt && (t >= 0 ? this._startAt.render(t, e, i) : r || (r = "_dummyGS")), this.vars.onStart && (0 !== this._time || 0 === l) && (e || this._callback("onStart"))), n = this._firstPT; n;) n.f ? n.t[n.p](n.c * this.ratio + n.s) : n.t[n.p] = n.c * this.ratio + n.s, n = n._next;
@@ -578,10 +578,10 @@
             "object" == typeof e && (i = e, e = !1);
             for (var s = I.getTweensOf(t, e), r = s.length; --r > -1;) s[r]._kill(i, t)
         };
-        var tt = v("plugins.TweenPlugin", function(t, e) {
-            this._overwriteProps = (t || "").split(","), this._propName = this._overwriteProps[0], this._priority = e || 0, this._super = tt.prototype
+        var te = v("plugins.TweenPlugin", function(t, e) {
+            this._overwriteProps = (t || "").split(","), this._propName = this._overwriteProps[0], this._priority = e || 0, this._super = te.prototype
         }, !0);
-        if (n = tt.prototype, tt.version = "1.18.0", tt.API = 2, n._firstPT = null, n._addTween = j, n.setRatio = N, n._kill = function(t) {
+        if (n = te.prototype, te.version = "1.18.0", te.API = 2, n._firstPT = null, n._addTween = j, n.setRatio = N, n._kill = function(t) {
                 var e, i = this._overwriteProps,
                     s = this._firstPT;
                 if (null != t[this._propName]) this._overwriteProps = [];
@@ -602,8 +602,8 @@
                 }
                 for (; o;) o.pg && "function" == typeof o.t[t] && o.t[t]() && (i = !0), o = o._next;
                 return i
-            }, tt.activate = function(t) {
-                for (var e = t.length; --e > -1;) t[e].API === tt.API && (Q[(new t[e])._propName] = t[e]);
+            }, te.activate = function(t) {
+                for (var e = t.length; --e > -1;) t[e].API === te.API && (Q[(new t[e])._propName] = t[e]);
                 return !0
             }, d.plugin = function(t) {
                 if (!(t && t.propName && t.init && t.API)) throw "illegal plugin definition.";
@@ -618,16 +618,16 @@
                         initAll: "_onInitAllProps"
                     },
                     a = v("plugins." + i.charAt(0).toUpperCase() + i.substr(1) + "Plugin", function() {
-                        tt.call(this, i, s), this._overwriteProps = r || []
+                        te.call(this, i, s), this._overwriteProps = r || []
                     }, t.global === !0),
-                    o = a.prototype = new tt(i);
+                    o = a.prototype = new te(i);
                 o.constructor = a, a.API = t.API;
                 for (e in n) "function" == typeof t[e] && (o[n[e]] = t[e]);
-                return a.version = t.version, tt.activate([a]), a
+                return a.version = t.version, te.activate([a]), a
             }, s = t._gsQueue) {
             for (r = 0; s.length > r; r++) s[r]();
             for (n in m) m[n].func || t.console.log("GSAP encountered missing dependency: com.greensock." + n)
         }
         o = !1
     }
-}("undefined" != typeof module && module.exports && "undefined" != typeof global ? global : this || window, "TweenLite");
+})("undefined" != typeof module && module.exports && "undefined" != typeof global ? global : this || window, "TweenLite");

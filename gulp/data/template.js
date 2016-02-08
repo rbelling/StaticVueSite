@@ -1,10 +1,10 @@
-        //this object contains globally shared config parmaeters 
+        //this object contains globally shared config parameters
 
 var platform = 'YOUR URL HERE';
 var encodedPageUrl = encodeURIComponent(platform);
 var social = "SOCIAL COPY HERE";
 var hashtag = 'HASHTAG'; //no hashes
-var tweet = encodeURIComponent(social) + '&hashtags='+hashtag;
+var tweet = encodeURIComponent(social) + '&hashtags=' + hashtag;
 module.exports = {
         title: 'TITLE',
         description: 'DESCRIPTION',
@@ -15,6 +15,6 @@ module.exports = {
         encodedPageUrl: encodedPageUrl,
         slug: 'URL SLUG',
         hashtag: '#'+hashtag,
-        imagePath: 'images/',//css path for images      
-        aws: 'http://s3.amazonaws.com/clash-achievery-staging',
+        imagePath: 'images/',//css path for images
+        assetFolder: '.',
     };

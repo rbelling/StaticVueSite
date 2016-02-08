@@ -1,0 +1,32 @@
+.r-nav {
+  display: inline-block;
+  height: 60px;
+  left: 50%;
+  position: absolute;
+  top: span-cols(1);
+  transform: translateX(-50%);
+  @include max-width {
+    top: span-cols(1, true);
+  }
+}
+.r-nav-item {
+  position: absolute;
+  top: 0;
+}
+
+.r-nav-logo {
+  left: 0;
+  width: span-cols(.85, true);
+}
+
+.r-menu {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  width: 42px;
+}
+.r-menu__line {
+  background-color: $white;
+  height: 5px;
+  margin-bottom: 5px;
+}

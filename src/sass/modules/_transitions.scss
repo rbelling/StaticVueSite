@@ -1,14 +1,103 @@
+/*----------  variables  ----------*/
+$ease-out-expo: cubic-bezier(.190, 1.000, .220, 1.000); /* easeOutExpo */
+$duration-std: .3s;
+$duration-slow: .65s;
+$default-ease: $ease-out-expo;
+$bounce-ease: cubic-bezier(.5,1.4,.8,.75);
+$test-ease: cubic-bezier(0,1,.85,1);
+$ease-in-out: ease-in-out;
+$default-transition: all $duration-std $default-ease;
+$default-transition-slow: all $duration-slow $default-ease;
+$tunnel-transition: width $duration-slow $default-ease, height $duration-slow $default-ease;
+$flyout-icon-transition: transform $duration-slow $default-ease, opacity $duration-std $default-ease;
+$flyout-icon-offset: 100px;
+$bounce: .6s $bounce-ease;
+$button-ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+
+
+@keyframes toggleFlyout {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  1% {
+    opacity: 1;
+    display: block;
+  }
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
+
+/*----------  mixins and placeholders  ----------*/
 %fadeAndScale_in {
-	opacity: 1;
-	transform: scale(1);
+  opacity: 1;
+  transform: scale(1);
 }
 %fadeAndScale_out {
-	opacity: 0;
-	transform: scale(0);
+  opacity: 0;
+  transform: scale(0);
 }
 %grow {
-	transform: scale3d(1.1, 1.1, 1.1) translateX(0%);
+  transform: scale3d(1.05, 1.05, 1.05) translateX(0%);
+}
+%grow10 {
+  transform: scale3d(1.10, 1.10, 1.10) translateX(0%);
 }
 %depressed {
-	transform: scale3d(.9, .9, .9) translateX(0%);
+  transform: scale3d(.95, .95, .95) translateX(0%);
+}
+@mixin growAndShrink($bg-color: transparent) {
+  cursor: pointer;
+
+  @include pointerHover {
+    background-color: darken($bg-color, 5%);
+
+    @extend %grow;
+  }
+  @include active {
+    background-color: darken($bg-color, 5%);
+
+    @extend %depressed;
+  }
+}
+@mixin growWithoutDarkening($bg-color: transparent) {
+  cursor: pointer;
+
+  @include pointerHover {
+    background-color: $bg-color;
+
+    @extend %grow;
+  }
+  @include active {
+    background-color: $bg-color;
+  }
+}
+@mixin grow($bg-color: transparent) {
+  cursor: pointer;
+
+  @include pointerHover {
+    background-color: darken($bg-color, 5%);
+
+    @extend %grow;
+  }
+  @include active {
+    background-color: darken($bg-color, 5%);
+  }
+}
+@mixin buttonTransition($bg-color: transparent) {
+  transform: translate3d(0,0,0);
+
+  @include pointerHover {
+    background-color: darken($bg-color, 5%);
+
+    @extend %grow;
+  }
+  @include active {
+    background-color: darken($bg-color, 5%);
+
+    @extend %depressed;
+  }
 }

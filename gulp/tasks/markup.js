@@ -14,7 +14,7 @@ var minifyOptions = {
       spare: false,        // KEEP redundant attributes
       quotes: true,       // KEEP arbitrary quotes
       loose: false         // KEEP one whitespace
-}
+};
 
 gulp.task('markup', ['templates'], function() {
   return gulp.src(config.src)

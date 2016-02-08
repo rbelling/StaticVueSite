@@ -1,6 +1,6 @@
-module.exports = {
-	LOADING: 'LOADING',
-	LOADED: 'LOADED',
-	POSTS_READY: 'POSTS_READY',
-	RESIZE: 'RESIZE',
+export default {
+  LOADING: 'LOADING',
+  LOADED: 'LOADED',
+  POSTS_READY: 'POSTS_READY',
+  RESIZE: 'RESIZE',
 };
