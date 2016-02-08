@@ -3,4 +3,5 @@ export default {
   LOADED: 'LOADED',
   POSTS_READY: 'POSTS_READY',
   RESIZE: 'RESIZE',
+  TOGGLEMENU: 'TOGGLEMENU',
 };

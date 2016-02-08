@@ -21,16 +21,39 @@ export default (() => {
   const tl = new TimelineLite({
     paused: true,
   });
+  const menu = {
+      $first: $('.r-menu__line--first'),
+      $second: $('.r-menu__line--second'),
+      $third: $('.r-menu__line--third'),
+      isOpen: false,
+  };
 
   const _initModules = () => {
     fastClick(document.body, {});
   };
   const _handleEvents = () => {
-    eventBus.on(EVTS.LOADED, _animate);
     toolkit.disableEventsOnScroll();
     toolkit.attachResizeCallback(toolkit.toggleViewportClassname);
     $(window).on('resize', _.debounce(_.bind(toolkit.runResizeCallbacks, this), 500));
     $('.js-scrollTo').on('click', _scrollToSection);
+    $('.r-menu').on('click', (event)=>{eventBus.emit(EVTS.TOGGLEMENU)});
+
+    eventBus.on(EVTS.TOGGLEMENU, toggleMenu);
+    eventBus.on(EVTS.LOADED, _animate);
+  };
+  const toggleMenu = (event) => {
+    if (menu.isOpen) {
+      menu.isOpen = false;
+      TweenMax.to(menu.$first, 0.4, {top: '0%', rotationZ: '0deg', clearProps: 'all', ease: Back.easeOut.config(4)});
+      TweenMax.to(menu.$second, 0.4, {rotationY: '0deg', clearProps: 'all'});
+      TweenMax.to(menu.$third, 0.4, {top: '100%', rotationZ: '0deg', clearProps: 'all'});
+    }
+    else {
+      menu.isOpen = true;
+      TweenMax.to(menu.$first, 0.7, {top: '50%', x: '-=50%', rotationZ: '+45deg'});
+      TweenMax.to(menu.$second, 0.4, {rotationY: '90deg', transformOrigin: 'left'});
+      TweenMax.to(menu.$third, 0.5, {top: '50%', x: '-=50%', rotationZ: '+315deg'});
+    }
   };
   const _scrollToSection = (event) => {
     const targetSection = $(event.currentTarget).data('scroll');
@@ -81,15 +104,6 @@ export default (() => {
     )
     ;
 
-    //.to(
-    //  $title, 0.3, { autoAlpha: 1, y: 0, scale: 1}
-    //)
-    //  .to(
-    //    $subtitle, 0.3, { autoAlpha: 1, y: 0, scale: 1}
-    //  )
-    //  .to(
-    //    $cta, 0.3, { autoAlpha: 1, y: 0, scale: 1}
-    //  )
     tl.play();
   };
   const init = () => {
