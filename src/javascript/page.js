@@ -5,6 +5,6 @@ import app from './main.js';
 
 
 global.$ = $;
-global.eventBus = global.eventBus || eventBus;
+window.eventBus = window.eventBus || eventBus;
 global._ = _;
 app.init();

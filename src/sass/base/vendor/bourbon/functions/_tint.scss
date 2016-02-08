@@ -19,6 +19,7 @@
 ///
 /// @return {Color}
 
+//noinspection ScssLintInspection
 @function tint($color, $percent) {
   @return mix(#fff, $color, $percent);
 }

@@ -1,0 +1,86 @@
+.r-card {
+  background-color: $dark-white;
+  position: relative;
+  @include xlarge-up {
+    height: 490px;
+    text-align: left;
+  }
+  text-align: center;
+}
+.r-card--right {
+  @include xlarge-up {
+    height: 570px;
+  }
+  background-color: $white;
+}
+
+.r-card__image {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  @include xlarge-up {
+    width: h-pc(12.5);
+    .r-card--right & {
+      width: h-pc(6.25);
+    }
+  }
+  @include xlarge-up {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    .r-card--right & {
+      left: 0;
+      right: inherit;
+    }
+  }
+}
+.r-card__image-element {
+  bottom: -8px;
+  position: relative;
+  width: 100%;
+}
+
+.r-card__description {
+  display: block;
+  margin: 0 auto;
+  padding: 50px 0;
+  text-align: left;
+  width: 100%;
+  @include large-up {
+    width: 60%;
+  }
+  @include xlarge-up {
+    left: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    .r-card--right & {
+      left: inherit;
+      right: 0;
+    }
+  }
+  @include medium {
+    width: span-cols(5.5, true);
+  }
+  @include xlarge-up {
+    width: span-cols(7, true);
+  }
+}
+.r-card__title {
+  font-size: 18px;
+  line-height: 1.3;
+  @include openSansBold($brand-green);
+  max-width: span-cols(5.5, true);
+  text-transform: uppercase;
+}
+.r-card__body {
+  @include courier($mineshaft);
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 30px auto;
+}
+.r-card__cta {
+  margin: 0;
+}

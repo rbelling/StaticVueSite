@@ -1,65 +1,55 @@
 /*----------  THIS STYLESHEET CONTROLS THE LAYOUT OF THE BUTTONS (e.g. CTA ON THE STATIC MODULE)  ----------*/
-//noinspection ALL
+$radius: 3px;
 %button-base {
-  $p-t: .15;
-  $p-l: .25;
-  $f-s: .22;
-  $l-h: .2;
+  $p-t: 20px;
+  $f-s: .12;
+  $l-h: 50px;
   $l-s: .02;
   $mult: 1;
   $m: 30px;
-
-  @include tungsten-medium($silver-sand);
-  border-radius: 3px;
-  color: $silver-sand;
+  @include openSansBold();
+  border-radius: $radius;
   cursor: pointer;
   display: inline-block;
   font-size: $f-s * 100 + px;
   letter-spacing: $l-s * 100 + px;
-  line-height: $l-h * 100 + px;
+  line-height: $l-h;
   margin-bottom: $m;
   margin-left: auto;
   margin-right: auto;
   margin-top: $m / 2;
-  min-height: span-cols(.25, true);
-  min-width: span-cols(1.5, true);
   outline: none;
   text-align: center;
-
   text-transform: uppercase;
   transition: all .4s $ease-out-expo;
+  width: span-cols(3, true);
 
   @include touch {
-    border-color: $brand-green;
     color: $white;
-  }
-
-  @include small {
-    border: 2px solid rgba($nevada, .4);
-    font-size: 22px;
-    letter-spacing: 2px;
-    line-height: 20px;
-    padding: 13px 20px 13px;
-  }
-
-  @include medium-up {
-    border: 3px solid rgba($nevada, .4);
-    padding: span-cols($p-t*$mult) span-cols($p-l*$mult) span-cols($p-t*$mult);
-  }
-
-  @include max-width {
-    font-size: span-cols($f-s, true);
-    letter-spacing: span-cols($l-s, true);
-    line-height: span-cols($l-h, true);
-    padding: span-cols($p-t, true) span-cols($p-l, true) span-cols($p-t, true);
   }
 }
 
 @mixin button($bg-color: $brand-green) {
-  background-color: transparent;
-
+  background-color: $bg-color;
   @extend %button-base;
-  @include touch {
-    background-color: $bg-color;
-  }
+  //@include touch {
+  //  background-color: darken($bg-color, 10%);
+  //}
+  @include growAndShrink($bg-color);
 }
+
+
+.r-cta {
+  @include button($brand-green);
+}
+
+.r-btn-addon {
+  border-bottom-right-radius: $radius;
+  border-radius: 0;
+  @include button($brand-green);
+  border-top-right-radius: $radius;
+  left: -5px;
+  margin: 0;
+  position: relative;
+}
+

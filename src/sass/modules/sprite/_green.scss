@@ -25,9 +25,13 @@ $green_can020: -4200px -0 210px 520px;
 @mixin sprite-height($sprite) {
 	height: nth($sprite, 4);
 }
+
+//noinspection ScssLintInspection,ScssLintInspection
 @function sprite-width($sprite) {
 	@return nth($sprite, 3);
 }
+
+//noinspection ScssLintInspection,ScssLintInspection
 @function sprite-height($sprite) {
 	@return nth($sprite, 4);
 }

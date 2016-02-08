@@ -1,4 +1,5 @@
 // Private function for linear-gradient-parser
+//noinspection ScssLintInspection
 @function _linear-angle-parser($image, $first-val, $prefix, $suffix) {
   $offset: null;
   $unit-short:  str-slice($first-val, str-length($first-val) - 2, str-length($first-val));

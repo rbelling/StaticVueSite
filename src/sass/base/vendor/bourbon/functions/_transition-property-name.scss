@@ -11,6 +11,7 @@
   @return $new-props;
 }
 
+//noinspection ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection
 @function transition-property-name($prop, $vendor: false) {
   // put other properties that need to be prefixed here aswell
   @if $vendor and $prop == transform {

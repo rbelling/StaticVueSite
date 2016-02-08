@@ -1,3 +1,4 @@
+//noinspection ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection
 @function _radial-arg-parser($g1, $g2, $pos, $shape-size) {
   @each $value in $g1, $g2 {
     $first-val: nth($value, 1);

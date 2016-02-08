@@ -1,3 +1,4 @@
+//noinspection ScssLintInspection,ScssLintInspection,ScssLintInspection
 @function _radial-gradient-parser($image) {
   $image: unquote($image);
   $gradients: ();

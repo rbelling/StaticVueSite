@@ -1,18 +1,20 @@
 /*----------  Javascript responsible for the loader  ----------*/
 import EVTS from '../../../gulp/data/events';
-import eventBus from '../utils/eventBus';
 
 export default (() => {
-  const label = 'js--loader-label';
+  const $loader = document.querySelectorAll('.r-loader-screen');
   const show = () => {
-    console.time(label);
+
   };
   const hide = () => {
-    console.timeEnd(label);
+    window.TweenLite.to($loader, 1, {
+      autoAlpha: 0,
+      ease: Power3.easeOut,
+      //ease: Linear.easeNone,
+    });
   };
   const init = () => {
-    eventBus.on(EVTS.LOADING, show);
-    eventBus.on(EVTS.LOADED, hide);
+    window.eventBus.on(EVTS.LOADED, hide);
   };
   return {
     init, show, hide,

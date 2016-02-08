@@ -38,9 +38,9 @@
   }
 
   @if $needs-prefixes {
+    -moz-transition: $moz;
     -webkit-transition: $webkit;
-       -moz-transition: $moz;
-            transition: $spec;
+    transition: $spec;
   } @else {
     @if length($properties) >= 1 {
       @include prefixer(transition, $properties, webkit moz spec);

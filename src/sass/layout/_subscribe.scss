@@ -1,0 +1,53 @@
+.r-subscribe {
+  background-image: url($imagePath + 'layout/subscribe.jpg');
+  height: 100vh;
+  max-height: 790px;
+  min-height: 400px;
+  position: relative;
+  text-align: center;
+}
+.r-subscribe-container {
+  width: h-pc(18);
+  @include medium-up {
+    width: 100%;
+  }
+}
+.r-subscribe__title {
+  display: block;
+  @include openSansBold();
+  font-size: 24px;
+  letter-spacing: 1.7px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+$h-desktop: 63px;
+$h-mobile: 40px;
+$radius: 3px;
+.r-subscribe__email, .r-subscribe__email-addon {
+  border: none;
+  @include medium-up {
+    height: $h-desktop
+  }
+  display: inline-block;
+  height: $h-mobile;
+  outline: none;
+  padding: 0;
+  vertical-align: middle;
+}
+.r-subscribe__email {
+  @include openSansBold($mineshaft);
+  border-bottom-left-radius: $radius;
+  border-top-left-radius: $radius;
+  font-size: 16px;
+  padding-left: 10px;
+}
+.r-subscribe__email-addon {
+  width: $h-mobile;
+  @include medium-up {
+    width: $h-desktop;
+  }
+}
+.r-check {
+  width: 33%;
+}

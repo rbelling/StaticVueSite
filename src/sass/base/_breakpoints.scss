@@ -1,18 +1,22 @@
-$grid-col-count: 16;
+$grid-col-count: 20;
 // Responsive breakpoints
+$xsmall_px: 320;
 $small_px: 414;
-$medium_px: 768;
-$large_px: 1024;
-$xlarge_px: 1300;
-$xxlarge_px: 1600;
-$dotcom: 640;
-$viewport-height: 900;
+$medium_px: 680;
+$large_px: 960;
+$xlarge_px: 1100;
+$xxlarge_px: 1280;
+
+$viewport-height: 1280;
 $col_desktop: $xxlarge_px / $grid-col-count; // desktop column - width in pixels in the PSD
 
 // Responsive utilities
+//noinspection ScssLintInspection,ScssLintInspection
 @function vw($px, $targetviewport) {
 	@return ($px * 100) / $targetviewport + vw;
 }
+
+//noinspection ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection
 @function span-cols($cols, $maxWidth: false) {
 	@if $maxWidth {
 		$width: $xxlarge_px;
@@ -25,11 +29,15 @@ $col_desktop: $xxlarge_px / $grid-col-count; // desktop column - width in pixels
 		@return $retVal + vw;
 	}
 }
+
+//noinspection ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection
 @function h-pc($cols) {
 	$width: 100;
 	$retVal: (($width / $grid-col-count) * $cols);
 	@return $retVal * 1%;
 }
+
+//noinspection ScssLintInspection,ScssLintInspection,ScssLintInspection
 @function v-pc($px) {
 	@return 100*1%*($px / $viewport-height);
 }

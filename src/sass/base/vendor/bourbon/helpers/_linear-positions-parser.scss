@@ -1,3 +1,4 @@
+//noinspection ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection,ScssLintInspection
 @function _linear-positions-parser($pos) {
   $type: type-of(nth($pos, 1));
   $spec: null;

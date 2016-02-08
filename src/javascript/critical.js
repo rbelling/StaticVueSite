@@ -1,7 +1,8 @@
-import { eventBus } from './utils/eventBus';
+import eventBus from './utils/eventBus';
 import loader from './modules/loader';
+import EVTS from '../../gulp/data/events';
 
-global.eventBus = eventBus;
+window.eventBus = eventBus;
 
 (() => {
   const script = (url) => {
@@ -30,10 +31,10 @@ global.eventBus = eventBus;
       s.onerror = s.onabort = reject;
       t.parentNode.insertBefore(s, t);
     });
-
   };
 
-  console.log(global.eventBus);
-  loader.init('#js-app');
-  loader.show();
+  window.onload = function () {
+    window.eventBus.emit(EVTS.LOADED);
+  };
+  loader.init();
 })();

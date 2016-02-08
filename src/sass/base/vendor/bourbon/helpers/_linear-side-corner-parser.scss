@@ -1,4 +1,5 @@
 // Private function for linear-gradient-parser
+//noinspection ScssLintInspection,ScssLintInspection
 @function _linear-side-corner-parser($image, $first-val, $prefix, $suffix, $has-multiple-vals) {
   $val-1: str-slice($first-val, 0, $has-multiple-vals - 1 );
   $val-2: str-slice($first-val, $has-multiple-vals + 1, str-length($first-val));

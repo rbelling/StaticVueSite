@@ -153,9 +153,9 @@ dfn {
  */
 
 hr {
-	-moz-box-sizing: content-box;
-	     box-sizing: content-box;
-	height: 0;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
 }
 
 /**
@@ -350,8 +350,8 @@ html input[disabled] {
 
 input[type='checkbox'],
 input[type='radio'] {
-	box-sizing: border-box; /* 1 */
-	padding: 0; /* 2 */
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
 }
 
 /**
