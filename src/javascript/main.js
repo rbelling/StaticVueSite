@@ -42,17 +42,18 @@ export default (() => {
     eventBus.on(EVTS.LOADED, _animate);
   };
   const toggleMenu = (event) => {
+    const mult = 1.1;
     if (menu.isOpen) {
       menu.isOpen = false;
-      TweenMax.to(menu.$first, 0.4, {top: '0%', rotationZ: '0deg', clearProps: 'all', ease: Back.easeOut.config(4)});
-      TweenMax.to(menu.$second, 0.4, {rotationY: '0deg', clearProps: 'all'});
-      TweenMax.to(menu.$third, 0.4, {top: '100%', rotationZ: '0deg', clearProps: 'all'});
+      TweenMax.to(menu.$first, 0.4*mult, { top: '0%', rotationZ: '0deg', clearProps: 'all'});
+      TweenMax.to(menu.$second, 0.4*mult, { scaleX: 1 });
+      TweenMax.to(menu.$third, 0.4*mult, { top: '100%', rotationZ: '0deg', clearProps: 'all' });
     }
     else {
       menu.isOpen = true;
-      TweenMax.to(menu.$first, 0.7, {top: '50%', x: '-=50%', rotationZ: '+45deg'});
-      TweenMax.to(menu.$second, 0.4, {rotationY: '90deg', transformOrigin: 'left'});
-      TweenMax.to(menu.$third, 0.5, {top: '50%', x: '-=50%', rotationZ: '+315deg'});
+      TweenMax.to(menu.$first, 0.6*mult, { top: '50%', left: '50%', rotationZ: '+135deg', force3D: true });
+      TweenMax.to(menu.$second, 0.3*mult, { scaleX: 0 });
+      TweenMax.to(menu.$third, 0.4*mult, { top: '50%', left: '50%', rotationZ: '-135deg', force3D: true });
     }
   };
   const _scrollToSection = (event) => {
@@ -110,7 +111,7 @@ export default (() => {
     _initModules();
     _handleEvents();
     TweenLite.set('.u-intro', {autoAlpha: 0});
-    TweenLite.defaultEase = Back.easeOut;
+    TweenLite.defaultEase = Power2.easeOut;
     console.log(`app - ready`);
   };
   return {
