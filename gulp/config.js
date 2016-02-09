@@ -67,7 +67,7 @@ module.exports = {
 
       // Target for final HTML output.
       // use some css file when the inline option is not set
-    dest: 'index-critical.html',
+    //dest: dest+'/index-critical.html',
 
       // Minify critical-path CSS when inlining
     minify: true,
@@ -75,8 +75,8 @@ module.exports = {
       // Extract inlined styles from referenced stylesheets
       // extract: true,
 
-      // Prefix for asset directory
-      // pathPrefix: '/MySubfolderDocrot',
+       //Prefix for asset directory
+       pathPrefix: '.',
 
       // ignore css rules
       // ignore: ['font-face',/some-regexp/],
