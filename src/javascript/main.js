@@ -5,8 +5,8 @@ import './vendor/Modernizr';
 /* ============================
  =            GSAP            =
  ============================ */
-require('./vendor/gsap/TweenMax.js');
-require('./vendor/gsap/plugins/ScrollToPlugin.js');
+import './vendor/gsap/TweenMax.js';
+import './vendor/gsap/plugins/ScrollToPlugin.js';
 /* =====  End of GSAP  ======*/
 import fastClick from 'fastclick';
 import toolkit from './utils/toolkit.js';
@@ -74,10 +74,10 @@ export default (() => {
   const _animate = () => {
     const startDelay = 0.3;
     //prepare the targets
-    TweenLite.set($navLogo, {y: -50, autoAlpha: 0, scale: 0.7});
-    TweenLite.set($title, {y: 60, autoAlpha: 0, scale: 0.8});
+    TweenLite.set($navLogo, {y: -50, autoAlpha: 0, scale: 0.8});
+    TweenLite.set($title, {y: 60, autoAlpha: 0, scale: 0.9});
     TweenLite.set($subtitle, {y: 30, autoAlpha: 0, scale: 0.9});
-    TweenLite.set($cta, {y: 50, autoAlpha: 0, scale: 0.6});
+    TweenLite.set($cta, {y: 50, autoAlpha: 0, scale: 0.9, force3D: true});
     TweenLite.set($menu, {y: 0, autoAlpha: 0, scale: 0.9});
     //tween them
     tl
@@ -99,7 +99,7 @@ export default (() => {
         $menu, 0.3, {autoAlpha: 1, y: 0, scale: 1, ease: Power2.easeOut}, '-=0.3'
       )
       .to(
-        $cta, 0.1, {scale: 1.1}, '+=0.4'
+        $cta, 0.1, {scale: 1.04}, '+=0.4'
       ).to(
       $cta, 0.1, {scale: 1, clearProps: 'scale'}, '+=0.05'
     )

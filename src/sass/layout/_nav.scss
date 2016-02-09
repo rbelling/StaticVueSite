@@ -28,12 +28,12 @@
 }
 .r-menu__line {
   background-color: $white;
-  position: absolute;
   height: 5px;
   left: 50%;
+  perspective: 50px;
+  position: absolute;
   transform: translate(-50%, -50%);
   width: 100%;
-  perspective: 50px;
 }
 .r-menu__line--first {
   top: 0;

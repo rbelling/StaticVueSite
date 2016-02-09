@@ -18,16 +18,16 @@ $button-ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 @keyframes toggleFlyout {
   0% {
-    opacity: 0;
     display: none;
+    opacity: 0;
   }
   1% {
-    opacity: 1;
     display: block;
+    opacity: 1;
   }
   100% {
-    opacity: 1;
     display: block;
+    opacity: 1;
   }
 }
 
