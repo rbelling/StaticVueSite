@@ -15,17 +15,6 @@
   background-size: cover;
   height: 100%;
 }
-.u-content-padded {
-  box-sizing: content-box;
-  display: block;
-  height: 100%;
-  margin: 0 auto;
-  max-width: span-cols(16,true);
-  @include large-up {
-    width: span-cols(16);
-  }
-  width: span-cols(16);
-}
 .u-maxw {
   height: 100%;
   margin: 0 auto;

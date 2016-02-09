@@ -11,6 +11,7 @@ import './vendor/gsap/plugins/ScrollToPlugin.js';
 import fastClick from 'fastclick';
 import toolkit from './utils/toolkit.js';
 import EVTS from '../../gulp/data/events';
+import animation from './modules/animation.js';
 
 export default (() => {
   const $title = $('.r-hero__title');
@@ -30,6 +31,7 @@ export default (() => {
 
   const _initModules = () => {
     fastClick(document.body, {});
+    animation.init();
   };
   const _handleEvents = () => {
     toolkit.disableEventsOnScroll();
@@ -39,7 +41,7 @@ export default (() => {
     $('.r-menu').on('click', (event)=>{eventBus.emit(EVTS.TOGGLEMENU)});
 
     eventBus.on(EVTS.TOGGLEMENU, toggleMenu);
-    eventBus.on(EVTS.LOADED, _animate);
+    eventBus.on(EVTS.LOADED, _intro);
   };
   const toggleMenu = (event) => {
     const mult = 1.1;
@@ -71,7 +73,7 @@ export default (() => {
       console.log(`attempting to scroll to a null target`);
     }
   };
-  const _animate = () => {
+  const _intro = () => {
     const startDelay = 0.3;
     //prepare the targets
     TweenLite.set($navLogo, {y: -50, autoAlpha: 0, scale: 0.8});
