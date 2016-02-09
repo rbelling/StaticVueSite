@@ -10,7 +10,6 @@ var apiKey = 'VvmMec1xcExMlXTF1MNVb7Ss4S-r5RH4'; //riccardo.bellingeri@firstborn
 
 gulp.task('images', function() {
   return gulp.src(config.src)
-    .pipe(changed(config.dest)) // Ignore unchanged files
     .pipe(gulp.dest(config.dest))
     .pipe(browserSync.reload({stream:true}));
 });
