@@ -9,14 +9,6 @@ module.exports = {
     },
     ghostMode: false,
   },
-  sprite: {
-    src: src,
-    dest: dest,
-    path: '/sprite/dew_green_can',
-    cssPath: src + '/sass/modules/sprite/',
-    cssName: './_green.scss',
-    destPath: src + '/images/modules/sprite-green',
-  },
   sass: {
     src: src + '/sass/',
     sassFiles: src + '/sass/**/*.{sass,scss}',
@@ -131,13 +123,16 @@ module.exports = {
     jsSrc: dest + '/*.js',
     dest: dest,
   },
-  jsprettify: {
-    jsFiles: src + '/**/*.{js,json}',
-    src: src,
-    dest: dest,
-  },
   tests: {
     src: src + '/tests',
   },
+  //sprite: {
+  //  src: src,
+  //  dest: dest,
+  //  path: '/sprite/dew_green_can',
+  //  cssPath: src + '/sass/modules/sprite/',
+  //  cssName: './_green.scss',
+  //  destPath: src + '/images/modules/sprite-green',
+  //},
 
 };

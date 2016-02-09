@@ -3,22 +3,18 @@
 var gulp = require('gulp');
 var config = require('../config').markup;
 var browserSync  = require('browser-sync');
-var minifyHTML = require('gulp-minify-html');
+var htmlmin = require('gulp-htmlmin');
 
 var minifyOptions = {
-      empty: true,        // KEEP empty attributes
-      cdata: false,        // KEEP CDATA from scripts
-      comments: false,     // KEEP comments
-      ssi: false,          // KEEP Server Side Includes
-      conditionals: true, // KEEP conditional internet explorer comments
-      spare: false,        // KEEP redundant attributes
-      quotes: true,       // KEEP arbitrary quotes
-      loose: false         // KEEP one whitespace
+      removeComments: true,     // REMOVE comments
+      removeRedundantAttributes: true,        // REMOVE redundant attributes
+      removeAttributeQuotes: true,
+      collapseWhitespace: true
 };
 
 gulp.task('markup', ['templates'], function() {
   return gulp.src(config.src)
-    .pipe(minifyHTML(minifyOptions))
+    .pipe(htmlmin(minifyOptions))
     .pipe(gulp.dest(config.dest))
     .pipe(browserSync.reload({stream:true}));
 });
