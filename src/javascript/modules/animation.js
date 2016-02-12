@@ -1,43 +1,147 @@
 // http://www.goodboydigital.com/pixi-js-tutorial-getting-started/
 
-import 'pixi.js';
+import '../vendor/pixi/index.js';
 
 export default (() => {
-  let renderer, container, bunny, texture;
-  const init = () => {
-    // create an new instance of a pixi container
-    container = new PIXI.Container();
 
-    // create a renderer instance.
-    renderer = PIXI.autoDetectRenderer(400, 300);
+    const init = () => {
 
-    // add the renderer view element to the DOM
-    document.body.appendChild(renderer.view);
-    requestAnimationFrame(animate);
+      // first tile picked up by the player
+      var firstTile = null;
 
-    // create a texture from an image path
-    texture = PIXI.Texture.fromImage("./images/test.png");
-    // create a new Sprite using the texture
-    bunny = new PIXI.Sprite(texture);
+      // second tile picked up by the player
+      var secondTile = null;
 
-    // center the sprites anchor point
-    bunny.anchor.x = 0.5;
-    bunny.anchor.y = 0.5;
+      // can the player pick up a tile?
+      var canPick = true;
 
-    // move the sprite t the center of the screen
-    bunny.position.x = 200;
-    bunny.position.y = 150;
+      // create a renderer instance width=640 height=480
+      var renderer = PIXI.autoDetectRenderer(640, 480);
+      document.body.appendChild(renderer.view);
 
-    container.addChild(bunny);
-  };
-  const animate = () => {
-    requestAnimationFrame(animate);
-    // just for fun, lets rotate mr rabbit a little
-    bunny.rotation += 0.1;
-    // render the container
-    renderer.render(container);
-  }
-  return {
-    init,
-  };
-})();
+      // create an empty container
+      var gameContainer = new PIXI.Container();
+
+      // importing a texture atlas created with texturepacker
+      var tileAtlas = "images.json";
+
+      // create a new loader
+      var loader = new PIXI.loaders.Loader();
+      loader.add(tileAtlas);
+      loader.load();
+      var texture, sprite;
+      loader.once('complete', () => {
+        onTilesLoaded();
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(gameContainer);
+      }
+
+      requestAnimationFrame(animate);
+
+      function onTilesLoaded() {
+        // choose 24 random tile images
+        var chosenTiles = new Array();
+        while (chosenTiles.length < 48) {
+          var candidate = Math.floor(Math.random() * 44);
+          if (chosenTiles.indexOf(candidate) == -1) {
+            chosenTiles.push(candidate, candidate)
+          }
+        }
+        // shuffle the chosen tiles
+        for (var i = 0; i < 96; i++) {
+          var from = Math.floor(Math.random() * 48);
+          var to = Math.floor(Math.random() * 48);
+          var tmp = chosenTiles[from];
+          chosenTiles[from] = chosenTiles[to];
+          chosenTiles[to] = tmp;
+        }
+        // place down tiles
+        for (var i = 0; i < 8; i++) {
+          for (var j = 0; j < 6; j++) {
+            // new sprite
+            var tile = PIXI.Sprite.fromFrame(chosenTiles[i * 6 + j]);
+            // buttonmode+interactive = acts like a button
+            tile.buttonMode = true;
+            tile.interactive = true;
+            // is the tile selected?
+            tile.isSelected = false;
+            // set a tile value
+            tile.theVal = chosenTiles[i * 6 + j]
+            // place the tile
+            tile.position.x = 7 + i * 80;
+            tile.position.y = 7 + j * 80;
+            // paint tile black
+            tile.tint = 0x000000;
+            // set it a bit transparent (it will look grey)
+            tile.alpha = 0.5;
+            // add the tile
+            gameContainer.addChild(tile);
+            // mouse-touch listener
+            tile.mousedown = tile.touchstart = function (data) {
+              // can I pick a tile?
+              if (canPick) {
+                // is the tile already selected?
+                if (!this.isSelected) {
+                  // set the tile to selected
+                  this.isSelected = true;
+                  // show the tile
+                  this.tint = 0xffffff;
+                  this.alpha = 1;
+                  // is it the first tile we uncover?
+                  if (firstTile == null) {
+                    firstTile = this
+                  }
+                  // this is the second tile
+                  else {
+                    secondTile = this
+                    // can't pick anymore
+                    canPick = false;
+                    // did we pick the same tiles?
+                    if (firstTile.theVal == secondTile.theVal) {
+                      // wait a second then remove the tiles and make the player able to pick again
+                      setTimeout(function () {
+                        gameContainer.removeChild(firstTile);
+                        gameContainer.removeChild(secondTile);
+                        firstTile = null;
+                        secondTile = null;
+                        canPick = true;
+                      }, 1000);
+                    }
+                    // we picked different tiles
+                    else {
+                      // wait a second then cover the tiles and make the player able to pick again
+                      setTimeout(function () {
+                        firstTile.isSelected = false
+                        secondTile.isSelected = false
+                        firstTile.tint = 0x000000;
+                        secondTile.tint = 0x000000;
+                        firstTile.alpha = 0.5;
+                        secondTile.alpha = 0.5;
+                        firstTile = null;
+                        secondTile = null;
+                        canPick = true;
+                      }, 1000);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        //  requestAnimationFrame(animate);
+        //}
+        //
+        //function animate() {
+        //  requestAnimationFrame(animate);
+        //  renderer.render(stage);
+        //}
+
+      };
+    }
+    return {
+      init,
+    };
+  })();
