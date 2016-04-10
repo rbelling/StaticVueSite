@@ -9,13 +9,14 @@ var config = require('../config').templates;
 var browserSync  = require('browser-sync');
 var argv = require('yargs').argv;
 var envVars = require('../data/envVars.js');
+var templateData = _.merge({}, config.templateData,
+  {
+    assetFolder: envVars.assetFolder
+  }
+);
+
+var templateOptions = config.templateOptions;
 gulp.task('templates', function () {
-  var templateData = _.merge({}, config.templateData,
-    {
-      assetFolder: envVars.assetFolder
-    }
-  );
-  var templateOptions = config.templateOptions;
   return gulp.src(config.src + config.myPage + config.templateExtension)
     .pipe(compileHandlebars(templateData, templateOptions))
     .pipe(rename(config.myPage+'.html'))

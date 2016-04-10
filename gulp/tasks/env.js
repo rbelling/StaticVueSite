@@ -29,12 +29,7 @@ var setVariables = function() {
   };
 };
 
-gulp.task('env', function() {
-  runSequence(
-    'env_css',
-    'env_javascript'
-  );
-});
+gulp.task('env', ['env_css', 'env_javascript']);
 
 gulp.task('env_css', function() {
   setVariables();

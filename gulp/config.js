@@ -9,14 +9,6 @@ module.exports = {
     },
     ghostMode: false,
   },
-  sprite: {
-    src: src,
-    dest: dest,
-    path: '/sprite/dew_green_can',
-    cssPath: src + '/sass/modules/sprite/',
-    cssName: './_green.scss',
-    destPath: src + '/images/modules/sprite-green',
-  },
   sass: {
     src: src + '/sass/',
     sassFiles: src + '/sass/**/*.{sass,scss}',
@@ -67,7 +59,7 @@ module.exports = {
 
       // Target for final HTML output.
       // use some css file when the inline option is not set
-    dest: 'index-critical.html',
+    //dest: dest+'/index-critical.html',
 
       // Minify critical-path CSS when inlining
     minify: true,
@@ -75,8 +67,8 @@ module.exports = {
       // Extract inlined styles from referenced stylesheets
       // extract: true,
 
-      // Prefix for asset directory
-      // pathPrefix: '/MySubfolderDocrot',
+       //Prefix for asset directory
+       pathPrefix: '.',
 
       // ignore css rules
       // ignore: ['font-face',/some-regexp/],
@@ -131,13 +123,16 @@ module.exports = {
     jsSrc: dest + '/*.js',
     dest: dest,
   },
-  jsprettify: {
-    jsFiles: src + '/**/*.{js,json}',
-    src: src,
-    dest: dest,
-  },
   tests: {
     src: src + '/tests',
   },
+  //sprite: {
+  //  src: src,
+  //  dest: dest,
+  //  path: '/sprite/dew_green_can',
+  //  cssPath: src + '/sass/modules/sprite/',
+  //  cssName: './_green.scss',
+  //  destPath: src + '/images/modules/sprite-green',
+  //},
 
 };

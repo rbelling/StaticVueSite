@@ -5,7 +5,7 @@ var runSequence = require('run-sequence').use(gulp);
 gulp.task('build', function () {
   runSequence(
     'env',
-    ['images', 'minifyCss', 'uglifyJs', 'markup'],
+    ['minifyImages', 'minifyCss', 'uglifyJs', 'markup'],
     'criticalPath'
   );
 });
