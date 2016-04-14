@@ -9,6 +9,9 @@ Front End Boilerplate which uses the following technologies:
  - Handlebars templates
  - TweenLite
 
+####KNOWN ISSUES
+When using Node v5 package node-sass may throw errors: in that case try running `npm rebuild node-sass`
+
 ####SETUP THE PROJECT
 Run `npm install` to setup the project and download the dependencies - tested with Node v5 and NPM v3.
 
