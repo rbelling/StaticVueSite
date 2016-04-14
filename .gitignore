@@ -3,6 +3,9 @@
 ### Build folder ###
 build
 
+### htdocs folder ###
+htdocs
+
 ### Node ###
 # Logs
 logs
@@ -152,6 +155,9 @@ crashlytics-build.properties
 ### Sass ###
 .sass-cache/
 *.css.map
+
+### Js maps ###
+*.js.map
 
 
 ### OSX ###
