@@ -11,6 +11,7 @@ import fastClick from 'fastclick';
 import toolkit from './utils/toolkit.js';
 import EVTS from '../../gulp/data/events';
 import Loader from './modules/loader';
+import Animation from './modules/animation';
 
 export default (() => {
     const _initModules = () => {
@@ -29,6 +30,7 @@ export default (() => {
         console.log(`app - ready`);
 
         Loader.hide();
+        Animation.init();
     };
     return {
         init,

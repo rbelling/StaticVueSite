@@ -25,8 +25,8 @@
 .u-w100 {
   width: 100%;
 }
-
-.u-intro {
-  opacity: 0;
-  visibility: hidden;
+.u-center-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -8,5 +8,4 @@ gulp.task('criticalPath', function () {
 	gulp.src(config.base+'/*.html')
 		.pipe(critical(config))
         .pipe(gulp.dest(config.base));
-        
 });
