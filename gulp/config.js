@@ -8,6 +8,7 @@ module.exports = {
       baseDir: dest
     },
     ghostMode: false,
+    browser: ["chrome"]
   },
   sass: {
     src: src + '/sass/',
