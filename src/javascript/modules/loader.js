@@ -1,4 +1,4 @@
-/*----------  Javascript responsible for the loader  ----------*/
+/* ----------  Javascript responsible for the loader  ----------*/
 import EVTS from '../../../gulp/data/events';
 import '../vendor/gsap/TweenMax.js';
 

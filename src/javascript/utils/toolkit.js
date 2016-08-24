@@ -83,10 +83,10 @@ export default (() => {
     return value;
   };
   // Converts from degrees to radians.
-  const radians = (degs) => {return degs * Math.PI / 180; };
+  const radians = (degs) => { return degs * Math.PI / 180; };
 
   // Converts from radians to degrees.
-  const degrees = (rads) => {return rads * 180 / Math.PI; };
+  const degrees = (rads) => { return rads * 180 / Math.PI; };
 
   const resizeCallbacks = [];
 
