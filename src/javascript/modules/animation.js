@@ -9,7 +9,7 @@ export default (() => {
         paused: true,
     });
     const _intro = () => {
-        const dataset = [
+        var dataset = [
             { label: 'Abulia', count: 10 },
             { label: 'Betelgeuse', count: 20 },
             { label: 'Cantaloupe', count: 30 },
@@ -18,6 +18,7 @@ export default (() => {
         var width = 360;
         var height = 360;
         var radius = Math.min(width, height) / 2;
+        var donutWidth = 75;                            // NEW
         var color = d3.scaleOrdinal(d3.schemeCategory20b);
         var svg = d3.select('.piechart')
             .append('svg')
@@ -27,7 +28,7 @@ export default (() => {
             .attr('transform', 'translate(' + (width / 2) +
                 ',' + (height / 2) + ')');
         var arc = d3.arc()
-            .innerRadius(0)
+            .innerRadius(radius - donutWidth)             // UPDATED
             .outerRadius(radius);
         var pie = d3.pie()
             .value(function(d) { return d.count; })
@@ -37,7 +38,7 @@ export default (() => {
             .enter()
             .append('path')
             .attr('d', arc)
-            .attr('fill', function(d) {
+            .attr('fill', function(d, i) {
                 return color(d.data.label);
             });
     };
