@@ -15,10 +15,10 @@ export default (() => {
             { label: 'Cantaloupe', count: 30 },
             { label: 'Dijkstra', count: 40 }
         ];
-        var width = 360;
-        var height = 360;
+        var width = 225;
+        var height = 225;
         var radius = Math.min(width, height) / 2;
-        var donutWidth = 75;                            // NEW
+        var donutWidth = 45;                            // NEW
         var color = d3.scaleOrdinal(d3.schemeCategory20b);
         var svg = d3.select('.piechart')
             .append('svg')
