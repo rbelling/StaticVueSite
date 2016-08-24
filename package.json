@@ -38,6 +38,7 @@
     "browserify-shim": "^3.8.10",
     "chai": "^3.5.0",
     "coffeeify": "~2.0.1",
+    "colr": "^1.2.2",
     "critical": "^0.7.0",
     "d3": "^4.2.2",
     "deprecated": "0.0.1",
