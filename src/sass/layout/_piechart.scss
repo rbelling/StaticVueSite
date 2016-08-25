@@ -1,3 +1,6 @@
 .ChartWrapper {
   height: 100vh;
 }
+.InnerChart, .OuterChart {
+  position: absolute;
+}
