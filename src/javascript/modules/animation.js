@@ -129,6 +129,7 @@ export default (() => {
     CHART.OuterChart.elt.select('.OuterChart__g-first')
       .selectAll(`[data-slice-id]:not([data-slice-id='${sectionToFocus.label}'])`)
       .attr('d', CHART.Arc.disabled)
+      .classed('is-expanded', false)
 
     //2) Check the target section expanded status
     const isExpanded = $sectionToFocus.hasClass('is-expanded');
@@ -137,15 +138,15 @@ export default (() => {
       //2.2) If it is enabled (meaning we need to go back to the overview)
       //2.1.1) Collapse it unless it shouldDisplayOverview
       if (!shouldDisplayOverview) {
-        d3.selectAll(`[data-slice-id = '${sectionToFocus.label}']`).transition()
+        d3.selectAll(`[data-slice-id = '${sectionToFocus.label}']`)
+          .classed('is-expanded', false)
+          .transition()
           .duration(700)
           .attr("d", CHART.Arc.disabled);
       }
 
       //2.1.2) Fill every section with their 'enabled' color unless it's the overview element
       d3.selectAll(`[data-slice-id]:not([data-slice-id='${overview.label}'])`)
-        // .data(dataset)
-        // .enter()
         .transition()
         .duration(500)
         .attr("fill", function (d) {
@@ -156,6 +157,7 @@ export default (() => {
       // else (it means that we are focusing one specific section)
       // 2.2.1) Enable it and fill it with its 'enabled' color
       d3.selectAll(`[data-slice-id = '${sectionToFocus.label}']`)
+        .classed('is-expanded', true)
         .transition()
         .duration(700)
         .attr("d", CHART.Arc.enabled)
@@ -178,9 +180,6 @@ export default (() => {
       .attr('stroke', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
     CHART.Text.Amt.elt.text(sectionToFocus.amt)
       .attr('stroke', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
-
-    // 4) update css class
-    $sectionToFocus.toggleClass('is-expanded');
 
   };
   const _sectionClick = function (d) {
