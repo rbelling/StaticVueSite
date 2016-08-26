@@ -4,3 +4,8 @@
 .InnerChart, .OuterChart {
   position: absolute;
 }
+
+.ChartText_label, .ChartText_amt {
+  stroke-width: 0;
+  font-family: "American Typewriter";
+}

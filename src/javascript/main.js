@@ -1,6 +1,7 @@
 // Browserify entry point for the page.js bundle (yay JavaScript!)
 import './vendor/picturefill.js';
 import './vendor/Modernizr';
+import _ from 'lodash';
 /* ============================
  =            GSAP            =
  ============================ */
