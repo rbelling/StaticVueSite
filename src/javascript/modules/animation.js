@@ -146,12 +146,18 @@ export default (() => {
       }
 
       //2.1.2) Fill every section with their 'enabled' color unless it's the overview element
-      d3.selectAll(`[data-slice-id]:not([data-slice-id='${overview.label}'])`)
+      d3.selectAll(`[data-slice-id]:not([data-slice-id='${overview.label}']):not([data-slice-id='${sectionToFocus.label}'])`)
         .transition()
         .duration(500)
         .attr("fill", function (d) {
           return d.data.theme.enabled;
         });
+
+      CHART.InnerChart.elt.attr("stroke", overview.theme.enabled);
+      CHART.Text.Label.elt.text(overview.label)
+        .attr('stroke', overview.theme.fontColor || overview.theme.enabled);
+      CHART.Text.Amt.elt.text(overview.amt)
+        .attr('stroke', overview.theme.fontColor || overview.theme.enabled);
     }
     else {
       // else (it means that we are focusing one specific section)
@@ -172,14 +178,13 @@ export default (() => {
         .attr("fill", function (d) {
           return d.data.theme.disabled;
         });
-    }
 
-    // 3) Change text content, fill, stroke to the correct target section
-    CHART.InnerChart.elt.attr("stroke", sectionToFocus.theme.enabled);
-    CHART.Text.Label.elt.text(sectionToFocus.label)
-      .attr('stroke', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
-    CHART.Text.Amt.elt.text(sectionToFocus.amt)
-      .attr('stroke', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
+      CHART.InnerChart.elt.attr("stroke", sectionToFocus.theme.enabled);
+      CHART.Text.Label.elt.text(sectionToFocus.label)
+        .attr('stroke', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
+      CHART.Text.Amt.elt.text(sectionToFocus.amt)
+        .attr('stroke', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
+    }
 
   };
   const _sectionClick = function (d) {
