@@ -102,7 +102,7 @@ export default (() => {
       .append("text")
       .attr('transform', `translate(
         ${(CHART.InnerChart.size / 2)}, 
-        ${79}  
+        ${78}  
       )`)
       .classed('ChartText__amt', true);
 
@@ -110,7 +110,7 @@ export default (() => {
       .append("text")
       .attr('transform', `translate(
         ${(CHART.InnerChart.size / 2)}, 
-        ${106}
+        ${102}
         )`)
       .classed('ChartText__label', true);
 

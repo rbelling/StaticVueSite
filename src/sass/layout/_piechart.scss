@@ -22,7 +22,10 @@
 .InnerChart {
   pointer-events: none;
   * {
+    cursor: pointer;
     pointer-events: all;
   }
   user-select: none;
 }
+
+
