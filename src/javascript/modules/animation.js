@@ -75,7 +75,7 @@ export default (() => {
 
     CHART.InnerChart.elt
       .append("circle")
-      .attr("r", ((CHART.InnerChart.size / 2) - CHART.InnerChart.stroke / 2  ))
+      .attr("r", Math.ceil((CHART.InnerChart.size / 2) - (CHART.InnerChart.stroke / 2 ) ))
       .attr('transform', `translate(
         ${(CHART.InnerChart.size / 2)}, 
         ${(CHART.InnerChart.size / 2)})
@@ -181,9 +181,13 @@ export default (() => {
 
       CHART.InnerChart.elt.attr("stroke", sectionToFocus.theme.enabled);
       CHART.Text.Label.elt.text(sectionToFocus.label)
-        .attr('stroke', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
+        .transition()
+        .duration(500)
+        .attr('fill', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
       CHART.Text.Amt.elt.text(sectionToFocus.amt)
-        .attr('stroke', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
+        .transition()
+        .duration(500)
+        .attr('fill', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
     }
 
   };
