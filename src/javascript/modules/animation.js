@@ -36,6 +36,9 @@ const CHART = {
       enabled: _.noop,
       disabled: _.noop,
     },
+    Logo: {
+      size: 40,
+    },
     pie: d3.pie()
       .value(function (d) {
         return d.amt;
@@ -59,11 +62,14 @@ export default (() => {
       .attr('width', CHART.OuterChart.containerSize)
       .attr('height', CHART.OuterChart.containerSize);
 
-    CHART.OuterChart.elt.append('g').classed('OuterChart__g-first', true)
+    CHART.PathContainer = CHART.OuterChart.elt.append('g').classed('OuterChart__g-first', true)
       .attr('transform', `translate(${CHART.OuterChart.containerSize / 2}, ${CHART.OuterChart.containerSize / 2})`)
       .selectAll('path')
       .data(CHART.pie(dataset))
       .enter()
+      .append('g')
+
+    CHART.PathContainer
       .append('path')
       .attr('data-slice-id', function (d) {
         return d.data.label;
@@ -73,7 +79,22 @@ export default (() => {
       .attr('stroke', 'white')
       .on('click', function (d) {
         _.bind(_sectionClick, this)(d);
-      });
+      })
+
+    /**
+     * Append the logo to each slide
+     * http://jsfiddle.net/LLwr4q7s/
+     */
+    CHART.PathContainer.append("svg:image")
+      .attr("transform", function(d) { return "translate(" + CHART.Arc.disabled.centroid(d) + ")"; })
+      .classed('SliceLogo', true)
+      .attr('width', CHART.Logo.size)
+      .attr('height', CHART.Logo.size)
+      .attr('xlink:href', function(d) { return `./images/${d.data.logo}.svg`; })
+      .attr("x",-1*CHART.Logo.size/2)
+      .attr("y",-1*CHART.Logo.size/2);
+
+
 
     CHART.InnerChart.elt = CHART.Wrapper.elt
       .append('svg')
@@ -162,10 +183,8 @@ export default (() => {
           return d.data.theme.enabled;
         });
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", overview.theme.enabled);
-      CHART.Text.Label.elt.transition().duration(DURATION.M).text(overview.label)
-        .attr('fill', overview.theme.fontColor);
-      CHART.Text.Amt.elt.transition().duration(DURATION.M).text(`€ ${overview.amt}`)
-        .attr('fill', overview.theme.fontColor);
+      _animateText(overview.label, '.ChartText__label', overview);
+      _animateText(`€ ${overview.amt}`, '.ChartText__amt', overview);
     }
     else {
       // else (it means that we are focusing one specific section)
@@ -187,17 +206,15 @@ export default (() => {
           return d.data.theme.disabled;
         });
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", sectionToFocus.theme.enabled);
-      CHART.Text.Label.elt.text(sectionToFocus.label)
-        .transition()
-        .duration(DURATION.M)
-        .attr('fill', sectionToFocus.theme.fontColor);
-      CHART.Text.Amt.elt.text(`€ ${sectionToFocus.amt}`)
-        .transition()
-        .duration(DURATION.M)
-        .attr('fill', sectionToFocus.theme.fontColor);
+      _animateText(sectionToFocus.label, '.ChartText__label', sectionToFocus);
+      _animateText(`€ ${sectionToFocus.amt}`, '.ChartText__amt', sectionToFocus);
     }
 
   };
+  const _animateText = function(_value, targetSelector, sectionToFocus) {
+
+    TweenLite.to(targetSelector, 0.1, {text:_value, ease: Linear.easeNone, fill: sectionToFocus.theme.fontColor});
+  }
   const _sectionClick = function (d) {
     /**
      * Chiama _focusSection con la sezione cliccata (reale o overview).

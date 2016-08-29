@@ -6,7 +6,7 @@ import _ from 'lodash';
  =            GSAP            =
  ============================ */
 import './vendor/gsap/TweenMax';
-import './vendor/gsap/plugins/ScrollToPlugin.js';
+import './vendor/gsap/plugins/TextPlugin.js';
 /* =====  End of GSAP  ======*/
 import fastClick from 'fastclick';
 import toolkit from './utils/toolkit.js';
