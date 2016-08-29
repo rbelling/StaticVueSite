@@ -6,14 +6,14 @@ export const dataset = [
     enabled: false,
     label: 'bundle',
     amt: 40,
-    theme: {enabled: '#470a68', disabled: '#54585a', fontColor: '#470a68'},
+    theme: {enabled: '#470a68', disabled: '#888888', fontColor: '#470a68'},
     logo: 'bundle',
   }, //dark purple
   {
     enabled: false,
     label: 'out of bundle',
     amt: 13.57,
-    theme: {enabled: '#8b00ef', disabled: '#ececec', fontColor: '#8b00ef'},
+    theme: {enabled: '#8b00ef', disabled: '#A2A2A2', fontColor: '#8b00ef'},
     logo: 'out-of-bundle',
   },  //eir purple
   {
