@@ -79,22 +79,19 @@ export default (() => {
       .append('svg')
       .classed('InnerChart', true)
       .attr('width', CHART.InnerChart.size)
-      .attr('height', CHART.InnerChart.size);
+      .attr('height', CHART.InnerChart.size)
+      .on('click', () => {
+        _focusSection(overview);
+      });
 
     CHART.InnerChart.elt
       .append("circle")
       .attr("r", Math.ceil((CHART.InnerChart.size / 2) - (CHART.InnerChart.stroke / 2 )))
       .attr('transform', `translate(
         ${(CHART.InnerChart.size / 2)}, 
-        ${(CHART.InnerChart.size / 2)})
-      `)
-      // .attr('data-slice-id', overview.label)
-      // .classed('is-expanded', true)
+        ${(CHART.InnerChart.size / 2)})`)
       .attr("stroke-width", "3")
-      .attr("fill", "white")
-      .on('click', () => {
-        console.log('clicked!')
-      });
+      .attr("fill", "white");
 
     CHART.Text.elt = CHART.InnerChart.elt
       .append('g')
@@ -139,8 +136,9 @@ export default (() => {
     //1) Collapse all other sections
     CHART.OuterChart.elt.select('.OuterChart__g-first')
       .selectAll(`[data-slice-id]:not([data-slice-id='${sectionToFocus.label}'])`)
-      .attr('d', CHART.Arc.disabled)
       .classed('is-expanded', false)
+      .attr('d', CHART.Arc.disabled)
+
 
     //2) Check the target section expanded status
     const isExpanded = $sectionToFocus.hasClass('is-expanded');
@@ -164,11 +162,12 @@ export default (() => {
           return d.data.theme.enabled;
         });
 
+      debugger;
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", overview.theme.enabled);
       CHART.Text.Label.elt.transition().duration(DURATION.M).text(overview.label)
-        .attr('stroke', overview.theme.fontColor || overview.theme.enabled);
+        .attr('fill', overview.theme.fontColor);
       CHART.Text.Amt.elt.transition().duration(DURATION.M).text(overview.amt)
-        .attr('stroke', overview.theme.fontColor || overview.theme.enabled);
+        .attr('fill', overview.theme.fontColor);
     }
     else {
       // else (it means that we are focusing one specific section)
@@ -176,7 +175,7 @@ export default (() => {
       d3.selectAll(`[data-slice-id = '${sectionToFocus.label}']`)
         .classed('is-expanded', true)
         .transition()
-        .duration(DURATION.M)
+        .duration(DURATION.S)
         .attr("d", CHART.Arc.enabled)
         .attr("fill", function (d) {
           return d.data.theme.enabled;
@@ -185,20 +184,21 @@ export default (() => {
       // fill all other sections with their 'disabled' color
       d3.selectAll(`[data-slice-id]:not([data-slice-id='${sectionToFocus.label}'])`)
         .transition()
-        .duration(DURATION.L)
+        .duration(DURATION.S)
         .attr("fill", function (d) {
           return d.data.theme.disabled;
         });
 
+      debugger;
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", sectionToFocus.theme.enabled);
       CHART.Text.Label.elt.text(sectionToFocus.label)
         .transition()
         .duration(DURATION.M)
-        .attr('fill', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
+        .attr('fill', sectionToFocus.theme.fontColor);
       CHART.Text.Amt.elt.text(sectionToFocus.amt)
         .transition()
         .duration(DURATION.M)
-        .attr('fill', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
+        .attr('fill', sectionToFocus.theme.fontColor);
     }
 
   };
