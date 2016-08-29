@@ -6,41 +6,49 @@ import * as d3 from 'd3';
 import _ from 'lodash';
 import {dataset, overview} from '../dataset/piechart';
 
+
 const CHART = {
-  Wrapper: {
-    elt: _.noop,
-  },
-  OuterChart: {
-    size: 225,
-    containerSize: 300,
-    donutWidth: 45,
-    stroke: 4,
-    elt: _.noop,
-  },
-  InnerChart: {
-    size: 140,
-    stroke: 3,
-    elt: _.noop,
-  },
-  Text: {
-    elt: _.noop,
-    Label: {
+    Wrapper: {
       elt: _.noop,
     },
-    Amt: {
+    OuterChart: {
+      size: 225,
+      containerSize: 300,
+      donutWidth: 45,
+      stroke: 4,
       elt: _.noop,
     },
+    InnerChart: {
+      size: 140,
+      stroke: 3,
+      elt: _.noop,
+    },
+    Text: {
+      elt: _.noop,
+      Label: {
+        elt: _.noop,
+      },
+      Amt: {
+        elt: _.noop,
+      },
+    },
+    Arc: {
+      enabled: _.noop,
+      disabled: _.noop,
+    },
+    pie: d3.pie()
+      .value(function (d) {
+        return d.amt;
+      })
+      .sort(null),
   },
-  Arc: {
-    enabled: _.noop,
-    disabled: _.noop,
-  },
-  pie: d3.pie()
-    .value(function (d) {
-      return d.amt;
-    })
-    .sort(null),
-};
+  DURATION = {
+    XS: 300,
+    S: 500,
+    M: 700,
+    L: 1000,
+    XL: 2000,
+  };
 
 export default (() => {
   const _initChart = () => {
@@ -75,7 +83,7 @@ export default (() => {
 
     CHART.InnerChart.elt
       .append("circle")
-      .attr("r", Math.ceil((CHART.InnerChart.size / 2) - (CHART.InnerChart.stroke / 2 ) ))
+      .attr("r", Math.ceil((CHART.InnerChart.size / 2) - (CHART.InnerChart.stroke / 2 )))
       .attr('transform', `translate(
         ${(CHART.InnerChart.size / 2)}, 
         ${(CHART.InnerChart.size / 2)})
@@ -83,7 +91,10 @@ export default (() => {
       // .attr('data-slice-id', overview.label)
       // .classed('is-expanded', true)
       .attr("stroke-width", "3")
-      .attr("fill", "white");
+      .attr("fill", "white")
+      .on('click', () => {
+        console.log('clicked!')
+      });
 
     CHART.Text.elt = CHART.InnerChart.elt
       .append('g')
@@ -96,7 +107,7 @@ export default (() => {
         ${(CHART.InnerChart.size / 2)}, 
         ${68}
         )`)
-      .classed('ChartText_label', true);
+      .classed('ChartText__label', true);
 
     CHART.Text.Amt.elt = CHART.Text.elt
       .append("text")
@@ -104,7 +115,7 @@ export default (() => {
         ${(CHART.InnerChart.size / 2)}, 
         ${98}  
       )`)
-      .classed('ChartText_amt', true);
+      .classed('ChartText__amt', true);
 
   };
   const _focusSection = (sectionToFocus) => {
@@ -141,22 +152,22 @@ export default (() => {
         d3.selectAll(`[data-slice-id = '${sectionToFocus.label}']`)
           .classed('is-expanded', false)
           .transition()
-          .duration(700)
+          .duration(DURATION.M)
           .attr("d", CHART.Arc.disabled);
       }
 
       //2.1.2) Fill every section with their 'enabled' color unless it's the overview element
       d3.selectAll(`[data-slice-id]:not([data-slice-id='${overview.label}']):not([data-slice-id='${sectionToFocus.label}'])`)
         .transition()
-        .duration(500)
+        .duration(DURATION.M)
         .attr("fill", function (d) {
           return d.data.theme.enabled;
         });
 
-      CHART.InnerChart.elt.attr("stroke", overview.theme.enabled);
-      CHART.Text.Label.elt.text(overview.label)
+      CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", overview.theme.enabled);
+      CHART.Text.Label.elt.transition().duration(DURATION.M).text(overview.label)
         .attr('stroke', overview.theme.fontColor || overview.theme.enabled);
-      CHART.Text.Amt.elt.text(overview.amt)
+      CHART.Text.Amt.elt.transition().duration(DURATION.M).text(overview.amt)
         .attr('stroke', overview.theme.fontColor || overview.theme.enabled);
     }
     else {
@@ -165,7 +176,7 @@ export default (() => {
       d3.selectAll(`[data-slice-id = '${sectionToFocus.label}']`)
         .classed('is-expanded', true)
         .transition()
-        .duration(700)
+        .duration(DURATION.M)
         .attr("d", CHART.Arc.enabled)
         .attr("fill", function (d) {
           return d.data.theme.enabled;
@@ -174,19 +185,19 @@ export default (() => {
       // fill all other sections with their 'disabled' color
       d3.selectAll(`[data-slice-id]:not([data-slice-id='${sectionToFocus.label}'])`)
         .transition()
-        .duration(700)
+        .duration(DURATION.L)
         .attr("fill", function (d) {
           return d.data.theme.disabled;
         });
 
-      CHART.InnerChart.elt.attr("stroke", sectionToFocus.theme.enabled);
+      CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", sectionToFocus.theme.enabled);
       CHART.Text.Label.elt.text(sectionToFocus.label)
         .transition()
-        .duration(500)
+        .duration(DURATION.M)
         .attr('fill', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
       CHART.Text.Amt.elt.text(sectionToFocus.amt)
         .transition()
-        .duration(500)
+        .duration(DURATION.M)
         .attr('fill', sectionToFocus.theme.fontColor || sectionToFocus.theme.enabled);
     }
 

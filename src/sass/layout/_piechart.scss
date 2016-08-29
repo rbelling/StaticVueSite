@@ -5,11 +5,19 @@
   position: absolute;
 }
 
-.ChartText_label, .ChartText_amt {
+.ChartText__label, .ChartText__amt {
   stroke-width: 0;
   font-family: "American Typewriter";
 }
 
 .OuterChart__g-first path {
   cursor: pointer;
+}
+
+.InnerChart {
+  pointer-events: none;
+  * {
+    pointer-events: all;
+  }
+  user-select: none;
 }
