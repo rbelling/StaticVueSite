@@ -1,8 +1,78 @@
+@font-face {
+  font-family: 'GT-Walsheim-Black';
+  src: url('./fonts/GT-Walsheim-Black.eot');
+  src: url('./fonts/GT-Walsheim-Black.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/GT-Walsheim-Black.woff') format('woff'),
+  url('./fonts/GT-Walsheim-Black.ttf') format('truetype'),
+  url('./fonts/GT-Walsheim-Black.svg#c09e4204b97e897edf91d5f24f9b9a95') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GT-Walsheim-Black-Oblique';
+  src: url('./fonts/GT-Walsheim-Black-Oblique.eot');
+  src: url('./fonts/GT-Walsheim-Black-Oblique.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/GT-Walsheim-Black-Oblique.woff') format('woff'),
+  url('./fonts/GT-Walsheim-Black-Oblique.ttf') format('truetype'),
+  url('./fonts/GT-Walsheim-Black-Oblique.svg#c09e4204b97e897edf91d5f24f9b9a95') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GT-Walsheim-Bold';
+  src: url('./fonts/GT-Walsheim-Bold.eot');
+  src: url('./fonts/GT-Walsheim-Bold.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/GT-Walsheim-Bold.woff') format('woff'),
+  url('./fonts/GT-Walsheim-Bold.ttf') format('truetype'),
+  url('./fonts/GT-Walsheim-Bold.svg#c09e4204b97e897edf91d5f24f9b9a95') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GT-Walsheim-Bold-Oblique';
+  src: url('./fonts/GT-Walsheim-Bold-Oblique.eot');
+  src: url('./fonts/GT-Walsheim-Bold-Oblique.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/GT-Walsheim-Bold-Oblique.woff') format('woff'),
+  url('./fonts/GT-Walsheim-Bold-Oblique.ttf') format('truetype'),
+  url('./fonts/GT-Walsheim-Bold-Oblique.svg#c09e4204b97e897edf91d5f24f9b9a95') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GT-Walsheim-Medium';
+  src: url('./fonts/GT-Walsheim-Medium.eot');
+  src: url('./fonts/GT-Walsheim-Medium.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/GT-Walsheim-Medium.woff') format('woff'),
+  url('./fonts/GT-Walsheim-Medium.ttf') format('truetype'),
+  url('./fonts/GT-Walsheim-Medium.svg#c09e4204b97e897edf91d5f24f9b9a95') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GT-Walsheim-Medium-Oblique';
+  src: url('./fonts/GT-Walsheim-Medium-Oblique.eot');
+  src: url('./fonts/GT-Walsheim-Medium-Oblique.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/GT-Walsheim-Medium-Oblique.woff') format('woff'),
+  url('./fonts/GT-Walsheim-Medium-Oblique.ttf') format('truetype'),
+  url('./fonts/GT-Walsheim-Medium-Oblique.svg#c09e4204b97e897edf91d5f24f9b9a95') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GT-Walsheim-Regular';
+  src: url('./fonts/GT-Walsheim-Regular.eot');
+  src: url('./fonts/GT-Walsheim-Regular.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/GT-Walsheim-Regular.woff') format('woff'),
+  url('./fonts/GT-Walsheim-Regular.ttf') format('truetype'),
+  url('./fonts/GT-Walsheim-Regular.svg#c09e4204b97e897edf91d5f24f9b9a95') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* FONTS */
-@mixin openSansBold($color: $white) {
+@mixin fontA($color: $white) {
   color: #{$color};
-  font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
-  font-weight: bold;
+  font-family: 'GT-Walsheim-Regular', sans-serif;
 }
 @mixin courier($color: $white) {
   color: #{$color};

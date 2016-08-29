@@ -7,9 +7,14 @@
 
 .ChartText__label, .ChartText__amt {
   stroke-width: 0;
-  font-family: "American Typewriter";
+  @include fontA();
 }
-
+.ChartText__label {
+  font-size: 20px;
+}
+.ChartText__amt {
+  font-size: 32px;
+}
 .OuterChart__g-first path {
   cursor: pointer;
 }

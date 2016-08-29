@@ -19,7 +19,7 @@ const CHART = {
       elt: _.noop,
     },
     InnerChart: {
-      size: 140,
+      size: 142,
       stroke: 3,
       elt: _.noop,
     },
@@ -98,21 +98,21 @@ export default (() => {
       .classed('ChartText', true)
       .attr('text-anchor', 'middle')
 
-    CHART.Text.Label.elt = CHART.Text.elt
-      .append("text")
-      .attr('transform', `translate(
-        ${(CHART.InnerChart.size / 2)}, 
-        ${68}
-        )`)
-      .classed('ChartText__label', true);
-
     CHART.Text.Amt.elt = CHART.Text.elt
       .append("text")
       .attr('transform', `translate(
         ${(CHART.InnerChart.size / 2)}, 
-        ${98}  
+        ${79}  
       )`)
       .classed('ChartText__amt', true);
+
+    CHART.Text.Label.elt = CHART.Text.elt
+      .append("text")
+      .attr('transform', `translate(
+        ${(CHART.InnerChart.size / 2)}, 
+        ${106}
+        )`)
+      .classed('ChartText__label', true);
 
   };
   const _focusSection = (sectionToFocus) => {
@@ -161,12 +161,10 @@ export default (() => {
         .attr("fill", function (d) {
           return d.data.theme.enabled;
         });
-
-      debugger;
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", overview.theme.enabled);
       CHART.Text.Label.elt.transition().duration(DURATION.M).text(overview.label)
         .attr('fill', overview.theme.fontColor);
-      CHART.Text.Amt.elt.transition().duration(DURATION.M).text(overview.amt)
+      CHART.Text.Amt.elt.transition().duration(DURATION.M).text(`€ ${overview.amt}`)
         .attr('fill', overview.theme.fontColor);
     }
     else {
@@ -188,14 +186,12 @@ export default (() => {
         .attr("fill", function (d) {
           return d.data.theme.disabled;
         });
-
-      debugger;
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", sectionToFocus.theme.enabled);
       CHART.Text.Label.elt.text(sectionToFocus.label)
         .transition()
         .duration(DURATION.M)
         .attr('fill', sectionToFocus.theme.fontColor);
-      CHART.Text.Amt.elt.text(sectionToFocus.amt)
+      CHART.Text.Amt.elt.text(`€ ${sectionToFocus.amt}`)
         .transition()
         .duration(DURATION.M)
         .attr('fill', sectionToFocus.theme.fontColor);
