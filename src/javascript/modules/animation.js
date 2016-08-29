@@ -212,8 +212,10 @@ export default (() => {
 
   };
   const _animateText = function(_value, targetSelector, sectionToFocus) {
-
-    TweenLite.to(targetSelector, 0.1, {text:_value, ease: Linear.easeNone, fill: sectionToFocus.theme.fontColor});
+    const delta = '30px';
+    TweenLite.set(targetSelector, {y: `-=${delta}px`, opacity: 0.7, text:_value, scale: .9});
+    TweenLite.to(targetSelector, DURATION.XS / 1000, {opacity: 1, scale: 1, y: `+=${delta}px`, ease: Back.easeOut});
+    TweenLite.to(targetSelector, DURATION.M / 1000, {ease: Power2.easeOut, fill: sectionToFocus.theme.fontColor});
   }
   const _sectionClick = function (d) {
     /**
