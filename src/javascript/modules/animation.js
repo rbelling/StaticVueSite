@@ -182,7 +182,7 @@ export default (() => {
         });
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", overview.theme.enabled);
       _animateText(overview.label, '.ChartText__label', overview);
-      _animateText(`€ ${overview.amt}`, '.ChartText__amt', overview, DURATION.XS);
+      _animateText(`€ ${overview.amt}`, '.ChartText__amt', overview);
 
 
     }
@@ -214,11 +214,12 @@ export default (() => {
 
     // _collapseOtherSections(sectionToFocus.label);
   };
-  const _animateText = (_value, targetSelector, sectionToFocus) => {
-    const delta = '22px';
-    TweenLite.set(targetSelector, {y: `-=${delta}px`, opacity: 0.7, text: _value, scale: .85});
-    TweenLite.to(targetSelector, DURATION.S / 1000, {opacity: 1, scale: 1, y: `+=${delta}px`, ease: Back.easeOut});
-    TweenLite.to(targetSelector, DURATION.M / 1000, {ease: Power2.easeOut, fill: sectionToFocus.theme.fontColor});
+  const _animateText = (_value, targetSelector, sectionToFocus, delay = 0) => {
+    const delta = '18px';
+    TweenLite.set(targetSelector, {y: `-=${delta}px`, autoAlpha: 0.7, text: _value, scale: .85});
+
+    TweenLite.fromTo(targetSelector, DURATION.S / 1000, {}, {autoAlpha: 1, scale: 1, y: `+=${delta}px`, ease: Back.easeOut, delay: delay});
+    TweenLite.to(targetSelector, DURATION.M / 1000, {ease: Power2.easeOut, fill: sectionToFocus.theme.fontColor, delay: delay});
   };
   const _collapseOtherSections = (unlessItIs = null) => {
     const mySelector = unlessItIs ? `[data-slice-id]:not([data-slice-id='${unlessItIs}'])` : `[data-slice-id]`;

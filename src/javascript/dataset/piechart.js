@@ -1,6 +1,7 @@
 /**
  * Created by riccardo on 24/08/2016.
  */
+var delta = 15;
 export const dataset = [
   {
     enabled: false,
@@ -19,21 +20,21 @@ export const dataset = [
   {
     enabled: false,
     label: 'add ons',
-    amt: 30.07,
+    amt: 30.07 - delta,
     theme: {enabled: '#015672', disabled: '#737373', fontColor: '#015672'},
     logo: 'add-on',
   }, //dark turquoise
   {
     enabled: false,
     label: 'previous bills',
-    amt: 49.61,
+    amt: 24.61 + delta,
     theme: {enabled: '#018c15', disabled: '#888888', fontColor: '#018c15'},
     logo: 'unpaid-bill',
   }, //dark green
   {
     enabled: false,
     label: 'part period',
-    amt: 21.13,
+    amt: 46.13,
     theme: {enabled: '#ec8b00', disabled: '#A2A2A2', fontColor: '#ec8b00'},
     logo: 'part-period',
   },  //dark yellow
