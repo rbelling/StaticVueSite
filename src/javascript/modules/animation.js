@@ -46,11 +46,11 @@ const CHART = {
       .sort(null),
   },
   DURATION = {
-    XS: 300,
-    S: 500,
-    M: 700,
-    L: 1000,
-    XL: 2000,
+    XS: 250,
+    S: 300,
+    M: 500,
+    L: 750,
+    XL: 1500,
   };
 
 export default (() => {
@@ -86,14 +86,17 @@ export default (() => {
      * http://jsfiddle.net/LLwr4q7s/
      */
     CHART.PathContainer.append("svg:image")
-      .attr("transform", function(d) { return "translate(" + CHART.Arc.disabled.centroid(d) + ")"; })
+      .attr("transform", function (d) {
+        return "translate(" + CHART.Arc.disabled.centroid(d) + ")";
+      })
       .classed('SliceLogo', true)
       .attr('width', CHART.Logo.size)
       .attr('height', CHART.Logo.size)
-      .attr('xlink:href', function(d) { return `./images/${d.data.logo}.svg`; })
-      .attr("x",-1*CHART.Logo.size/2)
-      .attr("y",-1*CHART.Logo.size/2);
-
+      .attr('xlink:href', function (d) {
+        return `./images/${d.data.logo}.svg`;
+      })
+      .attr("x", -1 * CHART.Logo.size / 2)
+      .attr("y", -1 * CHART.Logo.size / 2);
 
 
     CHART.InnerChart.elt = CHART.Wrapper.elt
@@ -139,56 +142,54 @@ export default (() => {
   const _focusSection = (sectionToFocus) => {
     /**
      * 0) Check if we've clicked the center
-     * 1) Collapse all other sections
-     * 2) Check the target section enabled status
-     *  2.1) If it is enabled (meaning we need to go back to the overview)
-     *    2.1.1) Collapse it
-     *    2.1.2) Fill every section with their 'enabled' color
-     *  2.2) else (it means that we are focusing one specific section), unless it is the center
-     *    2.2.1) Enable it and fill it with its 'enabled' color
-     *    2.2.2) fill all other sections with their 'disabled' color
-     *  3) Change text content, fill, stroke to the correct target section
-     *  4) fix class
+     * 1) Remove is-expanded class from arcs that need to be collapsed
+     * 2) Check the target section (T.S.) enabled status
+     *  2.1) If T.S. is enabled OR if we need to go back to the overview
+     *    2.1.1) Collapse T.S. (unless the target is overview, in which case no action is taken at this stage)
+     *    2.1.2) Fill every section with their 'enabled' color - USING GSAP
+     *  2.2) else (it means that we are focusing one specific section), unless T.S. is the center
+     *    2.2.1) add is-expanded class to T.S.
+     *    2.2.2) Enable T.S. and fill it with its 'enabled' color
+     *    2.2.3) fill all other sections with their 'disabled' color - USING GSAP
+     *  3) Change text content, fill, stroke to the T.S.
      */
 
+
+    // 0) Check if we've clicked the center
     const $sectionToFocus = $(`[data-slice-id = '${sectionToFocus.label}']`),
       shouldDisplayOverview = sectionToFocus.label === overview.label;
 
-    //1) Collapse all other sections
+    //1) Remove is-expanded class from arcs that need to be collapsed
     CHART.OuterChart.elt.select('.OuterChart__g-first')
       .selectAll(`[data-slice-id]:not([data-slice-id='${sectionToFocus.label}'])`)
-      .classed('is-expanded', false)
-      .attr('d', CHART.Arc.disabled)
-
+      .classed('is-expanded', false);
 
     //2) Check the target section expanded status
     const isExpanded = $sectionToFocus.hasClass('is-expanded');
 
     if (isExpanded || shouldDisplayOverview) {
-      //2.2) If it is enabled (meaning we need to go back to the overview)
-      //2.1.1) Collapse it unless it shouldDisplayOverview
+      _collapseOtherSections();
+      //2.2) If T.S. is enabled OR if we need to go back to the overview
+      //2.1.1) Collapse T.S. (unless the target is overview, in which case no action is taken at this stage)
       if (!shouldDisplayOverview) {
         d3.selectAll(`[data-slice-id = '${sectionToFocus.label}']`)
-          .classed('is-expanded', false)
-          .transition()
-          .duration(DURATION.M)
-          .attr("d", CHART.Arc.disabled);
+          .classed('is-expanded', false);
       }
-
       //2.1.2) Fill every section with their 'enabled' color unless it's the overview element
-      d3.selectAll(`[data-slice-id]:not([data-slice-id='${overview.label}']):not([data-slice-id='${sectionToFocus.label}'])`)
-        .transition()
-        .duration(DURATION.M)
+      d3.selectAll(`[data-slice-id]:not([data-slice-id='${overview.label}'])`)
         .attr("fill", function (d) {
           return d.data.theme.enabled;
         });
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", overview.theme.enabled);
       _animateText(overview.label, '.ChartText__label', overview);
-      _animateText(`€ ${overview.amt}`, '.ChartText__amt', overview);
+      _animateText(`€ ${overview.amt}`, '.ChartText__amt', overview, DURATION.XS);
+
+
     }
     else {
       // else (it means that we are focusing one specific section)
-      // 2.2.1) Enable it and fill it with its 'enabled' color
+      // 2.2.1) add is-expanded class to T.S.
+      // 2.2.2) Enable it and fill it with its 'enabled' color
       d3.selectAll(`[data-slice-id = '${sectionToFocus.label}']`)
         .classed('is-expanded', true)
         .transition()
@@ -198,30 +199,36 @@ export default (() => {
           return d.data.theme.enabled;
         });
 
-      // fill all other sections with their 'disabled' color
+      // fill all other sections with their 'disabled' color and collapse them
       d3.selectAll(`[data-slice-id]:not([data-slice-id='${sectionToFocus.label}'])`)
         .transition()
         .duration(DURATION.S)
         .attr("fill", function (d) {
           return d.data.theme.disabled;
-        });
+        })
+        .attr('d', CHART.Arc.disabled);
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", sectionToFocus.theme.enabled);
       _animateText(sectionToFocus.label, '.ChartText__label', sectionToFocus);
       _animateText(`€ ${sectionToFocus.amt}`, '.ChartText__amt', sectionToFocus);
     }
 
+    // _collapseOtherSections(sectionToFocus.label);
   };
-  const _animateText = function(_value, targetSelector, sectionToFocus) {
-    const delta = '30px';
-    TweenLite.set(targetSelector, {y: `-=${delta}px`, opacity: 0.7, text:_value, scale: .9});
-    TweenLite.to(targetSelector, DURATION.XS / 1000, {opacity: 1, scale: 1, y: `+=${delta}px`, ease: Back.easeOut});
+  const _animateText = (_value, targetSelector, sectionToFocus) => {
+    const delta = '22px';
+    TweenLite.set(targetSelector, {y: `-=${delta}px`, opacity: 0.7, text: _value, scale: .85});
+    TweenLite.to(targetSelector, DURATION.S / 1000, {opacity: 1, scale: 1, y: `+=${delta}px`, ease: Back.easeOut});
     TweenLite.to(targetSelector, DURATION.M / 1000, {ease: Power2.easeOut, fill: sectionToFocus.theme.fontColor});
-  }
-  const _sectionClick = function (d) {
-    /**
-     * Chiama _focusSection con la sezione cliccata (reale o overview).
-     */
-
+  };
+  const _collapseOtherSections = (unlessItIs = null) => {
+    const mySelector = unlessItIs ? `[data-slice-id]:not([data-slice-id='${unlessItIs}'])` : `[data-slice-id]`;
+    CHART.OuterChart.elt.select('.OuterChart__g-first')
+      .selectAll(mySelector)
+      .transition()
+      .duration(DURATION.M)
+      .attr('d', CHART.Arc.disabled);
+  };
+  const _sectionClick = (d) => {
     const sectionId = d.data.label,
       $selectedSlice = $(`[data-slice-id = '${sectionId}']`);
 

@@ -29,7 +29,7 @@ $radius: 3px;
   }
 }
 
-@mixin button($bg-color: $brand-green) {
+@mixin button($bg-color: $brand-purple) {
   background-color: $bg-color;
   @extend %button-base;
   //@include touch {
@@ -40,13 +40,13 @@ $radius: 3px;
 
 
 .r-cta {
-  @include button($brand-green);
+  @include button($brand-purple);
 }
 
 .r-btn-addon {
   border-bottom-right-radius: $radius;
   border-radius: 0;
-  @include button($brand-green);
+  @include button($brand-purple);
   border-top-right-radius: $radius;
   left: -5px;
   margin: 0;

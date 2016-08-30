@@ -7,6 +7,7 @@ import _ from 'lodash';
  ============================ */
 import './vendor/gsap/TweenMax';
 import './vendor/gsap/plugins/TextPlugin.js';
+import './vendor/gsap/plugins/SplitText.js';
 /* =====  End of GSAP  ======*/
 import fastClick from 'fastclick';
 import toolkit from './utils/toolkit.js';
