@@ -253,13 +253,15 @@ export default (() => {
       .innerRadius((CHART.OuterChart.size / 2) - CHART.OuterChart.donutWidth)
       .outerRadius((CHART.OuterChart.size / 2) + 15);
 
-    // INIT THE CHART AND FOCUS ON THE 'OVERVIEW' STATE
-    _initChart();
-    _focusSection(overview);
+    setTimeout(function(){
+      // INIT THE CHART AND FOCUS ON THE 'OVERVIEW' STATE
+      _initChart();
+      _focusSection(overview);
 
-    TweenLite.set('.OuterChart', {scale: '.6', rotation: '-90'});
-    TweenLite.to('.OuterChart', 1, {scale: '1', y: '0'});
-    TweenLite.to('.OuterChart', 2.5, {rotation: 0, ease: Expo.easeOut});
+      TweenLite.set('.OuterChart', {scale: '.6', rotation: '-90'});
+      TweenLite.to('.OuterChart', 1, {scale: '1', y: '0'});
+      TweenLite.to('.OuterChart', 2.5, {rotation: 0, ease: Expo.easeOut});
+    }, 400);
   };
   return {
     init,
