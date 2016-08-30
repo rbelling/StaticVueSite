@@ -8,9 +8,9 @@ export default (() => {
 
   };
   const hide = () => {
-    TweenLite.to($loader, 1, {
+    TweenLite.to($loader, 0.4, {
       autoAlpha: 0,
-      ease: Power3.easeOut,
+      ease: Linear.easeOut,
       //ease: Linear.easeNone,
     });
   };

@@ -176,10 +176,10 @@ export default (() => {
           .classed('is-expanded', false);
       }
       //2.1.2) Fill every section with their 'enabled' color unless it's the overview element
-      d3.selectAll(`[data-slice-id]:not([data-slice-id='${overview.label}'])`)
-        .attr("fill", function (d) {
-          return d.data.theme.enabled;
-        });
+      // d3.selectAll(`[data-slice-id]:not([data-slice-id='${overview.label}'])`)
+      //   .attr("fill", function (d) {
+      //     return d.data.theme.enabled;
+      //   });
       CHART.InnerChart.elt.transition().duration(DURATION.M).attr("stroke", overview.theme.enabled);
       _animateText(overview.label, '.ChartText__label', overview);
       _animateText(`€ ${overview.amt}`, '.ChartText__amt', overview);
@@ -227,7 +227,11 @@ export default (() => {
       .selectAll(mySelector)
       .transition()
       .duration(DURATION.M)
-      .attr('d', CHART.Arc.disabled);
+      .attr('d', CHART.Arc.disabled)
+      .duration(DURATION.M)
+      .attr("fill", function (d) {
+        return d.data.theme.enabled;
+      });
   };
   const _sectionClick = (d) => {
     const sectionId = d.data.label,
