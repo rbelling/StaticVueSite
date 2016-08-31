@@ -112,7 +112,7 @@ export default (() => {
       .append("circle")
       .attr("r", Math.ceil((CHART.InnerChart.size / 2) - (CHART.InnerChart.stroke / 2 )))
       .attr('transform', `translate(
-        ${(CHART.InnerChart.size / 2)}, 
+        ${(CHART.InnerChart.size / 2)},
         ${(CHART.InnerChart.size / 2)})`)
       .attr("stroke-width", "3")
       .attr("fill", "white");
@@ -125,15 +125,15 @@ export default (() => {
     CHART.Text.Amt.elt = CHART.Text.elt
       .append("text")
       .attr('transform', `translate(
-        ${(CHART.InnerChart.size / 2)}, 
-        ${78}  
+        ${(CHART.InnerChart.size / 2)},
+        ${78}
       )`)
       .classed('ChartText__amt', true);
 
     CHART.Text.Label.elt = CHART.Text.elt
       .append("text")
       .attr('transform', `translate(
-        ${(CHART.InnerChart.size / 2)}, 
+        ${(CHART.InnerChart.size / 2)},
         ${102}
         )`)
       .classed('ChartText__label', true);
@@ -259,7 +259,9 @@ export default (() => {
       _focusSection(overview);
 
       TweenLite.set('.OuterChart', {scale: '.6', rotation: '-90'});
-      TweenLite.to('.OuterChart', 1, {scale: '1', y: '0'});
+      TweenLite.from('.OuterChart', 1, {y: '+=20'});
+      TweenLite.from('.InnerChart', 1, {y: '+=20'});
+      TweenLite.to('.OuterChart', 1, {scale: '1'});
       TweenLite.to('.OuterChart', 2.5, {rotation: 0, ease: Expo.easeOut});
     }, 400);
   };

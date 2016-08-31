@@ -550,3 +550,9 @@ sup {
 body {
 	position: relative;
 }
+
+body {
+  * {
+    tap-highlight-color: rgba(0,0,0,0);
+  }
+}
