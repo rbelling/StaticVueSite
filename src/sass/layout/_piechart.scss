@@ -8,7 +8,7 @@
 
 .ChartText__label, .ChartText__amt {
   stroke-width: 0;
-  @include fontA();
+  @include eirMedium();
 }
 .ChartText__label {
   font-size: 20px;
@@ -27,6 +27,9 @@
     pointer-events: all;
   }
   user-select: none;
+  circle {
+    stroke-linecap: round;
+  }
 }
 
 .SliceLogo {

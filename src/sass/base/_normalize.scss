@@ -551,8 +551,6 @@ body {
 	position: relative;
 }
 
-body {
-  * {
-    tap-highlight-color: rgba(0,0,0,0);
-  }
+body * {
+    -webkit-tap-highlight-color: transparent;
 }
