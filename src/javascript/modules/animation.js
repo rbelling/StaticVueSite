@@ -180,7 +180,7 @@ export default (() => {
       //2.1.2) Fill every section with their 'enabled' color unless it's the overview element
       circleStrokeColor = overview.theme.enabled;
       _animateText(overview.label, '.ChartText__label', overview, DURATION.XS / 1000);
-      _animateText(`€ ${overview.amt}`, '.ChartText__amt', overview);
+      _animateText(`€${overview.amt}`, '.ChartText__amt', overview);
     }
     else {
       // else (it means that we are focusing one specific section)
@@ -204,7 +204,7 @@ export default (() => {
         })
         .attr('d', CHART.Arc.disabled);
       _animateText(sectionToFocus.label, '.ChartText__label', sectionToFocus, DURATION.XXS / 1000);
-      _animateText(`€ ${sectionToFocus.amt}`, '.ChartText__amt', sectionToFocus);
+      _animateText(`€${sectionToFocus.amt}`, '.ChartText__amt', sectionToFocus);
     }
 
     const tl = new TimelineLite();
