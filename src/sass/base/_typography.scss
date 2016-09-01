@@ -21,7 +21,7 @@
 /* FONTS */
 @mixin eirMedium($color: $white) {
   color: #{$color};
-  font-family: 'eir-medium-web', sans-serif;
+  font-family: 'eir-medium-web', 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
 }
 @mixin WalsheimRegular($color: $white) {
   color: #{$color};
