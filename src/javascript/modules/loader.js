@@ -1,19 +1,17 @@
 /*----------  Javascript responsible for the loader  ----------*/
-import TweenLite from '../vendor/gsap/TweenLite';
+import TweenMax from '../vendor/gsap/TweenMax';
 
-export default (() => {
+const loader = () => {
   const $loader = document.querySelectorAll('.r-loader-screen');
   const hide = () => {
-    TweenLite.to($loader, 1, {
+    TweenMax.to($loader, 1, {
       autoAlpha: 0,
       ease: Power3.easeOut,
-      //ease: Linear.easeNone,
     });
   };
-  const init = () => {
-
-  };
   return {
-    init, hide,
+    hide
   };
-})();
+};
+
+export default loader();
