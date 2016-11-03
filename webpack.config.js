@@ -3,7 +3,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
-
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 const stylesheetPath = './src/sass/';
 
 export default {
@@ -16,24 +16,35 @@ export default {
 
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: '/',
-    filename: './page.js'
+    publicPath: path.join('.'),
+    filename: path.join('javascript', 'page.js')
   },
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new HtmlWebpackPlugin({
+      // https://www.npmjs.com/package/html-webpack-plugin
+      template: 'src/templates/index.hbs',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      },
+      inject: 'body',
+      hash: true
+    })
   ],
 
   module: {
     loaders: [
+      {test: /\.js?$/, exclude: /node_modules/, loader: 'babel'},
       {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file'},
       {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
-      // {test: /(\.css|\.scss)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap', 'sass-resources']},
+      {test: /(\.css|\.scss|\.sass)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap', 'sass-resources']},
       {test: /\.hbs$/, loader: "handlebars-loader"}
     ]
   },
@@ -42,7 +53,7 @@ export default {
   },
   sassResources: [
     //make sure no actual css code is included in the following files, otherwise it's going to be duplicated. Only mixins/vars and alike.
-    `${stylesheetPath}base/resources/_variables.scss`, `${stylesheetPath}base/resources/_breakpoints.scss`, `${stylesheetPath}base/resources/_mediaqueries.scss`, `${stylesheetPath}base/resources/_mixins.scss`
+    `${stylesheetPath}base/_variables.scss`, `${stylesheetPath}base/_breakpoints.scss`, `${stylesheetPath}base/_mediaqueries.scss`, `${stylesheetPath}base/_mixins.scss`
   ],
   postcss: () => [autoprefixer]
 };

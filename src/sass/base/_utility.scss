@@ -1,32 +1,21 @@
 /* 	utility classes
    ========================================================================== */
-.u-centered {
+.u-center-content {
   left: 50%;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-.u-relative {
-	position: relative;
-}
 .u-full-background {
   background-position: center;
   background-size: cover;
   height: 100%;
 }
+
 .u-maxw {
   height: 100%;
   margin: 0 auto;
   max-width: span-cols($grid-col-count, true);
   width: 100%;
-}
-
-.u-w100 {
-  width: 100%;
-}
-
-.u-intro {
-  opacity: 0;
-  visibility: hidden;
 }

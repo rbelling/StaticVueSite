@@ -1,12 +1,11 @@
 import './vendor/Modernizr';
 import fastClick from 'fastclick';
 import Loader from './modules/loader';
-// import './vendor/picturefill.js';
+// import './vendor/picturefill';
 // import './vendor/gsap/TweenMax';
-// import './vendor/gsap/plugins/ScrollToPlugin.js';
+// import './vendor/gsap/plugins/ScrollToPlugin';
 
-// require('../sass/app.scss');
-require('../templates/index.hbs');
+import '../sass/app.scss';
 
 alert('so qua');
 export default (() => {
