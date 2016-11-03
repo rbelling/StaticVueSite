@@ -35,7 +35,6 @@
 	line-height: $lineheight / $fontsize;
 }
 
-//noinspection ScssLintInspection,ScssLintInspection,ScssLintInspection
 @function strip-unit($number) {
 	@if type-of($number) == 'number' and not unitless($number) {
 		@return $number / ($number * 0 + 1);
