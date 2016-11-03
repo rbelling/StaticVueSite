@@ -13,13 +13,11 @@ export default {
   entry: [
     './src/javascript/page'
   ],
-
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: path.join('.'),
+    publicPath: path.join('/'),
     filename: path.join('javascript', 'page.js')
   },
-
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
@@ -34,7 +32,6 @@ export default {
       hash: true
     })
   ],
-
   module: {
     loaders: [
       {test: /\.js?$/, exclude: /node_modules/, loader: 'babel'},
