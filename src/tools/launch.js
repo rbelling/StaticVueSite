@@ -1,6 +1,7 @@
 import bs from 'browser-sync';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 import stripAnsi from 'strip-ansi';
 const browserSync = bs.create();
 
@@ -25,23 +26,26 @@ bundler.plugin('done', function (stats) {
 });
 
 /**
- * Run Browsersync and use middleware for Hot Module Replacement
+ * Run Browsersync and use middleware for Hot Module Replacement - https://github.com/BrowserSync/recipes/tree/master/recipes/webpack.react-hot-loader
  */
 browserSync.init({
   logFileChanges: false,
-  middleware: [
-    webpackDevMiddleware(bundler, {
-      publicPath: webpackConfig.output.publicPath,
-      stats: {colors: true}
-    })
-  ],
-  browser: "google chrome",
+  server: {
+    baseDir: 'dist',
+    middleware: [
+      webpackDevMiddleware(bundler, {
+        publicPath: webpackConfig.output.publicPath,
+        stats: { colors: true }
+      }),
+      webpackHotMiddleware(bundler)
+    ]
+  },
+  // https: true,
   plugins: ['bs-fullscreen-message'],
-  logLevel: 'warn',
+  logLevel: 'none',
   ghostMode: {
     clicks: false,
     forms: false,
     scroll: false
-  },
-  files: ['**/*.pug']
+  }
 });
