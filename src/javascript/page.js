@@ -1,24 +1,25 @@
 import './vendor/Modernizr';
-import fastClick from 'fastclick';
-import Loader from './modules/loader';
-// import './vendor/picturefill';
-// import './vendor/gsap/TweenMax';
+
+import loader from './modules/loader';
+import Santa from './modules/Santa';
+import './vendor/gsap/TweenMax';
+// import './vendor/gsap/plugins/CSSPlugin';
 // import './vendor/gsap/plugins/ScrollToPlugin';
 
 import '../sass/app.scss';
+const {users} = require('../users.json');
 
-export default (() => {
-  const _initModules = () => {
-    fastClick(document.body, {});
-  };
-
+const page = () => {
   const init = () => {
-    _initModules();
-    console.log(`app - ready`);
-
-    Loader.hide();
+    loader.hide();
+    const mySanta = new Santa(users);
+    mySanta.print();
   };
+
   return {
     init,
   };
-})();
+};
+
+page().init();
+export default page;

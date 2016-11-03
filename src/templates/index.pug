@@ -4,5 +4,8 @@ html
     include partials/head
   body#js-app
     include partials/svgDefs
+    include partials/loader
     .u-maxw
-      | Hi There!
+      include partials/title
+      include partials/grid
+    include partials/modal
