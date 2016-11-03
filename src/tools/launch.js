@@ -28,9 +28,7 @@ bundler.plugin('done', function (stats) {
  * Run Browsersync and use middleware for Hot Module Replacement
  */
 browserSync.init({
-  open: false,
   logFileChanges: false,
-  port: 5000,
   middleware: [
     webpackDevMiddleware(bundler, {
       publicPath: webpackConfig.output.publicPath,
@@ -38,5 +36,12 @@ browserSync.init({
     })
   ],
   browser: "google chrome",
-  plugins: ['bs-fullscreen-message']
+  plugins: ['bs-fullscreen-message'],
+  logLevel: 'warn',
+  ghostMode: {
+    clicks: false,
+    forms: false,
+    scroll: false
+  },
+  files: ['**/*.pug']
 });

@@ -25,7 +25,7 @@ export default {
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       // https://www.npmjs.com/package/html-webpack-plugin
-      template: 'src/templates/index.hbs',
+      template: 'src/templates/index.pug',
       minify: {
         removeComments: true,
         collapseWhitespace: true
@@ -45,7 +45,7 @@ export default {
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
       {test: /(\.css|\.scss|\.sass)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap', 'sass-resources']},
-      {test: /\.hbs$/, loader: "handlebars-loader"}
+      {test: /\.pug$/, loader: "pug-loader"}
     ]
   },
   sassLoader: {
