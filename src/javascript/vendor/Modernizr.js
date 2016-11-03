@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*! modernizr 3.2.0 (Custom Build) | MIT *
  * http://modernizr.com/download/?-csscalc-matchmedia-touchevents-video-mq-setclasses !*/
 ! function(e, n, t) {

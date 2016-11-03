@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*! Picturefill - v3.0.1 - 2015-09-30
  * http://scottjehl.github.io/picturefill
  * Copyright (c) 2015 https://github.com/scottjehl/picturefill/blob/master/Authors.txt; Licensed MIT

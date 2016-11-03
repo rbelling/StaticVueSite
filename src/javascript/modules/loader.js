@@ -1,12 +1,8 @@
 /*----------  Javascript responsible for the loader  ----------*/
-import EVTS from '../../../gulp/data/events';
-import '../vendor/gsap/TweenMax.js';
+import TweenLite from '../vendor/gsap/TweenLite';
 
 export default (() => {
   const $loader = document.querySelectorAll('.r-loader-screen');
-  const show = () => {
-
-  };
   const hide = () => {
     TweenLite.to($loader, 1, {
       autoAlpha: 0,
@@ -18,6 +14,6 @@ export default (() => {
 
   };
   return {
-    init, show, hide,
+    init, hide,
   };
 })();
