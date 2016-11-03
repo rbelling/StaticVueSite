@@ -110,13 +110,6 @@ module.exports = {
       // require: ['npm-zepto', 'lodash'],
       // list of externally available modules to exclude from the bundle
       // external: ['underscore']
-    }, {
-      delay: 0,
-      entries: src + '/javascript/critical.js',
-      dest: dest,
-      outputName: 'critical.js',
-      // list of modules to make require-able externally
-      // require: ['jquery'],
     }],
   },
   production: {

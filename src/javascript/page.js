@@ -7,4 +7,7 @@ import app from './main.js';
 global.$ = $;
 window.eventBus = window.eventBus || eventBus;
 global._ = _;
-app.init();
+window.onload = function() {
+    app.init();
+};
+
