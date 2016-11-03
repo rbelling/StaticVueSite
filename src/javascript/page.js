@@ -1,13 +1,26 @@
-import eventBus from './utils/eventBus';
-import $ from 'npm-zepto';
-import _ from 'lodash';
-import app from './main.js';
+import './vendor/Modernizr';
+import fastClick from 'fastclick';
+import Loader from './modules/loader';
+// import './vendor/picturefill.js';
+// import './vendor/gsap/TweenMax';
+// import './vendor/gsap/plugins/ScrollToPlugin.js';
 
+// require('../sass/app.scss');
+require('../templates/index.hbs');
 
-global.$ = $;
-window.eventBus = window.eventBus || eventBus;
-global._ = _;
-window.onload = function() {
-    app.init();
-};
+alert('so qua');
+export default (() => {
+  const _initModules = () => {
+    fastClick(document.body, {});
+  };
 
+  const init = () => {
+    _initModules();
+    console.log(`app - ready`);
+
+    Loader.hide();
+  };
+  return {
+    init,
+  };
+})();
