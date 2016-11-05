@@ -8,7 +8,7 @@ const browserSync = bs.create();
 /**
  * FRONT END SETUP
  */
-import webpackConfig from '../../webpack.config';
+import webpackConfig from '../webpack.config';
 const bundler = webpack(webpackConfig);
 /**
  * Reload all devices when bundle is complete
@@ -42,7 +42,7 @@ browserSync.init({
   },
   // https: true,
   plugins: ['bs-fullscreen-message'],
-  logLevel: 'none',
+  logLevel: 'error',
   ghostMode: {
     clicks: false,
     forms: false,

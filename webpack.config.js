@@ -9,6 +9,7 @@ const stylesheetPath = './src/sass/';
 export default {
   debug: true,
   noInfo: true, // set to false to see a list of every file being bundled.
+  chunks: false, //add chunk information (setting this to false allows for a less verbose output)
   devtool: 'eval-source-map',
   entry: [
     './src/javascript/page'
@@ -44,14 +45,15 @@ export default {
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
       {test: /(\.css|\.scss|\.sass)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap', 'sass-resources']},
       {test: /\.pug$/, loader: "pug-loader"}
-    ]
+    ],
+    noParse: ['./src/javascript/vendor'] // matches project folder name
   },
   sassLoader: {
     includePaths: [path.resolve(__dirname, './node_modules')]
   },
   sassResources: [
-    //make sure no actual css code is included in the following files, otherwise it's going to be duplicated. Only mixins/vars and alike.
-    `${stylesheetPath}base/_variables.scss`, `${stylesheetPath}base/_breakpoints.scss`, `${stylesheetPath}base/_mediaqueries.scss`, `${stylesheetPath}base/_mixins.scss`
+    // make sure no actual css code is included in the following files, otherwise it's going to be duplicated. Only mixins/vars and alike.
+    `${stylesheetPath}resources/*.scss`
   ],
   postcss: () => [autoprefixer]
 };
