@@ -1,5 +1,7 @@
 import {shuffle, assign} from 'lodash';
-import $ from 'bonzo';
+import 'classlist-polyfill'; //we need classlist polyfill since we're supporting ie9
+
+import './Santa.scss'; // this layout's specific stylesheet
 
 class Santa {
   constructor(users) {
@@ -32,22 +34,20 @@ class Santa {
     this.cells = document.querySelectorAll('.r-cell');
 
     const isVictimCls = 'is-victim',
-      isConspiratorCls = 'is-conspirator';
-    var self = this;
+      isConspiratorCls = 'is-conspirator',
+      self = this;
     for (const cell of this.cells) {
-
       cell.addEventListener('mouseover', (event) => {
         const victim = self.getVictimNode(event.target),
           conspirator = event.target;
-        $(conspirator).addClass(isConspiratorCls);
-        $(victim).addClass(isVictimCls);
+        conspirator.classList.add(isConspiratorCls);
+        victim.classList.add(isVictimCls);
       });
       cell.addEventListener('mouseout', function () {
-        const conspirators = document.querySelectorAll(`.${isConspiratorCls}`),
-          victims = document.querySelectorAll(`.${isVictimCls}`);
-
-        $(conspirators).removeClass(isConspiratorCls);
-        $(victims).removeClass(isVictimCls);
+        const conspirator = document.querySelector(`.${isConspiratorCls}`),
+          victim = document.querySelector(`.${isVictimCls}`);
+        conspirator.classList.remove(isConspiratorCls);
+        victim.classList.remove(isVictimCls);
       });
 
     }
@@ -61,10 +61,6 @@ class Santa {
   getVictimNode(conspiratorElt) {
     const guid = conspiratorElt.getAttribute('data-victim');
     return document.querySelector(`.r-cell[data-guid='${guid}']`);
-  }
-
-  print() {
-    console.log(this.markup);
   }
 }
 

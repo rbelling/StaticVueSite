@@ -1,0 +1,23 @@
+.r-grid {
+  display: block; //fallback for ie9
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.r-cell {
+  border: 1px solid $gold;
+  width: 100%;
+  @include medium {
+    width: 45%;
+  }
+  @include large-up {
+    width: 30%;
+  }
+}
+.is-victim {
+  background-color: #4294f0;
+}
+.is-conspirator {
+  background-color: #ab162b;
+}
