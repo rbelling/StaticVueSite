@@ -1,8 +1,9 @@
 import {shuffle, assign} from 'lodash';
 import 'classlist-polyfill'; //we need classlist polyfill since we're supporting ie9
 
-import {jokes} from './jokes'; //we need classlist polyfill since we're supporting ie9
-import './Santa.scss'; // this layout's specific stylesheet
+import {jokes} from './jokes';
+import './sass/Santa.scss'; // this layout's specific stylesheet
+import Card from '../Card/Card';
 
 class Santa {
   constructor(users) {
@@ -20,9 +21,7 @@ class Santa {
     //shuffle again to have random cell distribution in the markup
     this.markup = shuffle(this.users).reduce((prev, cur) => {
       return `${prev}
-        <div class='r-cell' data-victim="${cur.victim}" data-guid="${cur.guid}">
-          ${cur.email}
-        </div>
+        ${new Card(cur).getMarkup()}
       `;
     }, ``);
 
@@ -60,8 +59,8 @@ class Santa {
     let idx = 0;
     const nextJoke = () => {
       const tl = new TimelineLite({paused: true});
-      tl.to(jokeContainer, 0.5, {text: ' ', ease:Linear.easeOut});
-      tl.to(jokeContainer, 1, {text: jokes[idx], ease:Power2.easeOut});
+      tl.to(jokeContainer, 0.5, {text: '...', ease:Linear.easeOut});
+      tl.to(jokeContainer, 1, {text: '...' + jokes[idx], ease:Power2.easeOut});
       tl.append(TweenLite.delayedCall(3, nextJoke));
 
       idx = (jokes.length === idx + 1) ? 0 : idx + 1;
