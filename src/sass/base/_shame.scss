@@ -1,10 +1,32 @@
 body {
-  background-color: $dark-green;
+  background-color: $black;
   color: $white;
+  @include cleanFont();
 }
 html, body {
   min-height: 100vh;
 }
 * {
   box-sizing: border-box;
+}
+.above-the-fold {
+  background-image: url('http://www.riccardobellingeri.com/files/secret-santa.png');
+  @extend .u-full-background;
+  position: relative;
+
+  $pad: 10vh;
+  .hero-btn {
+    position: absolute;
+    bottom: $pad;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .joke {
+    position: absolute;
+    top: $pad;
+    width: 100%;
+    text-align: center;
+    @include fancyFont();
+  }
 }

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="xmas" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 270.1 140.1">
+  <style>
+    .s0{ overflow:visible; } .s1{ clip-path:url(#SVGID_1_); fill:#D73F22; } .s2{ clip-path:url(#SVGID_1_); fill:#4C4C4E; } .s3{ fill:#FCB51D; } .s4{ fill:#B61F2B; }
+  </style>
+  <g id="Presents">
+    <g id="PresentB" class="box">
+      <ellipse id="ShadowPresent" cx="188.2" cy="117.3" fill="#81572A" class="PresentBoxShadow" rx="81.8" ry="22.8" data-svg-origin="188.1999969482422 140.0999984741211" style="transform:matrix(1, 0, 0, 1, 0, 0);transform-origin:0px 0px 0px"/>
+      <g class="PresentBox" data-svg-origin="179.9499969482422 121.50000381469727" style="transform-origin:0px 0px 0px;transform:matrix(1, 0, 0, 1, 0, 0)">
+        <a id="Logo" xlink:href="https://ihatetomatoes.net/svg-christmas/" target="_blank" class="socialLinkP">
+          <circle cx="182.3" cy="96.3" r="18.5" fill="#FFF"/>
+          <defs>
+            <path id="SVGID_5_" d="M218.5 133.4l-71.6.3-.7-71.6H218z"/>
+          </defs>
+          <clipPath id="SVGID_1_">
+            <use xlink:href="#SVGID_5_" overflow="visible"/>
+          </clipPath>
+          <path d="M181 90.8c-3 0-5.4 2.6-5.4 5.6 0 1.7.6 3.2 1.7 4.3l8-8.2c-1-1-2.5-1.8-4.2-1.7m-1.3 9.8c1 1 2.6 1.7 4.3 1.7 3 0 5.3-2.6 5.3-5.6 0-1.7-.6-3.2-1.7-4.3l-8 8.2z" class="s1"/>
+          <path d="M190 102.8l-1-1 5-5.3-5.2-5.2 1.2-1 6.3 6.2zm-15 .2l-6.3-6.4 6.2-6.3 1 1-5 5.3 5 5z" class="s2"/>
+          <defs>
+            <path id="SVGID_7_" d="M220.3 134l-75 .5-.5-75.2 75-.4z"/>
+          </defs>
+          <clipPath id="SVGID_2_">
+            <use xlink:href="#SVGID_7_" overflow="visible"/>
+          </clipPath>
+          <path fill="#94D500" d="M180 89v-1h-.5c-.2.6-.2 1-.2 1.5-.6.3-1.6.2-2.3 0 .5.4 1 .6 1.7.7l-1.7 1.2c1.3-1 3-.7 4.2.3 0-.4-.3-.8-.6-1.2.7-.5 1.5-.7 2.4-.6-.7-.4-1.3-.5-2-.4l.8-.7c-.6.2-1 .3-1.7.3V89" clip-path="url(#SVGID_2_)"/>
+        </a>
+        <path fill="#D53938" d="M146.8 72H213v49.5h-66.2z"/>
+        <path fill="#B6282E" d="M146.8 72.7H213v3.6h-66.2z" class="boxTopShadow"/>
+        <path fill="#E85E4D" d="M138 58h84v15h-84z" class="boxTop"/>
+        <path fill="#FCB51D" d="M185 57.5h10.4v64H185z" class="ribbonSide"/>
+        <g class="PresentBoxRibbon">
+          <path fill="#FCB51D" d="M190.7 57.2L176 40.8l-11.2 12 19.6 10.8z"/>
+          <path fill="#B61F2B" d="M184.4 63.5L164 61l.8-8.4z"/>
+          <path fill="#FCB51D" d="M190.5 57.3l14-17 11.7 11.2-19 12z"/>
+          <path fill="#B61F2B" d="M197.2 63.4l20.3-3.4-1.3-8.5z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

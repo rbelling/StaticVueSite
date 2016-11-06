@@ -1,5 +1,6 @@
 .r-loader-screen {
-  background-color: $dark-green;
+  background-color: $black;
+  z-index: $z-index-1;
   display: block;
   height: 100vh;
   position: fixed;

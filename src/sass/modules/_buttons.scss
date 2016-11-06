@@ -1,7 +1,7 @@
 .r-btn {
-  @include helvetica();
+  @include cleanFont();
   align-items: center;
-  background-color: $black;
+  background-color: $dark-red;
   border-radius: 5px;
   cursor: pointer;
   display: inline-flex;
@@ -29,10 +29,10 @@
   }
   &:visited, & {
     text-decoration: none !important;
-    color: white;
+    color: $white;
   }
   &:hover, &:active, &:focus{
-    color: white;
+    color: $white;
     text-decoration: underline;
   }
 }
