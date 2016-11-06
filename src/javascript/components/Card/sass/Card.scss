@@ -1,0 +1,48 @@
+.r-card {
+  border: 1px solid $gold;
+  display: inline-block;
+  font-size: 16px;
+  $mb: 1;
+  margin-bottom: span-cols($mb);
+  position: relative;
+  width: 100%; //mobile
+  min-height: 200px;
+  @include medium {
+    //we have two cells per row here
+    width: h-pc(($grid-col-count - 1) / 2);
+    margin: 0 0 span-cols($mb) h-pc(1);
+    &:nth-of-type(2n + 1) {
+      margin-left: 0;
+    }
+  }
+  @include large-up {
+    //we have three cells per row here
+    width: h-pc(($grid-col-count - 2) / 3);
+    margin: 0 0 span-cols($mb) h-pc(1);
+    &:nth-of-type(3n+1) {
+      margin-left: 0;
+    }
+  }
+  @include max-width {
+    margin-bottom: span-cols($mb, true);
+  }
+}
+.r-card__back, .r-card__front {
+  background-color: $dark-red;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.r-card__back {
+  background-color: $gold;
+}
+
+.is-victim {
+  background-color: #4294f0;
+}
+
+.is-conspirator {
+  background-color: #ab162b;
+}
