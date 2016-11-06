@@ -1,6 +1,7 @@
 import {shuffle, assign} from 'lodash';
 import 'classlist-polyfill'; //we need classlist polyfill since we're supporting ie9
 
+import {jokes} from './jokes'; //we need classlist polyfill since we're supporting ie9
 import './Santa.scss'; // this layout's specific stylesheet
 
 class Santa {
@@ -29,6 +30,7 @@ class Santa {
   }
 
   allSet() {
+    this.setDynamicText();
     this.grid = document.querySelector('.r-grid');
     this.grid.innerHTML = this.markup;
     this.cells = document.querySelectorAll('.r-cell');
@@ -51,6 +53,22 @@ class Santa {
       });
 
     }
+  }
+
+  setDynamicText() {
+    const jokeContainer = document.querySelector('.joke');
+    let idx = 0;
+    const nextJoke = () => {
+      const tl = new TimelineLite({paused: true});
+      tl.to(jokeContainer, 0.5, {text: ' ', ease:Linear.easeOut});
+      tl.to(jokeContainer, 1, {text: jokes[idx], ease:Power2.easeOut});
+      tl.append(TweenLite.delayedCall(3, nextJoke));
+
+      idx = (jokes.length === idx + 1) ? 0 : idx + 1;
+      tl.play();
+    };
+
+    nextJoke();
   }
 
   getConspiratorNode(victimElt) {
