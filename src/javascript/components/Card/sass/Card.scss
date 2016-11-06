@@ -1,5 +1,5 @@
 .r-card {
-  border: 1px solid $gold;
+  cursor: pointer;
   display: inline-block;
   font-size: 16px;
   $mb: 1;
@@ -36,7 +36,7 @@
 }
 
 .r-card__back {
-  background-color: $gold;
+  background-color: $stranger-blue;
 }
 
 .is-victim {

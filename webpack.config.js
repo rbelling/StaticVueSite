@@ -43,7 +43,7 @@ export default {
       {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file'},
       {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
-      {test: /\.(jpe?g|png|gif|svg)$/i, loaders: [ 'file', 'img?minimize' ], include: PATHS.images},
+      {test: /\.(jpe?g|png|gif|svg)$/i, loaders: [ 'file?name=[name].[ext]', ], include: PATHS.images},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
       {test: /(\.css|\.scss|\.sass)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap', 'sass-resources']},
       {test: /\.pug$/, loader: "pug-loader"}
