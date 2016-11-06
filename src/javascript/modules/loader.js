@@ -6,6 +6,7 @@ const loader = () => {
   const hide = () => {
     TweenMax.to($loader, 1, {
       autoAlpha: 0,
+      display: 'none',
       ease: Power3.easeOut,
     });
   };

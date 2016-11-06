@@ -5,6 +5,10 @@ import path from 'path';
 import autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 const stylesheetPath = './src/sass/';
+const PATHS = {
+  dist: path.join(__dirname, 'dist'),
+  images: path.join(__dirname, 'src', 'images')
+};
 
 export default {
   debug: true,
@@ -12,11 +16,10 @@ export default {
   chunks: false, //add chunk information (setting this to false allows for a less verbose output)
   devtool: 'eval-source-map',
   entry: [
-    './src/javascript/page'
+    path.join(__dirname, 'src', 'javascript', 'page.js')
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: path.join('/'),
+    path: PATHS.dist,
     filename: path.join('javascript', 'page.js')
   },
   plugins: [
@@ -40,8 +43,7 @@ export default {
       {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file'},
       {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
-      {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
+      {test: /\.(jpe?g|png|gif|svg)$/i, loaders: [ 'file', 'img?minimize' ], include: PATHS.images},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
       {test: /(\.css|\.scss|\.sass)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap', 'sass-resources']},
       {test: /\.pug$/, loader: "pug-loader"}

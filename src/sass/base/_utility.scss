@@ -19,3 +19,7 @@
   max-width: span-cols($grid-col-count, true);
   width: 100%;
 }
+
+.u-container-padded {
+  padding: 0 h-pc(1);
+}
