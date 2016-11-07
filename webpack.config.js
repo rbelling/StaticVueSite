@@ -8,7 +8,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import StyleExtHtmlWebpackPlugin from 'style-ext-html-webpack-plugin';
 
 const stylesheetPath = './src/sass/';
-const assetsFolder = path.join('assets');
+const assetsFolder = 'assets';
 const PATHS = {
   dist: path.join(__dirname, 'dist'),
   output: path.join(assetsFolder, 'page.js')
@@ -37,7 +37,7 @@ const devConfig = {
         collapseWhitespace: true
       },
       inject: 'body',
-      hash: true,
+      hash: false,
       cache: false //we need to turn cache off if we want to use hmr on StyleExtHtmlWebpackPlugin
     }),
     new StyleExtHtmlWebpackPlugin({
@@ -77,7 +77,7 @@ switch (process.env.npm_lifecycle_event) {
   case 'build':
     config = merge({}, devConfig, {
       output: {
-        publicPath: '/', //The publicPath specifies the public URL address of the output files when referenced in a browser
+        publicPath: './', //The publicPath specifies the public URL address of the output files when referenced in a browser
       }
     });
     break;

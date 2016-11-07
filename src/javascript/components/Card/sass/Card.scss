@@ -42,7 +42,7 @@
 
 .r-card__back {
   background-color: $stranger-blue;
-  background-image: url('http://www.riccardobellingeri.com/files/santa_claws.png');
+  background-image: url('../../../../images/santa_claws.png');
   background-position: calc(100% - 5px) calc(100% - 5px);
   .no-flexbox & {
     background-position: bottom right;
@@ -53,12 +53,9 @@
 
 .r-card__front {
   background-color: $dark-red;
-  background-image: url('http://www.riccardobellingeri.com/files/bad-santa.png');
-  background-position: calc(100% + 22px) calc(100% + 2px);
-  .no-flexbox & {
-    background-position: bottom right;
-  }
-  background-size: 125px;
+  background-image: url('../../../../images/bad-santa.png');
+  background-position: bottom right;
+  background-size: 100px;
   background-repeat: no-repeat;
 }
 

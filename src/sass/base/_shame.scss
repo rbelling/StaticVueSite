@@ -9,24 +9,3 @@ html, body {
 * {
   box-sizing: border-box;
 }
-.above-the-fold {
-  background-image: url('../../images/secret-santa.png');
-  @extend .u-full-background;
-  position: relative;
-
-  $pad: 10vh;
-  .hero-btn {
-    position: absolute;
-    bottom: $pad;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .joke {
-    position: absolute;
-    top: $pad;
-    width: 100%;
-    text-align: center;
-    @include fancyFont();
-  }
-}
