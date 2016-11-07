@@ -4,7 +4,7 @@ import '../../vendor/gsap/TweenMax';
 import '../../vendor/gsap/plugins/ScrollToPlugin';
 
 import {jokes} from './jokes';
-import './sass/Santa.scss'; // this layout's specific stylesheet
+// import './sass/Santa.scss'; // this layout's specific stylesheet
 import Card from '../Card/Card';
 
 class Santa {
