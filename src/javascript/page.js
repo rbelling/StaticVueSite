@@ -7,7 +7,8 @@ import './vendor/gsap/plugins/TextPlugin.min';
 // import './vendor/gsap/plugins/CSSPlugin';
 // import './vendor/gsap/plugins/ScrollToPlugin';
 
-import '../sass/app.scss'; //import the main css file into our js bundle
+// import '../sass/app.scss'; //import the main css file into our js bundle
+import '../sass/test.css'; //import the main css file into our js bundle
 const {users} = require('../users.json'); //Requiring this json, in order to avoid a runtime ajax call
 
 const page = () => {
