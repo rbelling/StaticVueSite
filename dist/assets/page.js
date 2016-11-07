@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "https://mycdnurl.com";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -18157,7 +18157,7 @@
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "e406f6f54a239105a531e35507d588c0.png";
+	module.exports = __webpack_require__.p + "/assets/secret-santa.png";
 
 /***/ },
 /* 18 */

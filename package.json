@@ -7,7 +7,9 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint",
-    "build": "babel-node ./tools/build.js"
+    "build": "babel-node ./tools/build.js",
+    "preprod": "npm run clean-dist && npm run lint",
+    "prod": "babel-node ./tools/build.js"
   },
   "name": "secret-santa",
   "version": "0.1.1",
