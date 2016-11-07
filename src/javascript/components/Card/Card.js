@@ -45,13 +45,15 @@ class Card {
     this.card.classList.add('r-card', 'u-strangerify');
 
     this.cardBack.innerHTML = `
-        <p class="victim-title">your Designated Victim is:</p>
-        <p class="lastname">${this.data.victim.name.last || 'Misterious'}</p>
-        <p class="name">${this.data.victim.name.first || 'Misterious'}</p>
+      <div class="card__content">
+        <p class="victim-title u-strangerify">${this.data.name.first}'s Designated Victim is:</p>
+        <div class="name u-strangerify">${this.data.victim.name.last || 'Misterious'},&nbsp;<p>${this.data.victim.name.first || 'Misterious'}</p></div>
+      </div>
     `;
     this.cardFront.innerHTML = `
-        <p class="lastname">${this.data.name.last || 'Misterious'}</p>
-        <p class="name">${this.data.name.first || 'Misterious'}</p>
+      <div class="card__content">
+        <div class="name u-strangerify">${this.data.name.last || 'Misterious'},&nbsp;<p>${this.data.name.first || 'Misterious'}</p></div>
+      </div>
     `;
 
     this.card.appendChild(this.cardFront);
