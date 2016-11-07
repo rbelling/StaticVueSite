@@ -53,10 +53,12 @@ const devConfig = {
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: `url?limit=10000&mimetype=application/octet-stream&name=${assetsFolder}/[name].[ext]`},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
       {test: /\.(jpe?g|png|gif|svg)$/i, loaders: [`url?limit=30000&name=${assetsFolder}/[name].[ext]`, 'img?progressive=true']},
-      {test: /(\.css|\.scss|\.sass)$/, loaders: ['style', 'css', 'postcss', 'resolve-url', 'sass?sourceMap', 'sass-resources']},
+      {test: /(\.css|\.scss|\.sass)$/, loaders: ['style', 'css', 'postcss', 'resolve-url', 'sass?sourceMap', 'sass-resources'],
+        exclude: /critical.scss/
+      },
+      {test: /critical.scss$/, loaders: [StyleExtHtmlWebpackPlugin.inline(), 'postcss', 'resolve-url', 'sass?sourceMap', 'sass-resources']},
       {test: /\.pug$/, loader: "pug-loader"}
     ],
-
     noParse: ['./src/javascript/vendor'] // matches project folder name
   },
   sassLoader: {

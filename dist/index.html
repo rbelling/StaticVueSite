@@ -4,6 +4,74 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+  <style>@font-face {
+    font-family: "ITC Benguiat";
+    src: url(http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.eot);
+    src: url(http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.eot?#iefix) format("embedded-opentype"), url(http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.woff2) format("woff2"), url(http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.woff) format("woff"), url(http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.ttf) format("truetype"), url("http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.svg#ITC Benguiat") format("svg")
+  }
+
+  .r-loader-screen {
+    background-color: #03050b;
+    z-index: 1;
+    display: block;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100vw
+  }
+
+  .r-loader {
+    -webkit-animation-duration: .9s;
+    animation-duration: .9s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: rotate;
+    animation-name: rotate;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA5CAMAAABQ8ci0AAAC+lBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8VN6D4AAAA/XRSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6Slp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy83Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+nGGMWQAABCVJREFUSMeN11tsFFUYAOD/P7Pb3WV72bawvUFNA621xAKh7ZZQbDSkqZr4wosmPtjEEMQY1DcfFAwaIQSJStLg9cEEL6DFJy4qIVq6mFbqvYYGa8puWegFbJeWsrNznHOZ3dl2dvf8D7Nnzv7fnDlnzsycQXAMgkABqH5nbmL0ymD/f0456FClEaQsTMo2lCZ/PvllLD/VXBqVkaJMnzsczk01D6FpyahlKb346lB2il63VIYAesau8em+mSzU5UeaGfqS/djOfkfq81Gah9LkwcMOtMhjzzH49kahO70j4rOXk0tpSUFqQMxMw0iaXTQjUN/c+XCZjcPZnmQmLfGKweQZeiJpHz339p5u65hmyok91E6L/elTStw1ll3+pte3pxOOvmWj3vJ0J+8kHKfmY0fSOT3fpahWkZoI9+KG86yGyg9CVtLtrphFV/pATp+FWcgaBb2PG3JyndklqS8IcsIt3IYcoR17VLZAnz0v6GoXiIrFaZqLgvvzNmmvdhuM+iuk1G8mIXcET6+Udve3jK4pAC5hch7yRXevSKW/7zCpp5ZLoPM3IH988hAV2U9cQVhVCsJGFhXo+lNCwseHENa6WYlC/DqoxIfbRPp4N7rrRZFOxJVo1zsiHbowUMOffZAcpUrUfdFPudiLVeXA+zp3DdTiaCdvFI5jXRH7BRqbUqTPvCRAGBs9wJsdm1Ok294FbiPYrInSyKIire0TbcVxk7zZf9MVadlZ8UuxRdYMJxVp0ffWY60Fxa03nFCkpacFMLBFEw+LX+4q0jVfiFt1Djd6eWdx5JYi3XJIPFqi2BTgJRyLKtKnnhPgJ6yr4eeL038q0je3snSAk1jRwEuoDxhK0tXnF+AgekO8UYQ/birRjr08G+FJhNAKcZTpYSW6v41DvP40wrpaXkQMzyrIte+ZmQyceB+hsF1InBpUoPtaUNid/5pDFSrhEnEolle2vyJScfQFNsrBTfwwiIkL+WZU6dsBIpLfGGAUOwrloWb6c18g12tNRGRGd1E+MYKtkuLEpVwPKLKnXUrcPyjfdJur+T5BEglnb9e1u52lsMxLB6yXpPeRAstO9i9kkYHnH+ApZsy/OJ16q1dukRLJvfC4o9zYU0KItAeGbGuJ9Y2sjlsSHZxZBqt3NBMiz5acOp6xgmmt4wdkfxMy/tc1e5e1xo4NhEtOf+zNWMEAbl0tmuWWLEYjk7fYVfauqqpvLCaWNHMuHzGWLLmwbZ2NEqIRAjrxuTVeTNMfPjKWrxEf3EBslAuNpKA8375vHFemlZ0r7NTOJJ099neW9bCn9X4ucTllVTDwVTz7KjwYqrYkauwjwNzIXXL167Hca//Kzfdp6WatAuLIuX/yf3H4GxqqZFOSQuTXy7MqHyus0zXV5WXFXg/R9fj0VGTM8T7+H61Gbl0cf8lfAAAAAElFTkSuQmCC);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    bottom: -100%;
+    height: 3.75vw;
+    left: -100%;
+    margin: auto;
+    position: absolute;
+    right: -100%;
+    top: -100%;
+    width: 3.75vw
+  }
+
+  @media only screen and (max-width: 680px) {
+    .r-loader {
+      width: 40px;
+      height: 40px
+    }
+  }
+
+  @-webkit-keyframes rotate {
+    from {
+      -webkit-transform: rotateZ(70deg);
+      transform: rotateZ(70deg)
+    }
+    to {
+      -webkit-transform: rotateZ(430deg);
+      transform: rotateZ(430deg)
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      -webkit-transform: rotateZ(70deg);
+      transform: rotateZ(70deg)
+    }
+    to {
+      -webkit-transform: rotateZ(430deg);
+      transform: rotateZ(430deg)
+    }
+  }</style>
 </head>
 <body id="js-app">
 <svg style="display:none">
@@ -25,6 +93,6 @@
   <div class="info">Click on your card to find who's your designated victim!</div>
   <div class="r-grid"></div>
 </div>
-<script type="text/javascript" src="/assets/page.js?dd05112f5865171adcfe"></script>
+<script type="text/javascript" src="/assets/page.js?fef278bd53b99553c1cb"></script>
 </body>
 </html>
