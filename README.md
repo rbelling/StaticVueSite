@@ -5,4 +5,4 @@ Run `npm install` to setup the project and download the dependencies - tested wi
 `npm start` to watch files and develop locally.
 
 #####build
-`npm run build` to minify assets and prepare
+`npm run build` to minify assets and prepare the bundle.
