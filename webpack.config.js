@@ -46,11 +46,17 @@ export default {
     loaders: [
       {test: /\.js?$/, exclude: /node_modules/, loader: 'babel'},
       {test: /\.json?$/, exclude: /node_modules/, loader: 'json'},
-      { test: /\.css$/, loader: "style-loader!css-loader" },
-      { test: /\.png$/, loader: "url-loader?limit=100000" },
-      { test: /\.jpg$/, loader: "file-loader" },
+      {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file'},
+      {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
+      {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
+      {test: /\.(jpe?g|png|gif|svg)$/i, loaders: ['url?limit=30000!img?progressive=true']},
+      {test: /(\.css|\.scss|\.sass)$/, loaders: ['style', 'css', 'postcss', 'sass?sourceMap', 'sass-resources']},
+      // {test: /\.critical(\.css|\.scss|\.sass)$/, loaders: [StyleExtHtmlWebpackPlugin.inline(), 'css?sourceMap', 'postcss', 'sass?sourceMap', 'sass-resources']},
       {test: /\.pug$/, loader: "pug-loader"}
     ],
+
+
     noParse: ['./src/javascript/vendor'] // matches project folder name
   },
   sassLoader: {

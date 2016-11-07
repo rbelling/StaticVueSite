@@ -17724,7 +17724,7 @@
 
 
 	// module
-	exports.push([module.id, ".above-the-fold {\n  background-image: url(" + __webpack_require__(17) + ");\n}\n", ""]);
+	exports.push([module.id, "/*----------  Rick's responsive calc function - watch out: http://caniuse.com/#feat=calc.   ----------*/\n/**\n * Takes in a minimum and a maximum size in pixels, and interpolates between two viewports.\n * Takes in a property (e.g. font-size), min/max sizes, and optional lower range and upper range\n * by default it ranges from tablet to max width\n */\n/* MISC MIXINS\n\t========================================================================== */\n/* MEDIA QUERIES\n   ========================================================================== */\n/*----------  variables  ----------*/\n/* easeOutExpo */\n/*----------  mixins and placeholders  ----------*/\n@font-face {\n  font-family: \"ITC Benguiat\";\n  src: url(\"http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.eot\");\n  /* IE9*/\n  src: url(\"http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.eot?#iefix\") format(\"embedded-opentype\"), url(\"http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.woff2\") format(\"woff2\"), url(\"http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.woff\") format(\"woff\"), url(\"http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.ttf\") format(\"truetype\"), url(\"http://db.onlinewebfonts.com/t/aba29c74d9c0c9e0e7f7b612a9e899c7.svg#ITC Benguiat\") format(\"svg\");\n  /* iOS 4.1- */ }\n\n.above-the-fold {\n  background-image: url(" + __webpack_require__(17) + "); }\n", ""]);
 
 	// exports
 
@@ -18143,8 +18143,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./test.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./test.css");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./../../node_modules/sass-resources-loader/lib/loader.js!./test.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./../../node_modules/sass-resources-loader/lib/loader.js!./test.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
