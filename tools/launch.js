@@ -42,7 +42,7 @@ browserSync.init({
   },
   // https: true,
   plugins: ['bs-fullscreen-message'],
-  logLevel: 'error',
+  logLevel: 'info',
   ghostMode: {
     clicks: false,
     forms: false,

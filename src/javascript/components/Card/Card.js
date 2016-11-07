@@ -1,7 +1,7 @@
 import {throttle} from 'lodash';
 import 'classlist-polyfill'; //we need classlist polyfill since we're supporting ie9
 import '../../vendor/gsap/TweenMax';
-// import './sass/Card.scss'; // this layout's specific stylesheet
+import './sass/Card.scss'; // this layout's specific stylesheet
 
 const d = 1250; //tween duration
 class Card {
