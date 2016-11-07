@@ -4,5 +4,10 @@
   ],
   "ignore": [
     "./src/javascript/vendor"
+  ],
+  "plugins": [
+    ["transform-es2015-for-of", {
+      "loose": true
+    }]
   ]
 }
