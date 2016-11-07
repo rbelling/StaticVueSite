@@ -26,23 +26,55 @@
   @include max-width {
     margin-bottom: span-cols($mb, true);
   }
+  @include cleanFont();
 }
+
 .r-card__back, .r-card__front {
-  background-color: $dark-red;
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
 }
 
 .r-card__back {
   background-color: $stranger-blue;
+  background-image: url('http://www.riccardobellingeri.com/files/santa_claws.png');
+  background-position: calc(100% - 5px) calc(100% - 5px);
+  .no-flexbox & {
+    background-position: bottom right;
+  }
+  background-size: 100px;
+  background-repeat: no-repeat;
 }
 
-.is-victim {
-  background-color: #4294f0;
+.r-card__front {
+  background-color: $dark-red;
+  background-image: url('http://www.riccardobellingeri.com/files/bad-santa.png');
+  background-position: calc(100% + 22px) calc(100% + 2px);
+  .no-flexbox & {
+    background-position: bottom right;
+  }
+  background-size: 125px;
+  background-repeat: no-repeat;
 }
 
-.is-conspirator {
-  background-color: #ab162b;
+.name {
+  @include fancyFont();
+  p {
+    display: inline-block;
+    @include cleanFont();
+  }
+  font-size: 17px;
+}
+
+.victim-title {
+  font-size: 13px;
+  margin-bottom: span-cols(.25);
+  @include max-width {
+    margin-bottom: span-cols(.25, true);
+  }
 }
