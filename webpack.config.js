@@ -70,9 +70,8 @@ const devConfig = {
   postcss: () => [autoprefixer]
 };
 
-let config;
-
 // Detect how npm is run and branch based on that
+let config;
 switch(process.env.npm_lifecycle_event) {
   case 'build':
     config = merge({}, devConfig, {
