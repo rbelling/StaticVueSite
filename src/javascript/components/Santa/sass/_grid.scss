@@ -6,8 +6,8 @@
 .info {
   display: block;
   text-align: center;
-  margin: span-cols(1);
+  margin: span-cols(4) span-cols(1);
   @include max-width {
-    margin: span-cols(1, true);
+    margin: span-cols(4, true) span-cols(1, true);
   }
 }

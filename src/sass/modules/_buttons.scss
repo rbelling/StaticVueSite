@@ -1,6 +1,7 @@
 .r-btn {
   @include cleanFont();
   align-items: center;
+  justify-content: center;
   background-color: $dark-red;
   border-radius: 5px;
   cursor: pointer;
@@ -14,7 +15,7 @@
   }
   @include medium-down {
     font-size: 15px;
-    height: 32px;
+    height: 35px;
     padding: 0 20px;
   }
   @include large-up {
