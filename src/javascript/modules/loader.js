@@ -2,11 +2,10 @@
 import TweenMax from '../vendor/gsap/TweenMax';
 
 const loader = () => {
-  const $loader = document.querySelectorAll('.r-loader-screen');
+  const $loader = document.querySelector('.r-loader-screen');
   const hide = () => {
-    TweenMax.to($loader, .5, {
-      autoAlpha: 0,
-      ease: Linear.easeNone,
+    TweenMax.to($loader, 0.5, {
+      autoAlpha: 0
     });
   };
   return {

@@ -1,9 +1,5 @@
 import './vendor/Modernizr';
-
-import loader from './modules/loader';
 import Santa from './components/Santa/Santa';
-import './vendor/gsap/TweenMax';
-import './vendor/gsap/plugins/TextPlugin.min';
 // import './vendor/gsap/plugins/CSSPlugin';
 // import './vendor/gsap/plugins/ScrollToPlugin';
 
@@ -13,9 +9,6 @@ const {users} = require('../users.json'); //Requiring this json, in order to avo
 
 const page = () => {
   const init = () => {
-    window.onload = () => {
-      loader.hide();
-    };
     new Santa(users);
   };
 

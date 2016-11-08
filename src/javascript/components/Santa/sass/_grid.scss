@@ -7,7 +7,7 @@
   font-size: 18px;
   display: block;
   text-align: center;
-  margin: span-cols(4) span-cols(1) span-cols(1) span-cols(1);
+  margin: span-cols(4) 0 span-cols(1) 0;
   @include max-width {
     margin: span-cols(4, true) span-cols(1, true) span-cols(1, true) span-cols(1, true);
   }

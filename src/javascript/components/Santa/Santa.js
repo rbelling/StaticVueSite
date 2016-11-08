@@ -2,7 +2,8 @@ import {shuffle, assign} from 'lodash';
 import 'classlist-polyfill'; //we need classlist polyfill since we're supporting ie9
 import '../../vendor/gsap/TweenMax';
 import '../../vendor/gsap/plugins/ScrollToPlugin';
-
+import '../../vendor/gsap/plugins/TextPlugin.min';
+import loader from '../../modules/loader';
 import {jokes} from './jokes';
 import './sass/Santa.scss'; // this layout's specific stylesheet
 import Card from '../Card/Card';
@@ -13,7 +14,8 @@ class Santa {
     document.querySelector('.js-scrolldown').addEventListener('click', () => {
       TweenMax.to(window, 0.5, {ease: Power2.easeOut, scrollTo:{y:".info", offsetY:10}});
     });
-    this.setupDynamicText();
+
+    this.playIntro();
   }
 
   setupCards(users) {
@@ -41,16 +43,36 @@ class Santa {
     const jokeContainer = document.querySelector('.joke');
     let idx = 0;
     const nextJoke = () => {
-      const tl = new TimelineLite({paused: true});
+      let tl = new TimelineLite({paused: true});
       tl.to(jokeContainer, 0.7, {text: ''});
       tl.to(jokeContainer, 1.3, {text: '' + jokes[idx]});
-      tl.append(TweenLite.delayedCall(2.5, nextJoke));
+      tl.append(TweenMax.delayedCall(2.75, nextJoke));
 
       idx = (jokes.length === idx + 1) ? 0 : idx + 1;
       tl.play();
     };
 
     nextJoke();
+  }
+
+  playIntro() {
+    TweenLite.defaultEase = Power2.easeOut;
+    const delay = 0.5;
+    let cards = document.querySelectorAll('.r-card-container'),
+      joke = document.querySelector('.joke'),
+      cta = document.querySelector('.r-btn'),
+      tl = new TimelineLite({paused: true, delay});
+
+    TweenMax.delayedCall(delay*1.5, this.setupDynamicText);
+    TweenMax.delayedCall(delay, loader.hide);
+
+    TweenMax.set(cards, {x: '-=70px', opacity: 0});
+    TweenMax.set(cta, {y: '+=50px', autoAlpha: 0});
+
+    tl.to(cta, 0.3, {y: '0', autoAlpha: 1, clearProps: 'all'})
+      .staggerTo(cards, 0.5, {x: 0, force3D: true, opacity: 1}, 0.06);
+
+    tl.play();
   }
 }
 
