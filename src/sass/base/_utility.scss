@@ -21,11 +21,11 @@
 }
 
 .u-strangerify {
-  filter: drop-shadow(10px 10px 15px $red-glow);
-  .no-flexbox & {
-    //Cut the mustard: if a browser doesdn't support flex, it probably doesn't support filters either.
-    box-shadow: 5px 5px 15px $red-glow;
-  }
+  //filter: drop-shadow(10px 10px 15px $red-glow);
+  //.no-flexbox & {
+  //  //Cut the mustard: if a browser doesdn't support flex, it probably doesn't support filters either.
+  //  box-shadow: 5px 5px 15px $red-glow;
+  //}
 }
 
 .u-container-padded {
