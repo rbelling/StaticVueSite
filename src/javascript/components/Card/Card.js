@@ -1,4 +1,3 @@
-//import {throttle} from 'lodash';
 import 'classlist-polyfill'; //we need classlist polyfill since we're supporting ie9
 import './sass/Card.scss'; // this layout's specific stylesheet
 
@@ -34,7 +33,7 @@ class Card {
 
     this.cardBack.innerHTML = `
       <div class="card__content">
-        <p class="victim-title u-strangerify">${this.data.name.first}'s Designated Victim is:</p>
+        <p class="victim-title u-strangerify">${this.data.name.first}'s designated Victim is:</p>
         <div class="name u-strangerify">${this.data.victim.name.last || 'Misterious'},&nbsp;<p>${this.data.victim.name.first || 'Misterious'}</p></div>
       </div>
     `;

@@ -6,10 +6,8 @@
     "lint:watch": "npm run lint -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run clean-dist && npm run lint",
-    "build": "babel-node ./tools/build.js",
-    "preprod": "npm run prebuild",
-    "prod": "babel-node ./tools/build.js"
+    "prebuild": "BABEL_ENV=production npm run clean-dist && npm run lint",
+    "build": "BABEL_ENV=production babel-node ./tools/build.js"
   },
   "name": "secret-santa",
   "version": "0.1.1",
@@ -23,7 +21,9 @@
     "autoprefixer": "^6.4.0",
     "babel-core": "6.14.0",
     "babel-loader": "6.2.5",
+    "babel-plugin-remove-comments": "^2.0.0",
     "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-babili": "0.0.8",
     "babel-preset-latest": "6.14.0",
     "babel-register": "6.14.0",
     "browser-sync": "2.14.0",

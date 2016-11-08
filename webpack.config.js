@@ -13,6 +13,7 @@ const PATHS = {
   dist: path.join(__dirname, 'dist'),
   output: path.join(assetsFolder, 'page.js')
 };
+const PROCESS = process.env.npm_lifecycle_event;
 
 const devConfig = {
   debug: true,
@@ -34,20 +35,23 @@ const devConfig = {
       template: 'src/templates/index.pug',
       minify: {
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
       },
       inject: 'body',
       hash: false,
       cache: false //we need to turn cache off if we want to use hmr on StyleExtHtmlWebpackPlugin
     }),
-    new StyleExtHtmlWebpackPlugin({
+    new StyleExtHtmlWebpackPlugin({ //this lets us inline the critical css code
       minify: true
-    })
+    }),
   ],
   module: {
     loaders: [
-      {test: /\.js?$/, exclude: /node_modules/, loader: 'babel'},
-      {test: /\.json?$/, exclude: /node_modules/, loader: 'json'},
+      {test: /\.js?$/, loaders: ['babel']},
+      {test: /\.json?$/, exclude: /node_modules/, loaders: ['babel', 'json']},
       {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file'},
       {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: `url?limit=10000&mimetype=application/octet-stream&name=${assetsFolder}/[name].[ext]`},
@@ -68,23 +72,16 @@ const devConfig = {
     // make sure no actual css code is included in the following files, otherwise it's going to be duplicated. Only mixins/vars and alike.
     `${stylesheetPath}resources/*.scss`
   ],
-  postcss: () => [autoprefixer]
+  postcss: () => [autoprefixer],
 };
 
-// Detect how npm is run and branch based on that
+// Detect how npm is run and branch based on that - e.g. production / dev and so on
 let config;
-switch (process.env.npm_lifecycle_event) {
+switch (PROCESS) {
   case 'build':
     config = merge({}, devConfig, {
       output: {
-        publicPath: './', //The publicPath specifies the public URL address of the output files when referenced in a browser
-      }
-    });
-    break;
-  case 'prod':
-    config = merge({}, devConfig, {
-      output: {
-        publicPath: 'https://mycdnurl.com', //The publicPath specifies the public URL address of the output files when referenced in a browser
+        publicPath: './', //The publicPath specifies the public URL address of the output files when referenced in a browser e.g. http://mycdn.com/
       }
     });
     break;
