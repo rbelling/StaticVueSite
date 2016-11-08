@@ -1,9 +1,7 @@
 //import {throttle} from 'lodash';
 import 'classlist-polyfill'; //we need classlist polyfill since we're supporting ie9
-import '../../vendor/gsap/TweenMax';
 import './sass/Card.scss'; // this layout's specific stylesheet
 
-//const d = 1250; //tween duration
 class Card {
   constructor(data, container) {
     this.data = data;
@@ -15,21 +13,15 @@ class Card {
     this.setMarkup();
     this.container.appendChild(this.cardContainer);
     this.setupInteraction();
-
   }
 
   setupInteraction() {
-    this.cardContainer.addEventListener('ontouchstart', (function() {
-      if (this.cardContainer.classList.contains('hover')) {
-        this.cardContainer.classList.remove('hover');
-      }
-      else {
-        this.cardContainer.classList.add('hover');
-      }
-
-    }).bind(this));
+    this.cardContainer.addEventListener('click', this.flip.bind(this));
   }
 
+  flip() {
+    this.cardContainer.classList.toggle('hover');
+  }
   setMarkup() {
     this.cardFront = document.createElement('div');
     this.cardFront.classList.add('r-card__front');
@@ -38,22 +30,17 @@ class Card {
     this.card = document.createElement('div');
     this.card.classList.add('r-card');
     this.cardContainer = document.createElement('div');
-    this.cardContainer.classList.add('r-card-container');
-    this.cardContainer.addEventListener('click', (function (evt) {
-      evt;
-      this.cardContainer.classList.toggle('hover');
-    }).bind(this));
-
+    this.cardContainer.classList.add('r-card-container', 'u-strangerify');
 
     this.cardBack.innerHTML = `
       <div class="card__content">
-        <p class="victim-title">${this.data.name.first}'s Designated Victim is:</p>
-        <div class="name">${this.data.victim.name.last || 'Misterious'},&nbsp;<p>${this.data.victim.name.first || 'Misterious'}</p></div>
+        <p class="victim-title u-strangerify">${this.data.name.first}'s Designated Victim is:</p>
+        <div class="name u-strangerify">${this.data.victim.name.last || 'Misterious'},&nbsp;<p>${this.data.victim.name.first || 'Misterious'}</p></div>
       </div>
     `;
     this.cardFront.innerHTML = `
       <div class="card__content">
-        <div class="name">${this.data.name.last || 'Misterious'},&nbsp;<p>${this.data.name.first || 'Misterious'}</p></div>
+        <div class="name u-strangerify">${this.data.name.last || 'Misterious'},&nbsp;<p>${this.data.name.first || 'Misterious'}</p></div>
       </div>
     `;
 

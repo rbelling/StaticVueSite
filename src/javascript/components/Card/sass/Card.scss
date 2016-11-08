@@ -1,19 +1,54 @@
 .r-card-container {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  $mb: 1;
+  margin-bottom: span-cols($mb);
   perspective: 1000px;
-  margin-bottom: 20px;
+  width: 100%; //mobile
+  height: 200px;
+  @include medium {
+    //we have two cells per row here
+    width: h-pc(($grid-col-count - 1) / 2);
+    margin: 0 0 span-cols($mb) h-pc(1);
+    &:nth-of-type(2n + 1) {
+      margin-left: 0;
+    }
+  }
+  @include large-up {
+    //we have three cells per row here
+    width: h-pc(($grid-col-count - 2) / 3);
+    margin: 0 0 span-cols($mb) h-pc(1);
+    &:nth-of-type(3n+1) {
+      margin-left: 0;
+    }
+  }
+  @include max-width {
+    height: 220px;
+    margin-bottom: span-cols($mb, true);
+  }
+  @include cleanFont();
+
 }
 /* flip the pane when hovered */
 .r-card-container.hover .r-card {
   transform: rotateY(180deg);
 }
 
-.r-card-container, .r-card__front, .r-card__back {
-  width: 320px;
-  height: 480px;
+.r-card__front, .r-card__back {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 /* flip speed goes here */
 .r-card {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: 0.6s;
   transform-style: preserve-3d;
   position: relative;
@@ -22,7 +57,10 @@
 /* hide back of pane during swap */
 .r-card__front, .r-card__back {
   backface-visibility: hidden;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
   position: absolute;
   top: 0;
   left: 0;
@@ -30,7 +68,11 @@
 
 /* front pane, placed above back */
 .r-card__front {
-  background-color: red;
+  background-color: $dark-red;
+  background-image: url('../../../../images/bad-santa.png');
+  background-position: bottom right;
+  background-size: 100px;
+  background-repeat: no-repeat;
   z-index: 2;
   /* for firefox 31 */
   transform: rotateY(0deg);
@@ -38,6 +80,30 @@
 
 /* back, initially hidden pane */
 .r-card__back {
-  background-color: blue;
+  background-color: $stranger-blue;
+  background-image: url('../../../../images/santa_claws.png');
+  background-position: calc(100% - 5px) calc(100% - 5px);
+  .no-flexbox & {
+    background-position: bottom right;
+  }
+  background-size: 100px;
+  background-repeat: no-repeat;
   transform: rotateY(180deg);
+}
+
+.name {
+  @include fancyFont();
+  p {
+    display: inline-block;
+    @include cleanFont();
+  }
+  font-size: 17px;
+}
+
+.victim-title {
+  font-size: 13px;
+  margin-bottom: span-cols(.25);
+  @include max-width {
+    margin-bottom: span-cols(.25, true);
+  }
 }
