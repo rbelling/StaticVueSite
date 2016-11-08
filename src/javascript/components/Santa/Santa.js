@@ -59,7 +59,6 @@ class Santa {
     TweenLite.defaultEase = Power2.easeOut;
     const delay = 0.5;
     let cards = document.querySelectorAll('.r-card-container'),
-      joke = document.querySelector('.joke'),
       cta = document.querySelector('.r-btn'),
       tl = new TimelineLite({paused: true, delay});
 
