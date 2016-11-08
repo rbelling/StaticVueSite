@@ -10,9 +10,14 @@
     position: absolute;
     bottom: $pad;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(1);
     min-width: 200px;
+    height: 39px;
     text-align: center;
+    &:hover, &:active {
+      transition: all .3s ease-out;
+      transform: translateX(-50%) scale(1.02);
+    }
   }
 
   .joke {
@@ -25,5 +30,7 @@
     max-width: 650px;
     text-align: left;
     @include fancyFont();
+    font-size: 18px;
+    line-height: 1.3;
   }
 }

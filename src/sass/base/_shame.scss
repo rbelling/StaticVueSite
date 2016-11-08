@@ -2,6 +2,7 @@ body {
   background-color: $black;
   color: $white;
   @include cleanFont();
+  padding-bottom: 50px;
 }
 html, body {
   min-height: 100vh;
