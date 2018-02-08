@@ -18,6 +18,11 @@
       transition: all .3s ease-out;
       transform: translateX(-50%) scale(1.02);
     }
+    .no-flexbox & {
+      width: 300px;
+      left: calc(50% - 150px);
+    }
+    filter: drop-shadow(6px 0px 5px $red-glow);
   }
 
   .joke {
@@ -28,6 +33,9 @@
     padding: $pad;
     width: 100%;
     max-width: 650px;
+    .no-flexbox & {
+      left: calc(50% - 325px);
+    }
     text-align: left;
     @include fancyFont();
     font-size: 18px;

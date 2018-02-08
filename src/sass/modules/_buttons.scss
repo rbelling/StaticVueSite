@@ -1,8 +1,9 @@
 .r-btn {
-  @include cleanFont();
+  @include fancyFont();
   align-items: center;
   justify-content: center;
-  background-color: $dark-red;
+  background-color: transparent;
+  border: 2px solid $dark-red;
   border-radius: 5px;
   cursor: pointer;
   display: inline-flex;
@@ -30,10 +31,10 @@
   }
   &:visited, & {
     text-decoration: none !important;
-    color: $white;
+    color: $dark-red;
   }
   &:hover, &:active, &:focus{
-    color: $white;
+    color: $dark-red;
     text-decoration: underline;
   }
 }

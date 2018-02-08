@@ -2,8 +2,7 @@
   "presets": ["es2015"],
   "env": {
     "production": {
-      "presets": ["babili"], //use babili for minifcation, as it understands native es6,
-      "plugins": ["remove-comments"]
+      "presets": ["babili"]
     }
   },
   "plugins": [

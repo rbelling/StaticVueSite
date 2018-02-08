@@ -39,6 +39,25 @@ class Santa {
     }
   }
 
+  playIntro() {
+    TweenLite.defaultEase = Power2.easeOut;
+    const delay = 0.5;
+    let cards = document.querySelectorAll('.r-card-container'),
+      cta = document.querySelector('.r-btn'),
+      tl = new TimelineLite({paused: true, delay});
+
+    TweenMax.delayedCall(delay*2, this.setupDynamicText);
+    TweenMax.delayedCall(delay, loader.hide);
+
+    TweenMax.set(cards, {x: '-=70px', opacity: 0});
+    TweenMax.set(cta, {y: '+=39px', height: 0, autoAlpha: 0, force3D: true});
+
+    tl.to(cta, 0.4, {y: '0', height: '39px', autoAlpha: 1})
+      .staggerTo(cards, 0.5, {x: 0, force3D: true, opacity: 1}, 0.06);
+
+    tl.play();
+  }
+
   setupDynamicText() {
     const jokeContainer = document.querySelector('.joke');
     let idx = 0;
@@ -53,25 +72,6 @@ class Santa {
     };
 
     nextJoke();
-  }
-
-  playIntro() {
-    TweenLite.defaultEase = Power2.easeOut;
-    const delay = 0.5;
-    let cards = document.querySelectorAll('.r-card-container'),
-      cta = document.querySelector('.r-btn'),
-      tl = new TimelineLite({paused: true, delay});
-
-    TweenMax.delayedCall(delay*1.5, this.setupDynamicText);
-    TweenMax.delayedCall(delay, loader.hide);
-
-    TweenMax.set(cards, {x: '-=70px', opacity: 0});
-    TweenMax.set(cta, {y: '+=50px', autoAlpha: 0});
-
-    tl.to(cta, 0.3, {y: '0', autoAlpha: 1, clearProps: 'all'})
-      .staggerTo(cards, 0.5, {x: 0, force3D: true, opacity: 1}, 0.06);
-
-    tl.play();
   }
 }
 

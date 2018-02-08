@@ -53,8 +53,8 @@ const devConfig = {
       {test: /\.js?$/, loaders: ['babel']},
       {test: /\.json?$/, exclude: /node_modules/, loaders: ['babel', 'json']},
       {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file'},
-      {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
-      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: `url?limit=10000&mimetype=application/octet-stream&name=${assetsFolder}/[name].[ext]`},
+      {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=50000&mimetype=application/font-woff'},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: `url?limit=50000&mimetype=application/octet-stream&name=${assetsFolder}/[name].[ext]`},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
       {test: /\.(jpe?g|png|gif|svg)$/i, loaders: [`url?limit=30000&name=${assetsFolder}/[name].[ext]`, 'img?progressive=true']},
       {test: /(\.css|\.scss|\.sass)$/, loaders: ['style', 'css?minimize', 'postcss', 'resolve-url', 'sass?sourceMap', 'sass-resources'],
@@ -72,7 +72,7 @@ const devConfig = {
     // make sure no actual css code is included in the following files, otherwise it's going to be duplicated. Only mixins/vars and alike.
     `${stylesheetPath}resources/*.scss`
   ],
-  postcss: () => [autoprefixer],
+  postcss: () => [autoprefixer]
 };
 
 // Detect how npm is run and branch based on that - e.g. production / dev and so on
