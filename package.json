@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "modern-normalize": "^0.2.0",
+    "reset-css": "^2.2.1",
+    "resize-observer-polyfill": "^1.5.0",
+    "three": "^0.90.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
