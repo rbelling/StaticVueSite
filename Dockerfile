@@ -1,4 +1,9 @@
-FROM node:carbon
+# https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+
+FROM node:10.0-alpine
+
+# set production environment
+ENV NODE_ENV production
 
 # Create app directory
 WORKDIR /usr/src/app

@@ -1,16 +1,15 @@
-'use strict';
-
-const express = require('express');
+const fastify = require('fastify')()
 
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
 
-// App
-const app = express();
-app.get('/', (req, res) => {
-  res.send('Hello world\n');
-});
+fastify.get('/', async (request, reply) => {
+  reply.type('text/plain').code(200)
+  return 'Hi there!!!!'
+})
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+fastify.listen(PORT, HOST, function (err) {
+  if (err) throw err
+  console.log(`server listening on ${fastify.server.address().port}`)
+})
