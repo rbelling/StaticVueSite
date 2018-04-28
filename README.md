@@ -1,8 +1,31 @@
-####SETUP THE PROJECT
-Run `npm install` to setup the project and download the dependencies - tested with Node v5 and NPM v3.
+# Custom static site generator based on `vue-cli`
 
-#####compile and watch
-`npm start` to watch files and develop locally.
+### Todo
+[ ] Dockerize the build so that it can be deployed.
 
-#####build
-`npm run build` to minify assets and prepare the bundle.
+[ ] deploy to digitalocean a simple page, to test build / deploy / digitalocean. See if there's any script that can automate the deploy for you.
+
+[ ] Make sure that the page is SSR.
+
+### Nice to have
+[ ] css modules
+
+
+
+## Build Setup
+
+```
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+```
+
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
