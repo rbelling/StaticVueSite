@@ -1,13 +1,3 @@
 node_modules/*
-newrelic_agent.log
-release-nova.sh
-.jshintrc
-json/mock/*
-log/*
-public/*
-!public/templates/*
-tests/*
-.git/*
-.idea/*
-nova-cloudformation.json
-nova.yml
+.editorconfig
+.eslintignore

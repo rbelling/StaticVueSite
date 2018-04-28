@@ -1,27 +1,19 @@
+FROM node:carbon
 
-FROM node:8.4-alpine
+# Create app directory
+WORKDIR /usr/src/app
 
-# Create a non-root user to use for container
-RUN addgroup -S app && adduser -S -G app app
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
-# set production environment
-ENV NODE_ENV production
-
-# Install nodejs and git
-RUN apk update && apk add -u git && apk add sudo && apk add openssh-client
-
-# switch working directory
-WORKDIR /app
-ENV PWD /app
-
-# Add app files and run npm install
-COPY . /app
 RUN npm install
+# If you are building your code for production
+# RUN npm install --only=production
 
-# add the rest of the app code.
+# Bundle app source
+COPY . .
 
-RUN chown -R app:app /app
-USER app
-
-# Fire up node - TODO fix this command since you dont have app.js
-CMD ["node", "app.js"]
+EXPOSE 8080
+CMD [ "node", "app.js" ]

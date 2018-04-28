@@ -9,7 +9,8 @@
     "start": "npm run dev",
     "format": "xo src/**/* --fix",
     "lint": "xo src/**/*",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "dockerize": "docker build -t clean-start ."
   },
   "dependencies": {
     "modern-normalize": "^0.2.0",
