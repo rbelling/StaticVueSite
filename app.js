@@ -13,9 +13,11 @@ fastify.register(require("fastify-static"), {
 
 fastify.listen(port, host, function(err) {
   if (err) throw err;
-  console.log(`Server listening on ${host}:${fastify.server.address().port}`);
+  console.log(
+    `Serving static files on http://${host}:${fastify.server.address().port}`
+  );
 });
 
-fastify.get("/hello-world-route", async (request, reply) => {
+fastify.get("/", async (request, reply) => {
   reply.sendFile("index.html");
 });
