@@ -1,69 +1,82 @@
 {
+  "name": "CleanStart",
+  "version": "2.0.0-vue.0",
+  "description": "Dockerized Vue.js static site boilerplate",
+  "author": "Riccardo Bellingeri <riccardo.bellingeri@gmail.com>",
+  "repository": "https://github.com/rbelling/CleanStart.git",
   "scripts": {
-    "start": "npm-run-all --parallel launchFe lint:watch",
-    "launchFe": "babel-node ./tools/launch",
-    "lint": "esw webpack.config.* src tools --color",
-    "lint:watch": "npm run lint -- --watch",
-    "clean-dist": "npm run remove-dist && mkdir dist",
-    "remove-dist": "rimraf ./dist",
-    "prebuild": "BABEL_ENV=production npm run clean-dist && npm run lint",
-    "build": "BABEL_ENV=production babel-node ./tools/build.js"
-  },
-  "name": "secret-santa",
-  "version": "0.1.1",
-  "description": "Demo page for secret santa",
-  "repository": {
-    "type": "git"
-  },
-  "license": "GPL-3.0",
-  "browser": {},
-  "devDependencies": {
-    "autoprefixer": "^6.4.0",
-    "babel-core": "6.14.0",
-    "babel-loader": "6.2.5",
-    "babel-plugin-remove-comments": "^2.0.0",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-babili": "0.0.8",
-    "babel-preset-latest": "6.14.0",
-    "babel-register": "6.14.0",
-    "browser-sync": "2.14.0",
-    "bs-fullscreen-message": "^1.1.0",
-    "chalk": "1.1.3",
-    "classlist-polyfill": "^1.0.3",
-    "clean-css": "^3.4.20",
-    "cross-env": "2.0.1",
-    "css-loader": "0.24.0",
-    "eslint": "3.4.0",
-    "eslint-plugin-import": "1.14.0",
-    "eslint-watch": "2.1.14",
-    "extract-text-webpack-plugin": "1.0.1",
-    "fastclick": "^1.0.6",
-    "file-loader": "0.9.0",
-    "html-webpack-plugin": "^2.22.0",
-    "img-loader": "^1.3.1",
-    "json-loader": "^0.5.4",
-    "lodash": "^4.16.6",
-    "node-sass": "^3.10.1",
-    "postcss-loader": "0.11.0",
-    "pug": "^2.0.0-beta6",
-    "pug-loader": "^2.3.0",
-    "resolve-url-loader": "^1.6.0",
-    "sass-loader": "4.0.0",
-    "sass-resources-loader": "1.1.0",
-    "strip-ansi": "^3.0.1",
-    "style-ext-html-webpack-plugin": "^2.0.5",
-    "style-loader": "0.13.1",
-    "url-loader": "0.5.7",
-    "webpack": "1.13.2",
-    "webpack-dev-middleware": "1.6.1",
-    "webpack-dev-server": "^1.16.2",
-    "webpack-hot-middleware": "2.12.2",
-    "webpack-md5-hash": "0.0.5",
-    "zepto": "^1.2.0"
+    "clean": "rm -rf node_modules package-lock.json dist/*",
+    "serve": "vue-cli-service serve --open",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "start": "npm run build && node app.js",
+    "_______________Docker commands to build, run the image remotely, and serve static files": "",
+    "docker:build": "docker build -t clean-start:latest .",
+    "docker:run": "docker run -d -p 80:8080 clean-start:latest"
   },
   "dependencies": {
-    "babel-cli": "^6.14.0",
-    "npm-run-all": "3.0.0",
-    "rimraf": "2.5.4"
+    "colors-sass": "^1.0.0",
+    "fastify": "^1.3.1",
+    "fastify-static": "^0.10.1",
+    "modern-normalize": "^0.2.0",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.9",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.9",
+    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.9",
+    "@vue/cli-service": "^3.0.0-beta.9",
+    "@vue/eslint-config-prettier": "^3.0.0-beta.9",
+    "@vue/test-utils": "^1.0.0-beta.10",
+    "babel-core": "^7.0.0-0",
+    "lint-staged": "^6.0.0",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "vue-template-compiler": "^2.5.13"
+  },
+  "app": {
+    "host": "0.0.0.0",
+    "port": "8080"
+  },
+  "babel": {
+    "presets": [
+      "@vue/app"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/prettier"
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 11"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">= 10.0.0",
+    "npm": ">= 5.6.0"
   }
 }
