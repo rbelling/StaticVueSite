@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
-    <img src="../assets/logo.png">
-    <HelloWorld msg="A prop: hello worldsh!"/>
-  </div>
+  <HelloWorld
+    firstName="Riccardo"
+    lastName="Bellingeri"
+  />
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: "home",
+  name: 'home',
   components: {
     HelloWorld
   }
-};
+}
 </script>
