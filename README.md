@@ -1,14 +1,13 @@
 # Custom static site generator based on `vue-cli`
 
+
+
 ### Todo
 [x] Dockerize the build so that it can be deployed.
 
 [ ] deploy to digitalocean a simple page, to test build / deploy / digitalocean. See if there's any script that can automate the deploy for you.
 
 ### Nice to have
-[x] Fastify
-[ ] Vue-cli 3
-[ ] Make sure that the page is SSR.
 [ ] css modules
 
 
