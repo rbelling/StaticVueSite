@@ -19,7 +19,7 @@ RUN npm install
 
 # Copy new files to the image after npm install has finished running
 COPY . .
-EXPOSE 80
+EXPOSE 8080
 
 # Serve static files through fastify-static
 CMD [ "npm", "start" ]
