@@ -1,12 +1,12 @@
 # Custom static site generator based on `vue-cli`
 
-## Docker
-Following instructions at https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
-https://scotch.io/tutorials/how-to-host-a-node-js-app-on-digital-ocean#docker-machine-approach
+## Dokku
+We're using [dokku](https://github.com/dokku/dokku) to push changes via git to a Digital Ocean droplet based on Docker.
+The setup is based on [this article](https://medium.com/@pimterry/host-your-node-app-on-dokku-digitalocean-1cb97e3ab041).
 
-
-When working locally, the files will be served through vue-cli-service, with hot reloading.
-On the remote host,  the files will be served through `fastify-static` that will serve the minified bundle.
+## Releasing
+When working locally, assets will be served through vue-cli-service, with hot reloading.
+On the remote host, `fastify-static` will serve the minified static bundle.
 
 - `npm run docker:build` to build the image
 - `npm run docker:run-detached` to run it
@@ -14,6 +14,12 @@ On the remote host,  the files will be served through `fastify-static` that will
 
 Using `docker-machine` to point local docker to remote Docker engine.
 
+First time only setup for releasing:
+1) [Create ssh keys](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)
+2) Copy ssh keys to the remote host with `ssh-copy-id :user@:host`
+3) Log into the remote host with `ssh ':user@:host'`
+4) Create a Dokku app with `dokku apps:create your-app-name`
+5) On your local machine, add the dokku remote with `git remote add dokku dokku@host-ip:your-app-name`
 
 ## Build Setup
 
@@ -34,10 +40,6 @@ npm run build --report
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ### Todo
-[ ] Dockerize the build so that it can be deployed.
-
-[ ] Ensure it runs locally
-
 [ ] deploy to digitalocean a simple page, to test build / deploy / digitalocean. See if there's any script that can automate the deploy for you.
 
 #### Nice to have
