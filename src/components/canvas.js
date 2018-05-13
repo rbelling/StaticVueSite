@@ -1,18 +1,25 @@
 // https://codepen.io/hjortureh/pen/HJfbC?page=1&
-import * as THREE from 'three'
+import {
+  Scene,
+  PerspectiveCamera,
+  WebGLRenderer,
+  CubeGeometry,
+  MeshBasicMaterial,
+  Mesh
+} from 'three'
 
 let width
 let height
 
-const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000)
-const renderer = new THREE.WebGLRenderer({ antialias: true })
-const geometry = new THREE.CubeGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({
+const scene = new Scene()
+const camera = new PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000)
+const renderer = new WebGLRenderer({ antialias: true })
+const geometry = new CubeGeometry(1, 1, 1)
+const material = new MeshBasicMaterial({
   wireframe: true,
   color: 'rebeccapurple'
 })
-const cube = new THREE.Mesh(geometry, material)
+const cube = new Mesh(geometry, material)
 
 export default (container, multiplier = 1) => {
   const resize = () => {
