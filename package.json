@@ -11,8 +11,8 @@
     "lint": "vue-cli-service lint",
     "start": "npm run build && node app.js",
     "_______________Docker commands to build, run the image remotely, and serve static files": "",
-    "docker:build": "docker build -t clean-start:latest .",
-    "docker:run": "docker run -d -p 80:8080 clean-start:latest"
+    "docker:build": "docker build -t dokku/hello-world:latest .",
+    "docker:run": "docker run -d -p 80:8080 dokku/hello-world:latest"
   },
   "dependencies": {
     "colors-sass": "^1.0.0",

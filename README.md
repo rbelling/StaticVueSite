@@ -1,7 +1,7 @@
 # Custom static site generator based on `vue-cli`
 
 ## Dokku
-We're using [dokku](https://github.com/dokku/dokku) to push changes via git to a Digital Ocean droplet based on Docker.
+We're using [dokku](https://github.com/dokku/dokku) to push changes via git to a Digital Ocean droplet based on Node and [Docker](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/).
 The setup is based on [this article](https://medium.com/@pimterry/host-your-node-app-on-dokku-digitalocean-1cb97e3ab041).
 
 ## Releasing
@@ -16,10 +16,15 @@ Using `docker-machine` to point local docker to remote Docker engine.
 
 First time only setup for releasing:
 1) [Create ssh keys](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)
-2) Copy ssh keys to the remote host with `ssh-copy-id :user@:host`
-3) Log into the remote host with `ssh ':user@:host'`
-4) Create a Dokku app with `dokku apps:create your-app-name`
-5) On your local machine, add the dokku remote with `git remote add dokku dokku@host-ip:your-app-name`
+2) Create a Digital Ocean Dokku 1-click app
+3) Copy ssh keys to the remote host with `ssh-copy-id :user@:host`
+4) Log into the remote host with `ssh ':user@:host'`
+5) Create a Dokku app with `dokku apps:create your-app-name`
+6) On your local machine, add the dokku remote with `git remote add dokku dokku@host-ip:your-app-name`
+
+Release to Dokku
+1) `git push dokku yourbranch:master`
+2) Run docker image in the remote host (needs to be ran manually because of port mapping).
 
 ## Build Setup
 
