@@ -1,0 +1,41 @@
+// Only mixins and placeholders here. No css! This file is imported by each component.
+@import '../node_modules/colors-sass/sass/_variables.scss';
+
+$break-small: 414px;
+$break-medium: 768px;
+$break-large: 1024px;
+
+$spacing: 18px;
+
+@mixin respond-to($media) {
+  @if $media == small {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium-down {
+    @media only screen and (max-width: $break-medium) { @content; }
+  }
+  @else if $media == medium {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-medium) { @content; }
+  }
+  @else if $media == large {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
+%-d-box {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+%-d-border {
+  // Debug border
+  border: 1px dashed grey;
+  transition: border 0.3s ease;
+  margin-bottom: $spacing;
+  &:hover {
+    border-color: orangered;
+  }
+}
+
