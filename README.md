@@ -1,6 +1,6 @@
-# Custom static site generator based on `vue-cli`
+This is a simple page built with Vue.js, used as a boilerplate.
 
-## Docker
+## Docker setup
 Following instructions at https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 https://scotch.io/tutorials/how-to-host-a-node-js-app-on-digital-ocean#docker-machine-approach
 
@@ -30,16 +30,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-### Todo
-[ ] Dockerize the build so that it can be deployed.
-
-[ ] Ensure it runs locally
-
-[ ] deploy to digitalocean a simple page, to test build / deploy / digitalocean. See if there's any script that can automate the deploy for you.
-
-#### Nice to have
-
-[ ] css modules
